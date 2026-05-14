@@ -2,481 +2,1723 @@
   "meta": {
     "source": "Rider-Waite-Smith tradition; keywords and symbolism derived from Arthur Edward Waite, The Pictorial Key to the Tarot (1910, public domain)",
     "license": "MIT (this JSON), public-domain source material",
-    "updated": "2026-04-24",
+    "updated": "2026-05-14",
     "card_count": 78
   },
   "cards": [
     {
-      "name_zh": "愚者", "name_en": "The Fool", "number": 0, "arcana": "major", "element": "Air",
-      "upright_keywords": ["新開始", "自由", "純真", "冒險", "信任"],
-      "reversed_keywords": ["輕率", "天真過度", "不成熟", "錯失時機"],
-      "symbolism": "懸崖邊的旅人背著小包袱與白玫瑰，小狗相伴，象徵向未知躍出的第一步，以及對過程的信任。"
-    },
-    {
-      "name_zh": "魔術師", "name_en": "The Magician", "number": 1, "arcana": "major", "element": "Air",
-      "upright_keywords": ["意志", "創造", "技藝", "專注", "顯化"],
-      "reversed_keywords": ["操弄", "自我欺騙", "才能未發揮", "虛張聲勢"],
-      "symbolism": "一手指天一手指地，桌上四元素齊備，象徵把意念化為現實的能力與完整工具箱。"
-    },
-    {
-      "name_zh": "女祭司", "name_en": "The High Priestess", "number": 2, "arcana": "major", "element": "Water",
-      "upright_keywords": ["直覺", "潛意識", "靜觀", "神秘", "內在知曉"],
-      "reversed_keywords": ["忽視直覺", "表面解讀", "秘密浮現", "情緒混沌"],
-      "symbolism": "坐於兩柱之間、手持托拉卷軸，象徵通往潛意識與未知知識的守門人。"
-    },
-    {
-      "name_zh": "皇后", "name_en": "The Empress", "number": 3, "arcana": "major", "element": "Earth",
-      "upright_keywords": ["豐饒", "滋養", "創造力", "感官", "母性"],
-      "reversed_keywords": ["過度依賴", "創造力卡關", "自我忽視", "佔有慾"],
-      "symbolism": "坐於豐饒田野的女神，象徵自然循環、身體感官滿足與滋養他人的能力。"
-    },
-    {
-      "name_zh": "皇帝", "name_en": "The Emperor", "number": 4, "arcana": "major", "element": "Fire",
-      "upright_keywords": ["權威", "秩序", "結構", "領導", "保護"],
-      "reversed_keywords": ["專制", "僵化", "控制慾", "父權壓力"],
-      "symbolism": "穩坐石製王座、手持權杖與球體，象徵以理性與規則建立秩序的力量。"
-    },
-    {
-      "name_zh": "教皇", "name_en": "The Hierophant", "number": 5, "arcana": "major", "element": "Earth",
-      "upright_keywords": ["傳統", "教導", "信仰", "道德", "制度"],
-      "reversed_keywords": ["反叛", "教條束縛", "不守常規", "私人靈性"],
-      "symbolism": "加冕的宗教導師，象徵既有體系的傳承與對規範的尊重。"
-    },
-    {
-      "name_zh": "戀人", "name_en": "The Lovers", "number": 6, "arcana": "major", "element": "Air",
-      "upright_keywords": ["結合", "選擇", "愛", "價值觀", "和諧"],
-      "reversed_keywords": ["失衡", "難以抉擇", "誘惑", "關係破裂"],
-      "symbolism": "男女在天使祝福下相望，背景有生命樹與智慧樹，象徵重大選擇背後的價值對齊。"
-    },
-    {
-      "name_zh": "戰車", "name_en": "The Chariot", "number": 7, "arcana": "major", "element": "Water",
-      "upright_keywords": ["意志力", "勝利", "控制", "前進", "決心"],
-      "reversed_keywords": ["失控", "方向迷失", "內在衝突", "力道過猛"],
-      "symbolism": "駕馭黑白雙獸的騎士，象徵將對立力量統合以推進目標。"
-    },
-    {
-      "name_zh": "力量", "name_en": "Strength", "number": 8, "arcana": "major", "element": "Fire",
-      "upright_keywords": ["內在力量", "勇氣", "耐心", "慈悲", "馴服"],
-      "reversed_keywords": ["自我懷疑", "脆弱", "失去耐性", "野性失控"],
-      "symbolism": "女子輕撫獅子，象徵以柔克剛、以慈悲駕馭本能衝動的內在力量。"
-    },
-    {
-      "name_zh": "隱者", "name_en": "The Hermit", "number": 9, "arcana": "major", "element": "Earth",
-      "upright_keywords": ["內省", "獨處", "智慧尋求", "指引", "沉思"],
-      "reversed_keywords": ["孤立", "逃避", "拒絕協助", "迷失方向"],
-      "symbolism": "手持燈籠的智者獨立山頭，象徵向內尋求、為自己點亮前路。"
-    },
-    {
-      "name_zh": "命運之輪", "name_en": "Wheel of Fortune", "number": 10, "arcana": "major", "element": "Fire",
-      "upright_keywords": ["命運", "轉折點", "循環", "機遇", "因果"],
-      "reversed_keywords": ["運氣不佳", "抗拒變化", "負向循環", "失控"],
-      "symbolism": "轉動的輪盤四角環繞守護者，象徵生命週期的自然轉動與順流而行的智慧。"
-    },
-    {
-      "name_zh": "正義", "name_en": "Justice", "number": 11, "arcana": "major", "element": "Air",
-      "upright_keywords": ["公平", "真理", "因果", "法律", "清晰"],
-      "reversed_keywords": ["不公", "偏見", "推卸責任", "不誠實"],
-      "symbolism": "持劍與天秤的法官，象徵客觀判斷與行為後果的清算。"
-    },
-    {
-      "name_zh": "倒吊人", "name_en": "The Hanged Man", "number": 12, "arcana": "major", "element": "Water",
-      "upright_keywords": ["換角度", "犧牲", "暫停", "放下", "悟"],
-      "reversed_keywords": ["頑固", "徒勞等待", "逃避承諾", "停滯"],
-      "symbolism": "倒吊於樹的人面帶安詳，象徵主動暫停、用不同角度看事物所帶來的洞見。"
-    },
-    {
-      "name_zh": "死神", "name_en": "Death", "number": 13, "arcana": "major", "element": "Water",
-      "upright_keywords": ["結束", "轉化", "蛻變", "放手", "重生"],
-      "reversed_keywords": ["抗拒改變", "停滯", "恐懼", "未完結"],
-      "symbolism": "身披鎧甲的死神降臨眾人，象徵必然的結束與其後的新生。非字面的死亡。"
-    },
-    {
-      "name_zh": "節制", "name_en": "Temperance", "number": 14, "arcana": "major", "element": "Fire",
-      "upright_keywords": ["平衡", "融合", "中庸", "耐心", "療癒"],
-      "reversed_keywords": ["失衡", "過度", "不耐", "缺乏節制"],
-      "symbolism": "天使兩杯間傾倒水流，一腳在岸一腳在水，象徵對立元素的精細調和。"
-    },
-    {
-      "name_zh": "惡魔", "name_en": "The Devil", "number": 15, "arcana": "major", "element": "Earth",
-      "upright_keywords": ["束縛", "物質執著", "陰影", "成癮", "誘惑"],
-      "reversed_keywords": ["解放", "覺察束縛", "戒除", "重獲自由"],
-      "symbolism": "兩人被鬆綁的鎖鏈困住，象徵自我加諸的束縛——通常能選擇鬆開。"
-    },
-    {
-      "name_zh": "塔", "name_en": "The Tower", "number": 16, "arcana": "major", "element": "Fire",
-      "upright_keywords": ["突變", "崩解", "真相揭露", "解放", "覺醒"],
-      "reversed_keywords": ["避免崩解", "拖延不可避免的改變", "慢性崩壞"],
-      "symbolism": "雷電擊中高塔，人影墜落，象徵虛假結構的瞬間崩解與其後的清明。"
-    },
-    {
-      "name_zh": "星星", "name_en": "The Star", "number": 17, "arcana": "major", "element": "Air",
-      "upright_keywords": ["希望", "療癒", "信念", "靈感", "寧靜"],
-      "reversed_keywords": ["失去信心", "灰心", "斷連", "信念動搖"],
-      "symbolism": "女子裸身於水畔倒水回歸大地與池塘，象徵暴風過後的療癒與對未來的溫柔希望。"
-    },
-    {
-      "name_zh": "月亮", "name_en": "The Moon", "number": 18, "arcana": "major", "element": "Water",
-      "upright_keywords": ["幻象", "潛意識", "不安", "夢境", "直覺"],
-      "reversed_keywords": ["看清幻象", "恐懼消退", "壓抑浮現", "迷惘"],
-      "symbolism": "月光下狗與狼對月嚎叫，水中龍蝦爬出，象徵潛意識恐懼與直覺訊息並陳。"
-    },
-    {
-      "name_zh": "太陽", "name_en": "The Sun", "number": 19, "arcana": "major", "element": "Fire",
-      "upright_keywords": ["喜悅", "成功", "活力", "清明", "豐盛"],
-      "reversed_keywords": ["過度樂觀", "成功延遲", "活力低", "自我懷疑"],
-      "symbolism": "孩童騎白馬於向日葵花園，象徵純粹的喜悅、顯化與生命力的綻放。"
-    },
-    {
-      "name_zh": "審判", "name_en": "Judgement", "number": 20, "arcana": "major", "element": "Fire",
-      "upright_keywords": ["召喚", "覺醒", "重生", "反省", "寬恕"],
-      "reversed_keywords": ["自我批判", "拒絕召喚", "卡在過去", "疑慮"],
-      "symbolism": "天使吹響號角，逝者從棺中復起，象徵靈魂層次的覺醒與召喚的回應。"
-    },
-    {
-      "name_zh": "世界", "name_en": "The World", "number": 21, "arcana": "major", "element": "Earth",
-      "upright_keywords": ["完成", "整合", "圓滿", "達成", "旅途結束"],
-      "reversed_keywords": ["未竟", "延宕", "缺乏收尾", "需要再一圈"],
-      "symbolism": "舞者在月桂花環中，四角守護者見證，象徵一個週期的圓滿完成與新起點。"
-    },
-
-    {
-      "name_zh": "權杖 Ace", "name_en": "Ace of Wands", "number": 1, "arcana": "wands", "element": "Fire",
-      "upright_keywords": ["靈感", "新行動", "熱情", "機會", "創造火花"],
-      "reversed_keywords": ["延遲", "靈感卡住", "方向不明", "熱情缺乏"],
-      "symbolism": "雲中手持萌芽的權杖，象徵一個熱情計畫的種子剛剛遞給你。"
-    },
-    {
-      "name_zh": "權杖二", "name_en": "Two of Wands", "number": 2, "arcana": "wands", "element": "Fire",
-      "upright_keywords": ["規劃", "遠見", "決定", "展望", "個人力量"],
-      "reversed_keywords": ["猶豫", "視野狹窄", "怕踏出舒適圈", "計畫失焦"],
-      "symbolism": "站在城堡眺望遠方、手持地球儀的人，象徵選擇路徑前的遠景考量。"
-    },
-    {
-      "name_zh": "權杖三", "name_en": "Three of Wands", "number": 3, "arcana": "wands", "element": "Fire",
-      "upright_keywords": ["擴張", "展望", "前進", "信心", "結果等待"],
-      "reversed_keywords": ["延宕", "障礙", "計畫延伸失敗", "視野受限"],
-      "symbolism": "人物立於崖邊望向遠方船隊，象徵行動已啟動、等待回報的開闊期。"
-    },
-    {
-      "name_zh": "權杖四", "name_en": "Four of Wands", "number": 4, "arcana": "wands", "element": "Fire",
-      "upright_keywords": ["慶祝", "穩固", "歸屬", "里程碑", "和諧"],
-      "reversed_keywords": ["不穩", "家庭張力", "轉型期", "慶祝延遲"],
-      "symbolism": "四根權杖撐起花環，人們歡慶，象徵階段性成就與社群歸屬。"
-    },
-    {
-      "name_zh": "權杖五", "name_en": "Five of Wands", "number": 5, "arcana": "wands", "element": "Fire",
-      "upright_keywords": ["競爭", "衝突", "辯論", "混亂", "磨合"],
-      "reversed_keywords": ["避免衝突", "內心紛爭", "和解", "合作浮現"],
-      "symbolism": "五人各執權杖扭打，象徵眾人立場各異造成的摩擦與成長機會。"
-    },
-    {
-      "name_zh": "權杖六", "name_en": "Six of Wands", "number": 6, "arcana": "wands", "element": "Fire",
-      "upright_keywords": ["勝利", "肯定", "領導", "公眾認可", "自信"],
-      "reversed_keywords": ["失落", "自負", "名不符實", "缺乏認可"],
-      "symbolism": "騎士戴桂冠凱旋而歸，象徵努力獲得的公開肯定。"
-    },
-    {
-      "name_zh": "權杖七", "name_en": "Seven of Wands", "number": 7, "arcana": "wands", "element": "Fire",
-      "upright_keywords": ["防守", "堅持立場", "挑戰", "勇氣", "捍衛"],
-      "reversed_keywords": ["疲於應付", "放棄立場", "被淹沒", "自我懷疑"],
-      "symbolism": "高處的人以一支權杖對抗六支，象徵為立場堅守的勇氣。"
-    },
-    {
-      "name_zh": "權杖八", "name_en": "Eight of Wands", "number": 8, "arcana": "wands", "element": "Fire",
-      "upright_keywords": ["快速", "訊息", "進展", "行動迸發", "飛速變化"],
-      "reversed_keywords": ["延遲", "錯過時機", "溝通卡住", "焦慮"],
-      "symbolism": "八支權杖同時射向天空，象徵訊息、機會、進度同時抵達。"
-    },
-    {
-      "name_zh": "權杖九", "name_en": "Nine of Wands", "number": 9, "arcana": "wands", "element": "Fire",
-      "upright_keywords": ["堅忍", "最後考驗", "韌性", "警戒", "幾近完成"],
-      "reversed_keywords": ["疲憊", "放棄前最後一步", "過度防備"],
-      "symbolism": "包紮傷口的戰士倚杖而立，象徵最後一關前的堅守。"
-    },
-    {
-      "name_zh": "權杖十", "name_en": "Ten of Wands", "number": 10, "arcana": "wands", "element": "Fire",
-      "upright_keywords": ["重擔", "責任", "過度承擔", "接近目標", "疲憊"],
-      "reversed_keywords": ["卸下負擔", "委派", "崩潰", "釋放"],
-      "symbolism": "人扛著十支權杖蹣跚前行，象徵扛了過多責任以致看不見遠方。"
-    },
-    {
-      "name_zh": "權杖侍從", "name_en": "Page of Wands", "number": 11, "arcana": "wands", "element": "Fire",
-      "upright_keywords": ["好奇", "新消息", "熱情初萌", "探索", "青年能量"],
-      "reversed_keywords": ["分心", "虎頭蛇尾", "壞消息", "不成熟衝動"],
-      "symbolism": "年輕人好奇看著手中權杖上的新芽，象徵對未來的熱切好奇。"
-    },
-    {
-      "name_zh": "權杖騎士", "name_en": "Knight of Wands", "number": 12, "arcana": "wands", "element": "Fire",
-      "upright_keywords": ["行動", "冒險", "熱情", "衝勁", "改變"],
-      "reversed_keywords": ["急躁", "魯莽", "計畫不周", "推遲行動"],
-      "symbolism": "騎士騎著騰躍的駿馬奔馳，象徵熱情推動的積極行動。"
-    },
-    {
-      "name_zh": "權杖皇后", "name_en": "Queen of Wands", "number": 13, "arcana": "wands", "element": "Fire",
-      "upright_keywords": ["自信", "熱情", "魅力", "獨立", "活力"],
-      "reversed_keywords": ["嫉妒", "過度要求", "自我中心", "失去信心"],
-      "symbolism": "皇后持權杖與向日葵端坐，黑貓在腳邊，象徵以熱情與魅力領導他人。"
-    },
-    {
-      "name_zh": "權杖國王", "name_en": "King of Wands", "number": 14, "arcana": "wands", "element": "Fire",
-      "upright_keywords": ["願景", "領導", "果決", "創業精神", "遠見"],
-      "reversed_keywords": ["獨裁", "衝動決定", "目標模糊", "脾氣失控"],
-      "symbolism": "國王持發芽的權杖端坐，象徵有願景並能果斷執行的領袖能量。"
-    },
-
-    {
-      "name_zh": "聖杯 Ace", "name_en": "Ace of Cups", "number": 1, "arcana": "cups", "element": "Water",
-      "upright_keywords": ["情感新機", "愛", "直覺萌發", "連結", "靈性湧現"],
-      "reversed_keywords": ["情感封閉", "空杯", "愛的延遲", "創意枯竭"],
-      "symbolism": "雲中手遞出滿溢的聖杯，鴿子銜聖餅而入，象徵情感與靈性湧流的起點。"
-    },
-    {
-      "name_zh": "聖杯二", "name_en": "Two of Cups", "number": 2, "arcana": "cups", "element": "Water",
-      "upright_keywords": ["結合", "互相", "平等關係", "連結", "和諧"],
-      "reversed_keywords": ["失衡", "關係裂痕", "誤會", "分離"],
-      "symbolism": "男女交換聖杯、頭頂有獅子與翅膀，象徵情感互敬的深度結合。"
-    },
-    {
-      "name_zh": "聖杯三", "name_en": "Three of Cups", "number": 3, "arcana": "cups", "element": "Water",
-      "upright_keywords": ["慶祝", "友誼", "社群", "團聚", "共享喜悅"],
-      "reversed_keywords": ["社交疲勞", "八卦", "第三者", "派系"],
-      "symbolism": "三人舉杯起舞，象徵情感層面的友誼與共享的歡慶。"
-    },
-    {
-      "name_zh": "聖杯四", "name_en": "Four of Cups", "number": 4, "arcana": "cups", "element": "Water",
-      "upright_keywords": ["冷淡", "內省", "錯過機會", "不滿足", "靜止"],
-      "reversed_keywords": ["重新投入", "醒覺", "接受新機會", "走出低潮"],
-      "symbolism": "人倚樹閉目，雲中遞來第四杯卻未察，象徵沉溺內在而錯過眼前禮物。"
-    },
-    {
-      "name_zh": "聖杯五", "name_en": "Five of Cups", "number": 5, "arcana": "cups", "element": "Water",
-      "upright_keywords": ["失落", "後悔", "哀傷", "聚焦在損失", "情感創傷"],
-      "reversed_keywords": ["接納", "釋懷", "原諒", "回到當下"],
-      "symbolism": "黑袍人望三杯傾倒，卻沒看見身後兩杯仍立，象徵沉浸損失而忽視剩餘祝福。"
-    },
-    {
-      "name_zh": "聖杯六", "name_en": "Six of Cups", "number": 6, "arcana": "cups", "element": "Water",
-      "upright_keywords": ["懷舊", "童心", "善意", "舊友", "純真回憶"],
-      "reversed_keywords": ["活在過去", "幼稚", "舊傷復發", "無法前進"],
-      "symbolism": "孩童交換花杯，象徵無條件的善意與童年記憶的力量。"
-    },
-    {
-      "name_zh": "聖杯七", "name_en": "Seven of Cups", "number": 7, "arcana": "cups", "element": "Water",
-      "upright_keywords": ["選擇多", "幻想", "機會", "難以選擇", "願景"],
-      "reversed_keywords": ["看清選項", "做出決定", "夢想落地", "迷霧消散"],
-      "symbolism": "雲中七杯各裝不同願景與誘惑，象徵選擇多到令人眩目、需分辨虛實。"
-    },
-    {
-      "name_zh": "聖杯八", "name_en": "Eight of Cups", "number": 8, "arcana": "cups", "element": "Water",
-      "upright_keywords": ["離開", "放下", "追尋深意", "轉身", "情感遷徙"],
-      "reversed_keywords": ["猶豫離開", "恐懼改變", "回頭", "拖延放下"],
-      "symbolism": "身影向山中走去，留下八杯，象徵願意放下熟悉去追尋更有意義之物。"
-    },
-    {
-      "name_zh": "聖杯九", "name_en": "Nine of Cups", "number": 9, "arcana": "cups", "element": "Water",
-      "upright_keywords": ["心滿意足", "願望成真", "感官享受", "豐盛", "成就感"],
-      "reversed_keywords": ["空虛感", "膚淺滿足", "過度耽溺", "不感恩"],
-      "symbolism": "滿足的人端坐、背後九杯成排，象徵個人願望的實現（俗稱「願望牌」）。"
-    },
-    {
-      "name_zh": "聖杯十", "name_en": "Ten of Cups", "number": 10, "arcana": "cups", "element": "Water",
-      "upright_keywords": ["家庭幸福", "情感圓滿", "和諧", "長久伴侶", "歸屬"],
-      "reversed_keywords": ["家庭摩擦", "情感不合", "失和", "理想與現實落差"],
-      "symbolism": "家人指向彩虹，彩虹上有十杯，象徵情感層面的終極豐盛與共享的幸福。"
-    },
-    {
-      "name_zh": "聖杯侍從", "name_en": "Page of Cups", "number": 11, "arcana": "cups", "element": "Water",
-      "upright_keywords": ["創意訊息", "浪漫啟蒙", "敏感", "童心", "直覺訊號"],
-      "reversed_keywords": ["情緒化", "不成熟", "白日夢", "創意卡住"],
-      "symbolism": "年輕人杯中躍出一條魚，象徵意外湧現的直覺或創意邀請。"
-    },
-    {
-      "name_zh": "聖杯騎士", "name_en": "Knight of Cups", "number": 12, "arcana": "cups", "element": "Water",
-      "upright_keywords": ["浪漫", "理想主義", "邀請", "藝術追求", "情感主動"],
-      "reversed_keywords": ["情感操弄", "不切實際", "情緒起伏", "拖泥帶水"],
-      "symbolism": "騎士緩行、聖杯遞出，象徵以優雅姿態獻出情感或邀請的能量。"
-    },
-    {
-      "name_zh": "聖杯皇后", "name_en": "Queen of Cups", "number": 13, "arcana": "cups", "element": "Water",
-      "upright_keywords": ["同理", "敏銳", "滋養", "直覺", "情感成熟"],
-      "reversed_keywords": ["情緒過載", "共依存", "逃避", "情感界線模糊"],
-      "symbolism": "皇后凝視手中精緻聖杯，象徵深度同理與成熟的情感容器。"
-    },
-    {
-      "name_zh": "聖杯國王", "name_en": "King of Cups", "number": 14, "arcana": "cups", "element": "Water",
-      "upright_keywords": ["情感穩定", "外交", "慈悲領導", "內在平衡", "諮商"],
-      "reversed_keywords": ["情緒壓抑", "被動攻擊", "操控", "失控憤怒"],
-      "symbolism": "國王在翻湧海面上端坐穩如磐石，象徵在情感風浪中保持清明的成熟。"
-    },
-
-    {
-      "name_zh": "寶劍 Ace", "name_en": "Ace of Swords", "number": 1, "arcana": "swords", "element": "Air",
-      "upright_keywords": ["突破", "清晰", "真相", "新思維", "決斷"],
-      "reversed_keywords": ["混亂", "誤解", "言語傷害", "決策卡住"],
-      "symbolism": "雲中手握立起的劍，劍頂冠冕，象徵突破迷霧的清晰思維。"
-    },
-    {
-      "name_zh": "寶劍二", "name_en": "Two of Swords", "number": 2, "arcana": "swords", "element": "Air",
-      "upright_keywords": ["僵局", "難以抉擇", "平衡", "防禦", "暫停"],
-      "reversed_keywords": ["做出決定", "打破僵局", "看清選項", "資訊揭露"],
-      "symbolism": "蒙眼女子雙手交叉持劍於胸前，象徵在兩難中暫時關閉訊息以維持平衡。"
-    },
-    {
-      "name_zh": "寶劍三", "name_en": "Three of Swords", "number": 3, "arcana": "swords", "element": "Air",
-      "upright_keywords": ["心碎", "痛苦真相", "背叛", "悲傷", "失落"],
-      "reversed_keywords": ["開始療癒", "寬恕", "釋放傷痛", "走出哀傷"],
-      "symbolism": "三把劍穿心於雨雲下，象徵被真相切開的痛、但也是清理的開始。"
-    },
-    {
-      "name_zh": "寶劍四", "name_en": "Four of Swords", "number": 4, "arcana": "swords", "element": "Air",
-      "upright_keywords": ["休息", "療養", "沉思", "撤退", "暫停"],
-      "reversed_keywords": ["過勞", "焦慮", "拒絕休息", "恢復中"],
-      "symbolism": "騎士石像靜臥於教堂，象徵主動撤退以重整的必要休止。"
-    },
-    {
-      "name_zh": "寶劍五", "name_en": "Five of Swords", "number": 5, "arcana": "swords", "element": "Air",
-      "upright_keywords": ["衝突", "贏了輸", "好鬥", "羞辱", "自我中心"],
-      "reversed_keywords": ["和解", "放下勝負", "承認錯誤", "轉化衝突"],
-      "symbolism": "贏家收劍、敗者遠去，象徵即使贏了也要思考代價。"
-    },
-    {
-      "name_zh": "寶劍六", "name_en": "Six of Swords", "number": 6, "arcana": "swords", "element": "Air",
-      "upright_keywords": ["過渡", "離開困難", "前行", "療癒旅程", "平靜"],
-      "reversed_keywords": ["卡在過去", "延遲離開", "回頭", "阻礙前行"],
-      "symbolism": "船載母子緩行於平靜水面，象徵從紛亂向寧靜的過渡。"
-    },
-    {
-      "name_zh": "寶劍七", "name_en": "Seven of Swords", "number": 7, "arcana": "swords", "element": "Air",
-      "upright_keywords": ["策略", "隱瞞", "閃避", "自保", "不誠實"],
-      "reversed_keywords": ["承認", "放棄欺瞞", "誠實面對", "良心回歸"],
-      "symbolism": "人躡手躡腳偷走五把劍、留下兩把，象徵抄近路或保留實力的策略行動（也可能暗示不坦白）。"
-    },
-    {
-      "name_zh": "寶劍八", "name_en": "Eight of Swords", "number": 8, "arcana": "swords", "element": "Air",
-      "upright_keywords": ["受困感", "自我設限", "恐懼", "被動", "盲點"],
-      "reversed_keywords": ["解放", "看見出路", "打破束縛", "覺察"],
-      "symbolism": "蒙眼女子周圍八把劍圍成半開的籠，象徵大多是自我感受造成的受困。"
-    },
-    {
-      "name_zh": "寶劍九", "name_en": "Nine of Swords", "number": 9, "arcana": "swords", "element": "Air",
-      "upright_keywords": ["焦慮", "失眠", "自我折磨", "夢魘", "過度擔憂"],
-      "reversed_keywords": ["釋放焦慮", "看清現實", "走出低潮", "尋求協助"],
-      "symbolism": "人坐床上雙手掩面，牆上九把劍，象徵多為想像放大的恐懼折磨。"
-    },
-    {
-      "name_zh": "寶劍十", "name_en": "Ten of Swords", "number": 10, "arcana": "swords", "element": "Air",
-      "upright_keywords": ["結束", "觸底", "背刺", "痛苦終結", "投降"],
-      "reversed_keywords": ["正在復原", "走出谷底", "新黎明", "拒絕接受"],
-      "symbolism": "人臥地、十劍插背、遠方曙光初升，象徵痛苦抵達盡頭、新的一天即將來臨。"
-    },
-    {
-      "name_zh": "寶劍侍從", "name_en": "Page of Swords", "number": 11, "arcana": "swords", "element": "Air",
-      "upright_keywords": ["好奇", "好問", "警覺", "學習", "直率"],
-      "reversed_keywords": ["八卦", "口無遮攔", "過度戒備", "思慮零散"],
-      "symbolism": "年輕人舉劍立於風中山丘，象徵銳利的好奇心與求知慾。"
-    },
-    {
-      "name_zh": "寶劍騎士", "name_en": "Knight of Swords", "number": 12, "arcana": "swords", "element": "Air",
-      "upright_keywords": ["行動迅速", "理性追求", "直言", "目標導向", "衝勁"],
-      "reversed_keywords": ["魯莽", "咄咄逼人", "計畫脫離", "衝動失控"],
-      "symbolism": "騎士舉劍飛馳，象徵以清晰思維高速切過障礙的行動。"
-    },
-    {
-      "name_zh": "寶劍皇后", "name_en": "Queen of Swords", "number": 13, "arcana": "swords", "element": "Air",
-      "upright_keywords": ["清晰", "獨立", "誠實", "冷靜判斷", "界線分明"],
-      "reversed_keywords": ["冷漠", "刻薄", "批判", "情感疏離"],
-      "symbolism": "皇后端坐舉劍，象徵經歷過才懂的清晰與不被情緒左右的判斷。"
-    },
-    {
-      "name_zh": "寶劍國王", "name_en": "King of Swords", "number": 14, "arcana": "swords", "element": "Air",
-      "upright_keywords": ["理性領導", "權威", "公正", "戰略", "智慧"],
-      "reversed_keywords": ["濫用權力", "操縱", "冷血", "獨斷"],
-      "symbolism": "國王正面持劍而坐，象徵以理性與原則行使權威的成熟領袖。"
-    },
-
-    {
-      "name_zh": "錢幣 Ace", "name_en": "Ace of Pentacles", "number": 1, "arcana": "pentacles", "element": "Earth",
-      "upright_keywords": ["物質新機", "豐盛", "機會", "健康", "實際基礎"],
-      "reversed_keywords": ["錯過機會", "延遲", "浪費資源", "短視"],
-      "symbolism": "雲中手遞出金幣、花園盛開，象徵物質或健康層面的禮物降臨。"
-    },
-    {
-      "name_zh": "錢幣二", "name_en": "Two of Pentacles", "number": 2, "arcana": "pentacles", "element": "Earth",
-      "upright_keywords": ["平衡", "靈活", "多工", "優先排序", "適應"],
-      "reversed_keywords": ["超載", "時間管理失控", "失去平衡", "顧此失彼"],
-      "symbolism": "雜技者以無限符號玩轉兩金幣，背景有波濤船隻，象徵在變動中保持平衡的能力。"
-    },
-    {
-      "name_zh": "錢幣三", "name_en": "Three of Pentacles", "number": 3, "arcana": "pentacles", "element": "Earth",
-      "upright_keywords": ["團隊合作", "專業", "學習", "成長", "肯定"],
-      "reversed_keywords": ["合作不良", "缺乏肯定", "技能不足", "團隊失和"],
-      "symbolism": "工匠在教堂內工作、兩位主顧旁觀，象徵專業合作的早期成果。"
-    },
-    {
-      "name_zh": "錢幣四", "name_en": "Four of Pentacles", "number": 4, "arcana": "pentacles", "element": "Earth",
-      "upright_keywords": ["守成", "節儉", "保守", "安全感", "積累"],
-      "reversed_keywords": ["貪婪", "吝嗇", "不放手", "失去"],
-      "symbolism": "人緊抱四金幣，象徵過度抓牢安全感的傾向（也是穩固保有的姿態）。"
-    },
-    {
-      "name_zh": "錢幣五", "name_en": "Five of Pentacles", "number": 5, "arcana": "pentacles", "element": "Earth",
-      "upright_keywords": ["困境", "匱乏感", "孤立", "健康挑戰", "財務壓力"],
-      "reversed_keywords": ["走出困境", "尋求協助", "恢復", "看見支援"],
-      "symbolism": "雪中兩人經過燈火教堂卻未進入，象徵困頓中忽略身旁仍有的溫暖。"
-    },
-    {
-      "name_zh": "錢幣六", "name_en": "Six of Pentacles", "number": 6, "arcana": "pentacles", "element": "Earth",
-      "upright_keywords": ["給予", "接受", "慷慨", "分享", "平衡互惠"],
-      "reversed_keywords": ["不平衡給予", "施受失衡", "債務", "條件交換"],
-      "symbolism": "富人施予乞丐、持天秤，象徵資源流動的公平分配。"
-    },
-    {
-      "name_zh": "錢幣七", "name_en": "Seven of Pentacles", "number": 7, "arcana": "pentacles", "element": "Earth",
-      "upright_keywords": ["評估", "耐心", "中長期投資", "檢視成果", "再規劃"],
-      "reversed_keywords": ["缺乏耐心", "努力未見回報", "投資失當", "徒勞"],
-      "symbolism": "農夫倚鋤望向果實累累的樹叢，象徵暫停評估努力的成效。"
-    },
-    {
-      "name_zh": "錢幣八", "name_en": "Eight of Pentacles", "number": 8, "arcana": "pentacles", "element": "Earth",
-      "upright_keywords": ["專注", "學習", "磨練", "精進", "工藝"],
-      "reversed_keywords": ["停滯", "失焦", "得過且過", "技能退化"],
-      "symbolism": "工匠專心雕刻第八枚金幣，象徵日積月累的精進。"
-    },
-    {
-      "name_zh": "錢幣九", "name_en": "Nine of Pentacles", "number": 9, "arcana": "pentacles", "element": "Earth",
-      "upright_keywords": ["獨立", "自給自足", "豐盛", "享受成果", "優雅生活"],
-      "reversed_keywords": ["依賴", "成果空虛", "物質迷失", "獨享失衡"],
-      "symbolism": "貴婦獨享葡萄園、鷹立其手，象徵自律結出的優雅與自給自足。"
-    },
-    {
-      "name_zh": "錢幣十", "name_en": "Ten of Pentacles", "number": 10, "arcana": "pentacles", "element": "Earth",
-      "upright_keywords": ["家族富足", "傳承", "長期穩固", "血脈", "體制完備"],
-      "reversed_keywords": ["家族衝突", "傳承難題", "財務糾紛", "結構動盪"],
-      "symbolism": "三代同堂於家族庭院，象徵物質層面的跨代豐盛與傳承。"
-    },
-    {
-      "name_zh": "錢幣侍從", "name_en": "Page of Pentacles", "number": 11, "arcana": "pentacles", "element": "Earth",
-      "upright_keywords": ["學習", "機會", "踏實", "新實務起步", "計畫成形"],
-      "reversed_keywords": ["拖延", "不踏實", "計畫延宕", "浪費機會"],
-      "symbolism": "年輕人專注端詳手中金幣，象徵對具體計畫的踏實投入。"
-    },
-    {
-      "name_zh": "錢幣騎士", "name_en": "Knight of Pentacles", "number": 12, "arcana": "pentacles", "element": "Earth",
-      "upright_keywords": ["穩健", "可靠", "按部就班", "毅力", "實務"],
-      "reversed_keywords": ["固執", "停滯", "不願變通", "拖延"],
-      "symbolism": "騎士立於耕耘過的田野持金幣，象徵穩扎穩打的可靠行動。"
-    },
-    {
-      "name_zh": "錢幣皇后", "name_en": "Queen of Pentacles", "number": 13, "arcana": "pentacles", "element": "Earth",
-      "upright_keywords": ["務實滋養", "身體力行", "豐饒", "經營", "居家智慧"],
-      "reversed_keywords": ["工作/家庭失衡", "過度物質", "忽略自我", "疲憊"],
-      "symbolism": "皇后於花園端坐懷抱金幣，小兔於腳邊，象徵務實持家的滋養能量。"
-    },
-    {
-      "name_zh": "錢幣國王", "name_en": "King of Pentacles", "number": 14, "arcana": "pentacles", "element": "Earth",
-      "upright_keywords": ["物質成功", "企業家", "穩定領導", "投資智慧", "富足"],
-      "reversed_keywords": ["物質執著", "守財", "僵化", "商業失敗"],
-      "symbolism": "國王於葡萄藤王座上端坐持金幣，象徵以務實智慧建立的長期成功。"
+      "name_zh": "愚人",
+      "name_en": "The Fool",
+      "number": 0,
+      "arcana": "major",
+      "element": "Air",
+      "upright_keywords": [
+        "新開始",
+        "自由",
+        "純真",
+        "冒險",
+        "信任"
+      ],
+      "reversed_keywords": [
+        "輕率",
+        "天真過度",
+        "不成熟",
+        "錯失時機"
+      ],
+      "symbolism": "懸崖邊的旅人背著小包袱與白玫瑰，小狗相伴，象徵向未知躍出的第一步，以及對過程的信任。",
+      "image": "images/major-00-fool.jpg"
+    },
+    {
+      "name_zh": "魔術師",
+      "name_en": "The Magician",
+      "number": 1,
+      "arcana": "major",
+      "element": "Air",
+      "upright_keywords": [
+        "意志",
+        "創造",
+        "技藝",
+        "專注",
+        "顯化"
+      ],
+      "reversed_keywords": [
+        "操弄",
+        "自我欺騙",
+        "才能未發揮",
+        "虛張聲勢"
+      ],
+      "symbolism": "一手指天一手指地，桌上四元素齊備，象徵把意念化為現實的能力與完整工具箱。",
+      "image": "images/major-01-magician.jpg"
+    },
+    {
+      "name_zh": "高級女祭司",
+      "name_en": "The High Priestess",
+      "number": 2,
+      "arcana": "major",
+      "element": "Water",
+      "upright_keywords": [
+        "直覺",
+        "潛意識",
+        "靜觀",
+        "神秘",
+        "內在知曉"
+      ],
+      "reversed_keywords": [
+        "忽視直覺",
+        "表面解讀",
+        "秘密浮現",
+        "情緒混沌"
+      ],
+      "symbolism": "坐於兩柱之間、手持托拉卷軸，象徵通往潛意識與未知知識的守門人。",
+      "image": "images/major-02-high_priestess.jpg"
+    },
+    {
+      "name_zh": "女帝",
+      "name_en": "The Empress",
+      "number": 3,
+      "arcana": "major",
+      "element": "Earth",
+      "upright_keywords": [
+        "豐饒",
+        "滋養",
+        "創造力",
+        "感官",
+        "母性"
+      ],
+      "reversed_keywords": [
+        "過度依賴",
+        "創造力卡關",
+        "自我忽視",
+        "佔有慾"
+      ],
+      "symbolism": "坐於豐饒田野的女神，象徵自然循環、身體感官滿足與滋養他人的能力。",
+      "image": "images/major-03-empress.jpg"
+    },
+    {
+      "name_zh": "皇帝",
+      "name_en": "The Emperor",
+      "number": 4,
+      "arcana": "major",
+      "element": "Fire",
+      "upright_keywords": [
+        "權威",
+        "秩序",
+        "結構",
+        "領導",
+        "保護"
+      ],
+      "reversed_keywords": [
+        "專制",
+        "僵化",
+        "控制慾",
+        "父權壓力"
+      ],
+      "symbolism": "穩坐石製王座、手持權杖與球體，象徵以理性與規則建立秩序的力量。",
+      "image": "images/major-04-emperor.jpg"
+    },
+    {
+      "name_zh": "教皇",
+      "name_en": "The Hierophant",
+      "number": 5,
+      "arcana": "major",
+      "element": "Earth",
+      "upright_keywords": [
+        "傳統",
+        "教導",
+        "信仰",
+        "道德",
+        "制度"
+      ],
+      "reversed_keywords": [
+        "反叛",
+        "教條束縛",
+        "不守常規",
+        "私人靈性"
+      ],
+      "symbolism": "加冕的宗教導師，象徵既有體系的傳承與對規範的尊重。",
+      "image": "images/major-05-hierophant.jpg"
+    },
+    {
+      "name_zh": "戀人",
+      "name_en": "The Lovers",
+      "number": 6,
+      "arcana": "major",
+      "element": "Air",
+      "upright_keywords": [
+        "結合",
+        "選擇",
+        "愛",
+        "價值觀",
+        "和諧"
+      ],
+      "reversed_keywords": [
+        "失衡",
+        "難以抉擇",
+        "誘惑",
+        "關係破裂"
+      ],
+      "symbolism": "男女在天使祝福下相望，背景有生命樹與智慧樹，象徵重大選擇背後的價值對齊。",
+      "image": "images/major-06-lovers.jpg"
+    },
+    {
+      "name_zh": "戰車",
+      "name_en": "The Chariot",
+      "number": 7,
+      "arcana": "major",
+      "element": "Water",
+      "upright_keywords": [
+        "意志力",
+        "勝利",
+        "控制",
+        "前進",
+        "決心"
+      ],
+      "reversed_keywords": [
+        "失控",
+        "方向迷失",
+        "內在衝突",
+        "力道過猛"
+      ],
+      "symbolism": "駕馭黑白雙獸的騎士，象徵將對立力量統合以推進目標。",
+      "image": "images/major-07-chariot.jpg"
+    },
+    {
+      "name_zh": "力量",
+      "name_en": "Strength",
+      "number": 8,
+      "arcana": "major",
+      "element": "Fire",
+      "upright_keywords": [
+        "內在力量",
+        "勇氣",
+        "耐心",
+        "慈悲",
+        "馴服"
+      ],
+      "reversed_keywords": [
+        "自我懷疑",
+        "脆弱",
+        "失去耐性",
+        "野性失控"
+      ],
+      "symbolism": "女子輕撫獅子，象徵以柔克剛、以慈悲駕馭本能衝動的內在力量。",
+      "image": "images/major-08-strength.jpg"
+    },
+    {
+      "name_zh": "隱者",
+      "name_en": "The Hermit",
+      "number": 9,
+      "arcana": "major",
+      "element": "Earth",
+      "upright_keywords": [
+        "內省",
+        "獨處",
+        "智慧尋求",
+        "指引",
+        "沉思"
+      ],
+      "reversed_keywords": [
+        "孤立",
+        "逃避",
+        "拒絕協助",
+        "迷失方向"
+      ],
+      "symbolism": "手持燈籠的智者獨立山頭，象徵向內尋求、為自己點亮前路。",
+      "image": "images/major-09-hermit.jpg"
+    },
+    {
+      "name_zh": "命運之輪",
+      "name_en": "Wheel of Fortune",
+      "number": 10,
+      "arcana": "major",
+      "element": "Fire",
+      "upright_keywords": [
+        "命運",
+        "轉折點",
+        "循環",
+        "機遇",
+        "因果"
+      ],
+      "reversed_keywords": [
+        "運氣不佳",
+        "抗拒變化",
+        "負向循環",
+        "失控"
+      ],
+      "symbolism": "轉動的輪盤四角環繞守護者，象徵生命週期的自然轉動與順流而行的智慧。",
+      "image": "images/major-10-wheel_of_fortune.jpg"
+    },
+    {
+      "name_zh": "正義",
+      "name_en": "Justice",
+      "number": 11,
+      "arcana": "major",
+      "element": "Air",
+      "upright_keywords": [
+        "公平",
+        "真理",
+        "因果",
+        "法律",
+        "清晰"
+      ],
+      "reversed_keywords": [
+        "不公",
+        "偏見",
+        "推卸責任",
+        "不誠實"
+      ],
+      "symbolism": "持劍與天秤的法官，象徵客觀判斷與行為後果的清算。",
+      "image": "images/major-11-justice.jpg"
+    },
+    {
+      "name_zh": "吊人",
+      "name_en": "The Hanged Man",
+      "number": 12,
+      "arcana": "major",
+      "element": "Water",
+      "upright_keywords": [
+        "換角度",
+        "犧牲",
+        "暫停",
+        "放下",
+        "悟"
+      ],
+      "reversed_keywords": [
+        "頑固",
+        "徒勞等待",
+        "逃避承諾",
+        "停滯"
+      ],
+      "symbolism": "倒吊於樹的人面帶安詳，象徵主動暫停、用不同角度看事物所帶來的洞見。",
+      "image": "images/major-12-hanged_man.jpg"
+    },
+    {
+      "name_zh": "死神",
+      "name_en": "Death",
+      "number": 13,
+      "arcana": "major",
+      "element": "Water",
+      "upright_keywords": [
+        "結束",
+        "轉化",
+        "蛻變",
+        "放手",
+        "重生"
+      ],
+      "reversed_keywords": [
+        "抗拒改變",
+        "停滯",
+        "恐懼",
+        "未完結"
+      ],
+      "symbolism": "身披鎧甲的死神降臨眾人，象徵必然的結束與其後的新生。非字面的死亡。",
+      "image": "images/major-13-death.jpg"
+    },
+    {
+      "name_zh": "節制",
+      "name_en": "Temperance",
+      "number": 14,
+      "arcana": "major",
+      "element": "Fire",
+      "upright_keywords": [
+        "平衡",
+        "融合",
+        "中庸",
+        "耐心",
+        "療癒"
+      ],
+      "reversed_keywords": [
+        "失衡",
+        "過度",
+        "不耐",
+        "缺乏節制"
+      ],
+      "symbolism": "天使兩杯間傾倒水流，一腳在岸一腳在水，象徵對立元素的精細調和。",
+      "image": "images/major-14-temperance.jpg"
+    },
+    {
+      "name_zh": "惡魔",
+      "name_en": "The Devil",
+      "number": 15,
+      "arcana": "major",
+      "element": "Earth",
+      "upright_keywords": [
+        "束縛",
+        "物質執著",
+        "陰影",
+        "成癮",
+        "誘惑"
+      ],
+      "reversed_keywords": [
+        "解放",
+        "覺察束縛",
+        "戒除",
+        "重獲自由"
+      ],
+      "symbolism": "兩人被鬆綁的鎖鏈困住，象徵自我加諸的束縛——通常能選擇鬆開。",
+      "image": "images/major-15-devil.jpg"
+    },
+    {
+      "name_zh": "塔",
+      "name_en": "The Tower",
+      "number": 16,
+      "arcana": "major",
+      "element": "Fire",
+      "upright_keywords": [
+        "突變",
+        "崩解",
+        "真相揭露",
+        "解放",
+        "覺醒"
+      ],
+      "reversed_keywords": [
+        "避免崩解",
+        "拖延不可避免的改變",
+        "慢性崩壞"
+      ],
+      "symbolism": "雷電擊中高塔，人影墜落，象徵虛假結構的瞬間崩解與其後的清明。",
+      "image": "images/major-16-tower.jpg"
+    },
+    {
+      "name_zh": "星星",
+      "name_en": "The Star",
+      "number": 17,
+      "arcana": "major",
+      "element": "Air",
+      "upright_keywords": [
+        "希望",
+        "療癒",
+        "信念",
+        "靈感",
+        "寧靜"
+      ],
+      "reversed_keywords": [
+        "失去信心",
+        "灰心",
+        "斷連",
+        "信念動搖"
+      ],
+      "symbolism": "女子裸身於水畔倒水回歸大地與池塘，象徵暴風過後的療癒與對未來的溫柔希望。",
+      "image": "images/major-17-star.jpg"
+    },
+    {
+      "name_zh": "月亮",
+      "name_en": "The Moon",
+      "number": 18,
+      "arcana": "major",
+      "element": "Water",
+      "upright_keywords": [
+        "幻象",
+        "潛意識",
+        "不安",
+        "夢境",
+        "直覺"
+      ],
+      "reversed_keywords": [
+        "看清幻象",
+        "恐懼消退",
+        "壓抑浮現",
+        "迷惘"
+      ],
+      "symbolism": "月光下狗與狼對月嚎叫，水中龍蝦爬出，象徵潛意識恐懼與直覺訊息並陳。",
+      "image": "images/major-18-moon.jpg"
+    },
+    {
+      "name_zh": "太陽",
+      "name_en": "The Sun",
+      "number": 19,
+      "arcana": "major",
+      "element": "Fire",
+      "upright_keywords": [
+        "喜悅",
+        "成功",
+        "活力",
+        "清明",
+        "豐盛"
+      ],
+      "reversed_keywords": [
+        "過度樂觀",
+        "成功延遲",
+        "活力低",
+        "自我懷疑"
+      ],
+      "symbolism": "孩童騎白馬於向日葵花園，象徵純粹的喜悅、顯化與生命力的綻放。",
+      "image": "images/major-19-sun.jpg"
+    },
+    {
+      "name_zh": "審判",
+      "name_en": "Judgement",
+      "number": 20,
+      "arcana": "major",
+      "element": "Fire",
+      "upright_keywords": [
+        "召喚",
+        "覺醒",
+        "重生",
+        "反省",
+        "寬恕"
+      ],
+      "reversed_keywords": [
+        "自我批判",
+        "拒絕召喚",
+        "卡在過去",
+        "疑慮"
+      ],
+      "symbolism": "天使吹響號角，逝者從棺中復起，象徵靈魂層次的覺醒與召喚的回應。",
+      "image": "images/major-20-judgement.jpg"
+    },
+    {
+      "name_zh": "世界",
+      "name_en": "The World",
+      "number": 21,
+      "arcana": "major",
+      "element": "Earth",
+      "upright_keywords": [
+        "完成",
+        "整合",
+        "圓滿",
+        "達成",
+        "旅途結束"
+      ],
+      "reversed_keywords": [
+        "未竟",
+        "延宕",
+        "缺乏收尾",
+        "需要再一圈"
+      ],
+      "symbolism": "舞者在月桂花環中，四角守護者見證，象徵一個週期的圓滿完成與新起點。",
+      "image": "images/major-21-world.jpg"
+    },
+    {
+      "name_zh": "權杖一",
+      "name_en": "Ace of Wands",
+      "number": 1,
+      "arcana": "wands",
+      "element": "Fire",
+      "upright_keywords": [
+        "靈感",
+        "新行動",
+        "熱情",
+        "機會",
+        "創造火花"
+      ],
+      "reversed_keywords": [
+        "延遲",
+        "靈感卡住",
+        "方向不明",
+        "熱情缺乏"
+      ],
+      "symbolism": "雲中手持萌芽的權杖，象徵一個熱情計畫的種子剛剛遞給你。",
+      "image": "images/wands-01.jpg"
+    },
+    {
+      "name_zh": "權杖二",
+      "name_en": "Two of Wands",
+      "number": 2,
+      "arcana": "wands",
+      "element": "Fire",
+      "upright_keywords": [
+        "規劃",
+        "遠見",
+        "決定",
+        "展望",
+        "個人力量"
+      ],
+      "reversed_keywords": [
+        "猶豫",
+        "視野狹窄",
+        "怕踏出舒適圈",
+        "計畫失焦"
+      ],
+      "symbolism": "站在城堡眺望遠方、手持地球儀的人，象徵選擇路徑前的遠景考量。",
+      "image": "images/wands-02.jpg"
+    },
+    {
+      "name_zh": "權杖三",
+      "name_en": "Three of Wands",
+      "number": 3,
+      "arcana": "wands",
+      "element": "Fire",
+      "upright_keywords": [
+        "擴張",
+        "展望",
+        "前進",
+        "信心",
+        "結果等待"
+      ],
+      "reversed_keywords": [
+        "延宕",
+        "障礙",
+        "計畫延伸失敗",
+        "視野受限"
+      ],
+      "symbolism": "人物立於崖邊望向遠方船隊，象徵行動已啟動、等待回報的開闊期。",
+      "image": "images/wands-03.jpg"
+    },
+    {
+      "name_zh": "權杖四",
+      "name_en": "Four of Wands",
+      "number": 4,
+      "arcana": "wands",
+      "element": "Fire",
+      "upright_keywords": [
+        "慶祝",
+        "穩固",
+        "歸屬",
+        "里程碑",
+        "和諧"
+      ],
+      "reversed_keywords": [
+        "不穩",
+        "家庭張力",
+        "轉型期",
+        "慶祝延遲"
+      ],
+      "symbolism": "四根權杖撐起花環，人們歡慶，象徵階段性成就與社群歸屬。",
+      "image": "images/wands-04.jpg"
+    },
+    {
+      "name_zh": "權杖五",
+      "name_en": "Five of Wands",
+      "number": 5,
+      "arcana": "wands",
+      "element": "Fire",
+      "upright_keywords": [
+        "競爭",
+        "衝突",
+        "辯論",
+        "混亂",
+        "磨合"
+      ],
+      "reversed_keywords": [
+        "避免衝突",
+        "內心紛爭",
+        "和解",
+        "合作浮現"
+      ],
+      "symbolism": "五人各執權杖扭打，象徵眾人立場各異造成的摩擦與成長機會。",
+      "image": "images/wands-05.jpg"
+    },
+    {
+      "name_zh": "權杖六",
+      "name_en": "Six of Wands",
+      "number": 6,
+      "arcana": "wands",
+      "element": "Fire",
+      "upright_keywords": [
+        "勝利",
+        "肯定",
+        "領導",
+        "公眾認可",
+        "自信"
+      ],
+      "reversed_keywords": [
+        "失落",
+        "自負",
+        "名不符實",
+        "缺乏認可"
+      ],
+      "symbolism": "騎士戴桂冠凱旋而歸，象徵努力獲得的公開肯定。",
+      "image": "images/wands-06.jpg"
+    },
+    {
+      "name_zh": "權杖七",
+      "name_en": "Seven of Wands",
+      "number": 7,
+      "arcana": "wands",
+      "element": "Fire",
+      "upright_keywords": [
+        "防守",
+        "堅持立場",
+        "挑戰",
+        "勇氣",
+        "捍衛"
+      ],
+      "reversed_keywords": [
+        "疲於應付",
+        "放棄立場",
+        "被淹沒",
+        "自我懷疑"
+      ],
+      "symbolism": "高處的人以一支權杖對抗六支，象徵為立場堅守的勇氣。",
+      "image": "images/wands-07.jpg"
+    },
+    {
+      "name_zh": "權杖八",
+      "name_en": "Eight of Wands",
+      "number": 8,
+      "arcana": "wands",
+      "element": "Fire",
+      "upright_keywords": [
+        "快速",
+        "訊息",
+        "進展",
+        "行動迸發",
+        "飛速變化"
+      ],
+      "reversed_keywords": [
+        "延遲",
+        "錯過時機",
+        "溝通卡住",
+        "焦慮"
+      ],
+      "symbolism": "八支權杖同時射向天空，象徵訊息、機會、進度同時抵達。",
+      "image": "images/wands-08.jpg"
+    },
+    {
+      "name_zh": "權杖九",
+      "name_en": "Nine of Wands",
+      "number": 9,
+      "arcana": "wands",
+      "element": "Fire",
+      "upright_keywords": [
+        "堅忍",
+        "最後考驗",
+        "韌性",
+        "警戒",
+        "幾近完成"
+      ],
+      "reversed_keywords": [
+        "疲憊",
+        "放棄前最後一步",
+        "過度防備"
+      ],
+      "symbolism": "包紮傷口的戰士倚杖而立，象徵最後一關前的堅守。",
+      "image": "images/wands-09.jpg"
+    },
+    {
+      "name_zh": "權杖十",
+      "name_en": "Ten of Wands",
+      "number": 10,
+      "arcana": "wands",
+      "element": "Fire",
+      "upright_keywords": [
+        "重擔",
+        "責任",
+        "過度承擔",
+        "接近目標",
+        "疲憊"
+      ],
+      "reversed_keywords": [
+        "卸下負擔",
+        "委派",
+        "崩潰",
+        "釋放"
+      ],
+      "symbolism": "人扛著十支權杖蹣跚前行，象徵扛了過多責任以致看不見遠方。",
+      "image": "images/wands-10.jpg"
+    },
+    {
+      "name_zh": "權杖侍者",
+      "name_en": "Page of Wands",
+      "number": 11,
+      "arcana": "wands",
+      "element": "Fire",
+      "upright_keywords": [
+        "好奇",
+        "新消息",
+        "熱情初萌",
+        "探索",
+        "青年能量"
+      ],
+      "reversed_keywords": [
+        "分心",
+        "虎頭蛇尾",
+        "壞消息",
+        "不成熟衝動"
+      ],
+      "symbolism": "年輕人好奇看著手中權杖上的新芽，象徵對未來的熱切好奇。",
+      "image": "images/wands-11.jpg"
+    },
+    {
+      "name_zh": "權杖騎士",
+      "name_en": "Knight of Wands",
+      "number": 12,
+      "arcana": "wands",
+      "element": "Fire",
+      "upright_keywords": [
+        "行動",
+        "冒險",
+        "熱情",
+        "衝勁",
+        "改變"
+      ],
+      "reversed_keywords": [
+        "急躁",
+        "魯莽",
+        "計畫不周",
+        "推遲行動"
+      ],
+      "symbolism": "騎士騎著騰躍的駿馬奔馳，象徵熱情推動的積極行動。",
+      "image": "images/wands-12.jpg"
+    },
+    {
+      "name_zh": "權杖皇后",
+      "name_en": "Queen of Wands",
+      "number": 13,
+      "arcana": "wands",
+      "element": "Fire",
+      "upright_keywords": [
+        "自信",
+        "熱情",
+        "魅力",
+        "獨立",
+        "活力"
+      ],
+      "reversed_keywords": [
+        "嫉妒",
+        "過度要求",
+        "自我中心",
+        "失去信心"
+      ],
+      "symbolism": "皇后持權杖與向日葵端坐，黑貓在腳邊，象徵以熱情與魅力領導他人。",
+      "image": "images/wands-13.jpg"
+    },
+    {
+      "name_zh": "權杖國王",
+      "name_en": "King of Wands",
+      "number": 14,
+      "arcana": "wands",
+      "element": "Fire",
+      "upright_keywords": [
+        "願景",
+        "領導",
+        "果決",
+        "創業精神",
+        "遠見"
+      ],
+      "reversed_keywords": [
+        "獨裁",
+        "衝動決定",
+        "目標模糊",
+        "脾氣失控"
+      ],
+      "symbolism": "國王持發芽的權杖端坐，象徵有願景並能果斷執行的領袖能量。",
+      "image": "images/wands-14.jpg"
+    },
+    {
+      "name_zh": "聖杯一",
+      "name_en": "Ace of Cups",
+      "number": 1,
+      "arcana": "cups",
+      "element": "Water",
+      "upright_keywords": [
+        "情感新機",
+        "愛",
+        "直覺萌發",
+        "連結",
+        "靈性湧現"
+      ],
+      "reversed_keywords": [
+        "情感封閉",
+        "空杯",
+        "愛的延遲",
+        "創意枯竭"
+      ],
+      "symbolism": "雲中手遞出滿溢的聖杯，鴿子銜聖餅而入，象徵情感與靈性湧流的起點。",
+      "image": "images/cups-01.jpg"
+    },
+    {
+      "name_zh": "聖杯二",
+      "name_en": "Two of Cups",
+      "number": 2,
+      "arcana": "cups",
+      "element": "Water",
+      "upright_keywords": [
+        "結合",
+        "互相",
+        "平等關係",
+        "連結",
+        "和諧"
+      ],
+      "reversed_keywords": [
+        "失衡",
+        "關係裂痕",
+        "誤會",
+        "分離"
+      ],
+      "symbolism": "男女交換聖杯、頭頂有獅子與翅膀，象徵情感互敬的深度結合。",
+      "image": "images/cups-02.jpg"
+    },
+    {
+      "name_zh": "聖杯三",
+      "name_en": "Three of Cups",
+      "number": 3,
+      "arcana": "cups",
+      "element": "Water",
+      "upright_keywords": [
+        "慶祝",
+        "友誼",
+        "社群",
+        "團聚",
+        "共享喜悅"
+      ],
+      "reversed_keywords": [
+        "社交疲勞",
+        "八卦",
+        "第三者",
+        "派系"
+      ],
+      "symbolism": "三人舉杯起舞，象徵情感層面的友誼與共享的歡慶。",
+      "image": "images/cups-03.jpg"
+    },
+    {
+      "name_zh": "聖杯四",
+      "name_en": "Four of Cups",
+      "number": 4,
+      "arcana": "cups",
+      "element": "Water",
+      "upright_keywords": [
+        "冷淡",
+        "內省",
+        "錯過機會",
+        "不滿足",
+        "靜止"
+      ],
+      "reversed_keywords": [
+        "重新投入",
+        "醒覺",
+        "接受新機會",
+        "走出低潮"
+      ],
+      "symbolism": "人倚樹閉目，雲中遞來第四杯卻未察，象徵沉溺內在而錯過眼前禮物。",
+      "image": "images/cups-04.jpg"
+    },
+    {
+      "name_zh": "聖杯五",
+      "name_en": "Five of Cups",
+      "number": 5,
+      "arcana": "cups",
+      "element": "Water",
+      "upright_keywords": [
+        "失落",
+        "後悔",
+        "哀傷",
+        "聚焦在損失",
+        "情感創傷"
+      ],
+      "reversed_keywords": [
+        "接納",
+        "釋懷",
+        "原諒",
+        "回到當下"
+      ],
+      "symbolism": "黑袍人望三杯傾倒，卻沒看見身後兩杯仍立，象徵沉浸損失而忽視剩餘祝福。",
+      "image": "images/cups-05.jpg"
+    },
+    {
+      "name_zh": "聖杯六",
+      "name_en": "Six of Cups",
+      "number": 6,
+      "arcana": "cups",
+      "element": "Water",
+      "upright_keywords": [
+        "懷舊",
+        "童心",
+        "善意",
+        "舊友",
+        "純真回憶"
+      ],
+      "reversed_keywords": [
+        "活在過去",
+        "幼稚",
+        "舊傷復發",
+        "無法前進"
+      ],
+      "symbolism": "孩童交換花杯，象徵無條件的善意與童年記憶的力量。",
+      "image": "images/cups-06.jpg"
+    },
+    {
+      "name_zh": "聖杯七",
+      "name_en": "Seven of Cups",
+      "number": 7,
+      "arcana": "cups",
+      "element": "Water",
+      "upright_keywords": [
+        "選擇多",
+        "幻想",
+        "機會",
+        "難以選擇",
+        "願景"
+      ],
+      "reversed_keywords": [
+        "看清選項",
+        "做出決定",
+        "夢想落地",
+        "迷霧消散"
+      ],
+      "symbolism": "雲中七杯各裝不同願景與誘惑，象徵選擇多到令人眩目、需分辨虛實。",
+      "image": "images/cups-07.jpg"
+    },
+    {
+      "name_zh": "聖杯八",
+      "name_en": "Eight of Cups",
+      "number": 8,
+      "arcana": "cups",
+      "element": "Water",
+      "upright_keywords": [
+        "離開",
+        "放下",
+        "追尋深意",
+        "轉身",
+        "情感遷徙"
+      ],
+      "reversed_keywords": [
+        "猶豫離開",
+        "恐懼改變",
+        "回頭",
+        "拖延放下"
+      ],
+      "symbolism": "身影向山中走去，留下八杯，象徵願意放下熟悉去追尋更有意義之物。",
+      "image": "images/cups-08.jpg"
+    },
+    {
+      "name_zh": "聖杯九",
+      "name_en": "Nine of Cups",
+      "number": 9,
+      "arcana": "cups",
+      "element": "Water",
+      "upright_keywords": [
+        "心滿意足",
+        "願望成真",
+        "感官享受",
+        "豐盛",
+        "成就感"
+      ],
+      "reversed_keywords": [
+        "空虛感",
+        "膚淺滿足",
+        "過度耽溺",
+        "不感恩"
+      ],
+      "symbolism": "滿足的人端坐、背後九杯成排，象徵個人願望的實現（俗稱「願望牌」）。",
+      "image": "images/cups-09.jpg"
+    },
+    {
+      "name_zh": "聖杯十",
+      "name_en": "Ten of Cups",
+      "number": 10,
+      "arcana": "cups",
+      "element": "Water",
+      "upright_keywords": [
+        "家庭幸福",
+        "情感圓滿",
+        "和諧",
+        "長久伴侶",
+        "歸屬"
+      ],
+      "reversed_keywords": [
+        "家庭摩擦",
+        "情感不合",
+        "失和",
+        "理想與現實落差"
+      ],
+      "symbolism": "家人指向彩虹，彩虹上有十杯，象徵情感層面的終極豐盛與共享的幸福。",
+      "image": "images/cups-10.jpg"
+    },
+    {
+      "name_zh": "聖杯侍者",
+      "name_en": "Page of Cups",
+      "number": 11,
+      "arcana": "cups",
+      "element": "Water",
+      "upright_keywords": [
+        "創意訊息",
+        "浪漫啟蒙",
+        "敏感",
+        "童心",
+        "直覺訊號"
+      ],
+      "reversed_keywords": [
+        "情緒化",
+        "不成熟",
+        "白日夢",
+        "創意卡住"
+      ],
+      "symbolism": "年輕人杯中躍出一條魚，象徵意外湧現的直覺或創意邀請。",
+      "image": "images/cups-11.jpg"
+    },
+    {
+      "name_zh": "聖杯騎士",
+      "name_en": "Knight of Cups",
+      "number": 12,
+      "arcana": "cups",
+      "element": "Water",
+      "upright_keywords": [
+        "浪漫",
+        "理想主義",
+        "邀請",
+        "藝術追求",
+        "情感主動"
+      ],
+      "reversed_keywords": [
+        "情感操弄",
+        "不切實際",
+        "情緒起伏",
+        "拖泥帶水"
+      ],
+      "symbolism": "騎士緩行、聖杯遞出，象徵以優雅姿態獻出情感或邀請的能量。",
+      "image": "images/cups-12.jpg"
+    },
+    {
+      "name_zh": "聖杯皇后",
+      "name_en": "Queen of Cups",
+      "number": 13,
+      "arcana": "cups",
+      "element": "Water",
+      "upright_keywords": [
+        "同理",
+        "敏銳",
+        "滋養",
+        "直覺",
+        "情感成熟"
+      ],
+      "reversed_keywords": [
+        "情緒過載",
+        "共依存",
+        "逃避",
+        "情感界線模糊"
+      ],
+      "symbolism": "皇后凝視手中精緻聖杯，象徵深度同理與成熟的情感容器。",
+      "image": "images/cups-13.jpg"
+    },
+    {
+      "name_zh": "聖杯國王",
+      "name_en": "King of Cups",
+      "number": 14,
+      "arcana": "cups",
+      "element": "Water",
+      "upright_keywords": [
+        "情感穩定",
+        "外交",
+        "慈悲領導",
+        "內在平衡",
+        "諮商"
+      ],
+      "reversed_keywords": [
+        "情緒壓抑",
+        "被動攻擊",
+        "操控",
+        "失控憤怒"
+      ],
+      "symbolism": "國王在翻湧海面上端坐穩如磐石，象徵在情感風浪中保持清明的成熟。",
+      "image": "images/cups-14.jpg"
+    },
+    {
+      "name_zh": "寶劍一",
+      "name_en": "Ace of Swords",
+      "number": 1,
+      "arcana": "swords",
+      "element": "Air",
+      "upright_keywords": [
+        "突破",
+        "清晰",
+        "真相",
+        "新思維",
+        "決斷"
+      ],
+      "reversed_keywords": [
+        "混亂",
+        "誤解",
+        "言語傷害",
+        "決策卡住"
+      ],
+      "symbolism": "雲中手握立起的劍，劍頂冠冕，象徵突破迷霧的清晰思維。",
+      "image": "images/swords-01.jpg"
+    },
+    {
+      "name_zh": "寶劍二",
+      "name_en": "Two of Swords",
+      "number": 2,
+      "arcana": "swords",
+      "element": "Air",
+      "upright_keywords": [
+        "僵局",
+        "難以抉擇",
+        "平衡",
+        "防禦",
+        "暫停"
+      ],
+      "reversed_keywords": [
+        "做出決定",
+        "打破僵局",
+        "看清選項",
+        "資訊揭露"
+      ],
+      "symbolism": "蒙眼女子雙手交叉持劍於胸前，象徵在兩難中暫時關閉訊息以維持平衡。",
+      "image": "images/swords-02.jpg"
+    },
+    {
+      "name_zh": "寶劍三",
+      "name_en": "Three of Swords",
+      "number": 3,
+      "arcana": "swords",
+      "element": "Air",
+      "upright_keywords": [
+        "心碎",
+        "痛苦真相",
+        "背叛",
+        "悲傷",
+        "失落"
+      ],
+      "reversed_keywords": [
+        "開始療癒",
+        "寬恕",
+        "釋放傷痛",
+        "走出哀傷"
+      ],
+      "symbolism": "三把劍穿心於雨雲下，象徵被真相切開的痛、但也是清理的開始。",
+      "image": "images/swords-03.jpg"
+    },
+    {
+      "name_zh": "寶劍四",
+      "name_en": "Four of Swords",
+      "number": 4,
+      "arcana": "swords",
+      "element": "Air",
+      "upright_keywords": [
+        "休息",
+        "療養",
+        "沉思",
+        "撤退",
+        "暫停"
+      ],
+      "reversed_keywords": [
+        "過勞",
+        "焦慮",
+        "拒絕休息",
+        "恢復中"
+      ],
+      "symbolism": "騎士石像靜臥於教堂，象徵主動撤退以重整的必要休止。",
+      "image": "images/swords-04.jpg"
+    },
+    {
+      "name_zh": "寶劍五",
+      "name_en": "Five of Swords",
+      "number": 5,
+      "arcana": "swords",
+      "element": "Air",
+      "upright_keywords": [
+        "衝突",
+        "贏了輸",
+        "好鬥",
+        "羞辱",
+        "自我中心"
+      ],
+      "reversed_keywords": [
+        "和解",
+        "放下勝負",
+        "承認錯誤",
+        "轉化衝突"
+      ],
+      "symbolism": "贏家收劍、敗者遠去，象徵即使贏了也要思考代價。",
+      "image": "images/swords-05.jpg"
+    },
+    {
+      "name_zh": "寶劍六",
+      "name_en": "Six of Swords",
+      "number": 6,
+      "arcana": "swords",
+      "element": "Air",
+      "upright_keywords": [
+        "過渡",
+        "離開困難",
+        "前行",
+        "療癒旅程",
+        "平靜"
+      ],
+      "reversed_keywords": [
+        "卡在過去",
+        "延遲離開",
+        "回頭",
+        "阻礙前行"
+      ],
+      "symbolism": "船載母子緩行於平靜水面，象徵從紛亂向寧靜的過渡。",
+      "image": "images/swords-06.jpg"
+    },
+    {
+      "name_zh": "寶劍七",
+      "name_en": "Seven of Swords",
+      "number": 7,
+      "arcana": "swords",
+      "element": "Air",
+      "upright_keywords": [
+        "策略",
+        "隱瞞",
+        "閃避",
+        "自保",
+        "不誠實"
+      ],
+      "reversed_keywords": [
+        "承認",
+        "放棄欺瞞",
+        "誠實面對",
+        "良心回歸"
+      ],
+      "symbolism": "人躡手躡腳偷走五把劍、留下兩把，象徵抄近路或保留實力的策略行動（也可能暗示不坦白）。",
+      "image": "images/swords-07.jpg"
+    },
+    {
+      "name_zh": "寶劍八",
+      "name_en": "Eight of Swords",
+      "number": 8,
+      "arcana": "swords",
+      "element": "Air",
+      "upright_keywords": [
+        "受困感",
+        "自我設限",
+        "恐懼",
+        "被動",
+        "盲點"
+      ],
+      "reversed_keywords": [
+        "解放",
+        "看見出路",
+        "打破束縛",
+        "覺察"
+      ],
+      "symbolism": "蒙眼女子周圍八把劍圍成半開的籠，象徵大多是自我感受造成的受困。",
+      "image": "images/swords-08.jpg"
+    },
+    {
+      "name_zh": "寶劍九",
+      "name_en": "Nine of Swords",
+      "number": 9,
+      "arcana": "swords",
+      "element": "Air",
+      "upright_keywords": [
+        "焦慮",
+        "失眠",
+        "自我折磨",
+        "夢魘",
+        "過度擔憂"
+      ],
+      "reversed_keywords": [
+        "釋放焦慮",
+        "看清現實",
+        "走出低潮",
+        "尋求協助"
+      ],
+      "symbolism": "人坐床上雙手掩面，牆上九把劍，象徵多為想像放大的恐懼折磨。",
+      "image": "images/swords-09.jpg"
+    },
+    {
+      "name_zh": "寶劍十",
+      "name_en": "Ten of Swords",
+      "number": 10,
+      "arcana": "swords",
+      "element": "Air",
+      "upright_keywords": [
+        "結束",
+        "觸底",
+        "背刺",
+        "痛苦終結",
+        "投降"
+      ],
+      "reversed_keywords": [
+        "正在復原",
+        "走出谷底",
+        "新黎明",
+        "拒絕接受"
+      ],
+      "symbolism": "人臥地、十劍插背、遠方曙光初升，象徵痛苦抵達盡頭、新的一天即將來臨。",
+      "image": "images/swords-10.jpg"
+    },
+    {
+      "name_zh": "寶劍侍者",
+      "name_en": "Page of Swords",
+      "number": 11,
+      "arcana": "swords",
+      "element": "Air",
+      "upright_keywords": [
+        "好奇",
+        "好問",
+        "警覺",
+        "學習",
+        "直率"
+      ],
+      "reversed_keywords": [
+        "八卦",
+        "口無遮攔",
+        "過度戒備",
+        "思慮零散"
+      ],
+      "symbolism": "年輕人舉劍立於風中山丘，象徵銳利的好奇心與求知慾。",
+      "image": "images/swords-11.jpg"
+    },
+    {
+      "name_zh": "寶劍騎士",
+      "name_en": "Knight of Swords",
+      "number": 12,
+      "arcana": "swords",
+      "element": "Air",
+      "upright_keywords": [
+        "行動迅速",
+        "理性追求",
+        "直言",
+        "目標導向",
+        "衝勁"
+      ],
+      "reversed_keywords": [
+        "魯莽",
+        "咄咄逼人",
+        "計畫脫離",
+        "衝動失控"
+      ],
+      "symbolism": "騎士舉劍飛馳，象徵以清晰思維高速切過障礙的行動。",
+      "image": "images/swords-12.jpg"
+    },
+    {
+      "name_zh": "寶劍皇后",
+      "name_en": "Queen of Swords",
+      "number": 13,
+      "arcana": "swords",
+      "element": "Air",
+      "upright_keywords": [
+        "清晰",
+        "獨立",
+        "誠實",
+        "冷靜判斷",
+        "界線分明"
+      ],
+      "reversed_keywords": [
+        "冷漠",
+        "刻薄",
+        "批判",
+        "情感疏離"
+      ],
+      "symbolism": "皇后端坐舉劍，象徵經歷過才懂的清晰與不被情緒左右的判斷。",
+      "image": "images/swords-13.jpg"
+    },
+    {
+      "name_zh": "寶劍國王",
+      "name_en": "King of Swords",
+      "number": 14,
+      "arcana": "swords",
+      "element": "Air",
+      "upright_keywords": [
+        "理性領導",
+        "權威",
+        "公正",
+        "戰略",
+        "智慧"
+      ],
+      "reversed_keywords": [
+        "濫用權力",
+        "操縱",
+        "冷血",
+        "獨斷"
+      ],
+      "symbolism": "國王正面持劍而坐，象徵以理性與原則行使權威的成熟領袖。",
+      "image": "images/swords-14.jpg"
+    },
+    {
+      "name_zh": "錢幣一",
+      "name_en": "Ace of Pentacles",
+      "number": 1,
+      "arcana": "pentacles",
+      "element": "Earth",
+      "upright_keywords": [
+        "物質新機",
+        "豐盛",
+        "機會",
+        "健康",
+        "實際基礎"
+      ],
+      "reversed_keywords": [
+        "錯過機會",
+        "延遲",
+        "浪費資源",
+        "短視"
+      ],
+      "symbolism": "雲中手遞出金幣、花園盛開，象徵物質或健康層面的禮物降臨。",
+      "image": "images/pentacles-01.jpg"
+    },
+    {
+      "name_zh": "錢幣二",
+      "name_en": "Two of Pentacles",
+      "number": 2,
+      "arcana": "pentacles",
+      "element": "Earth",
+      "upright_keywords": [
+        "平衡",
+        "靈活",
+        "多工",
+        "優先排序",
+        "適應"
+      ],
+      "reversed_keywords": [
+        "超載",
+        "時間管理失控",
+        "失去平衡",
+        "顧此失彼"
+      ],
+      "symbolism": "雜技者以無限符號玩轉兩金幣，背景有波濤船隻，象徵在變動中保持平衡的能力。",
+      "image": "images/pentacles-02.jpg"
+    },
+    {
+      "name_zh": "錢幣三",
+      "name_en": "Three of Pentacles",
+      "number": 3,
+      "arcana": "pentacles",
+      "element": "Earth",
+      "upright_keywords": [
+        "團隊合作",
+        "專業",
+        "學習",
+        "成長",
+        "肯定"
+      ],
+      "reversed_keywords": [
+        "合作不良",
+        "缺乏肯定",
+        "技能不足",
+        "團隊失和"
+      ],
+      "symbolism": "工匠在教堂內工作、兩位主顧旁觀，象徵專業合作的早期成果。",
+      "image": "images/pentacles-03.jpg"
+    },
+    {
+      "name_zh": "錢幣四",
+      "name_en": "Four of Pentacles",
+      "number": 4,
+      "arcana": "pentacles",
+      "element": "Earth",
+      "upright_keywords": [
+        "守成",
+        "節儉",
+        "保守",
+        "安全感",
+        "積累"
+      ],
+      "reversed_keywords": [
+        "貪婪",
+        "吝嗇",
+        "不放手",
+        "失去"
+      ],
+      "symbolism": "人緊抱四金幣，象徵過度抓牢安全感的傾向（也是穩固保有的姿態）。",
+      "image": "images/pentacles-04.jpg"
+    },
+    {
+      "name_zh": "錢幣五",
+      "name_en": "Five of Pentacles",
+      "number": 5,
+      "arcana": "pentacles",
+      "element": "Earth",
+      "upright_keywords": [
+        "困境",
+        "匱乏感",
+        "孤立",
+        "健康挑戰",
+        "財務壓力"
+      ],
+      "reversed_keywords": [
+        "走出困境",
+        "尋求協助",
+        "恢復",
+        "看見支援"
+      ],
+      "symbolism": "雪中兩人經過燈火教堂卻未進入，象徵困頓中忽略身旁仍有的溫暖。",
+      "image": "images/pentacles-05.jpg"
+    },
+    {
+      "name_zh": "錢幣六",
+      "name_en": "Six of Pentacles",
+      "number": 6,
+      "arcana": "pentacles",
+      "element": "Earth",
+      "upright_keywords": [
+        "給予",
+        "接受",
+        "慷慨",
+        "分享",
+        "平衡互惠"
+      ],
+      "reversed_keywords": [
+        "不平衡給予",
+        "施受失衡",
+        "債務",
+        "條件交換"
+      ],
+      "symbolism": "富人施予乞丐、持天秤，象徵資源流動的公平分配。",
+      "image": "images/pentacles-06.jpg"
+    },
+    {
+      "name_zh": "錢幣七",
+      "name_en": "Seven of Pentacles",
+      "number": 7,
+      "arcana": "pentacles",
+      "element": "Earth",
+      "upright_keywords": [
+        "評估",
+        "耐心",
+        "中長期投資",
+        "檢視成果",
+        "再規劃"
+      ],
+      "reversed_keywords": [
+        "缺乏耐心",
+        "努力未見回報",
+        "投資失當",
+        "徒勞"
+      ],
+      "symbolism": "農夫倚鋤望向果實累累的樹叢，象徵暫停評估努力的成效。",
+      "image": "images/pentacles-07.jpg"
+    },
+    {
+      "name_zh": "錢幣八",
+      "name_en": "Eight of Pentacles",
+      "number": 8,
+      "arcana": "pentacles",
+      "element": "Earth",
+      "upright_keywords": [
+        "專注",
+        "學習",
+        "磨練",
+        "精進",
+        "工藝"
+      ],
+      "reversed_keywords": [
+        "停滯",
+        "失焦",
+        "得過且過",
+        "技能退化"
+      ],
+      "symbolism": "工匠專心雕刻第八枚金幣，象徵日積月累的精進。",
+      "image": "images/pentacles-08.jpg"
+    },
+    {
+      "name_zh": "錢幣九",
+      "name_en": "Nine of Pentacles",
+      "number": 9,
+      "arcana": "pentacles",
+      "element": "Earth",
+      "upright_keywords": [
+        "獨立",
+        "自給自足",
+        "豐盛",
+        "享受成果",
+        "優雅生活"
+      ],
+      "reversed_keywords": [
+        "依賴",
+        "成果空虛",
+        "物質迷失",
+        "獨享失衡"
+      ],
+      "symbolism": "貴婦獨享葡萄園、鷹立其手，象徵自律結出的優雅與自給自足。",
+      "image": "images/pentacles-09.jpg"
+    },
+    {
+      "name_zh": "錢幣十",
+      "name_en": "Ten of Pentacles",
+      "number": 10,
+      "arcana": "pentacles",
+      "element": "Earth",
+      "upright_keywords": [
+        "家族富足",
+        "傳承",
+        "長期穩固",
+        "血脈",
+        "體制完備"
+      ],
+      "reversed_keywords": [
+        "家族衝突",
+        "傳承難題",
+        "財務糾紛",
+        "結構動盪"
+      ],
+      "symbolism": "三代同堂於家族庭院，象徵物質層面的跨代豐盛與傳承。",
+      "image": "images/pentacles-10.jpg"
+    },
+    {
+      "name_zh": "錢幣侍者",
+      "name_en": "Page of Pentacles",
+      "number": 11,
+      "arcana": "pentacles",
+      "element": "Earth",
+      "upright_keywords": [
+        "學習",
+        "機會",
+        "踏實",
+        "新實務起步",
+        "計畫成形"
+      ],
+      "reversed_keywords": [
+        "拖延",
+        "不踏實",
+        "計畫延宕",
+        "浪費機會"
+      ],
+      "symbolism": "年輕人專注端詳手中金幣，象徵對具體計畫的踏實投入。",
+      "image": "images/pentacles-11.jpg"
+    },
+    {
+      "name_zh": "錢幣騎士",
+      "name_en": "Knight of Pentacles",
+      "number": 12,
+      "arcana": "pentacles",
+      "element": "Earth",
+      "upright_keywords": [
+        "穩健",
+        "可靠",
+        "按部就班",
+        "毅力",
+        "實務"
+      ],
+      "reversed_keywords": [
+        "固執",
+        "停滯",
+        "不願變通",
+        "拖延"
+      ],
+      "symbolism": "騎士立於耕耘過的田野持金幣，象徵穩扎穩打的可靠行動。",
+      "image": "images/pentacles-12.jpg"
+    },
+    {
+      "name_zh": "錢幣皇后",
+      "name_en": "Queen of Pentacles",
+      "number": 13,
+      "arcana": "pentacles",
+      "element": "Earth",
+      "upright_keywords": [
+        "務實滋養",
+        "身體力行",
+        "豐饒",
+        "經營",
+        "居家智慧"
+      ],
+      "reversed_keywords": [
+        "工作/家庭失衡",
+        "過度物質",
+        "忽略自我",
+        "疲憊"
+      ],
+      "symbolism": "皇后於花園端坐懷抱金幣，小兔於腳邊，象徵務實持家的滋養能量。",
+      "image": "images/pentacles-13.jpg"
+    },
+    {
+      "name_zh": "錢幣國王",
+      "name_en": "King of Pentacles",
+      "number": 14,
+      "arcana": "pentacles",
+      "element": "Earth",
+      "upright_keywords": [
+        "物質成功",
+        "企業家",
+        "穩定領導",
+        "投資智慧",
+        "富足"
+      ],
+      "reversed_keywords": [
+        "物質執著",
+        "守財",
+        "僵化",
+        "商業失敗"
+      ],
+      "symbolism": "國王於葡萄藤王座上端坐持金幣，象徵以務實智慧建立的長期成功。",
+      "image": "images/pentacles-14.jpg"
     }
   ]
 }

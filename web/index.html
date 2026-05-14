@@ -1,0 +1,2645 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>claude-tarot — 78 張塔羅，AI 幫你讀</title>
+  <meta name="description" content="Rider-Waite-Smith 公共領域牌義｜抽牌後一鍵 copy prompt，貼到 ChatGPT/Claude/Gemini">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts — 統一 Noto Serif TC（中英 serif 一致） -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --color-primary: #9B7EBD;
+      --color-cta: #E8C547;
+      --color-cta-text: #1A0B2E;
+      --color-text: #F5F0FA;
+      --color-muted: #9F8AB8;
+      --color-border: rgba(255, 255, 255, 0.12);
+      --glass-bg: rgba(255, 255, 255, 0.06);
+      --font-headline: 'Noto Serif TC', serif;
+      --font-body: 'Noto Serif TC', serif;
+      --transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+      --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.25);
+      --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.35);
+      --shadow-gold: 0 0 24px rgba(232, 197, 71, 0.4);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      font-weight: 400;
+      color: var(--color-text);
+      background: linear-gradient(135deg, #1A0B2E 0%, #3D1F5F 50%, #1A0B2E 100%);
+      background-attachment: fixed;
+      line-height: 1.75;
+      letter-spacing: 0.015em;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* 微星空：覆蓋層撒淡白點 */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image:
+        radial-gradient(1px 1px at 15% 20%, rgba(255,255,255,0.4), transparent),
+        radial-gradient(1px 1px at 80% 15%, rgba(255,255,255,0.3), transparent),
+        radial-gradient(1px 1px at 35% 60%, rgba(255,255,255,0.35), transparent),
+        radial-gradient(1px 1px at 70% 80%, rgba(255,255,255,0.4), transparent),
+        radial-gradient(1px 1px at 90% 45%, rgba(255,255,255,0.3), transparent),
+        radial-gradient(1px 1px at 25% 85%, rgba(255,255,255,0.35), transparent),
+        radial-gradient(1.5px 1.5px at 55% 30%, rgba(232,197,71,0.5), transparent),
+        radial-gradient(1.5px 1.5px at 10% 70%, rgba(232,197,71,0.3), transparent);
+      background-size: 100% 100%;
+      opacity: 0.7;
+    }
+
+    body > * { position: relative; z-index: 1; }
+
+    h1, h2, h3 {
+      font-family: var(--font-headline);
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--color-text);
+      letter-spacing: 0.04em;
+    }
+    h1 { font-size: clamp(2.25rem, 5.5vw, 3.75rem); }
+    h2 { font-size: clamp(1.625rem, 3.5vw, 2.375rem); margin-bottom: 1rem; }
+    h3 { font-size: 1.375rem; font-weight: 600; margin-bottom: 0.75rem; }
+
+    a { color: var(--color-primary); transition: color var(--transition); }
+    a:hover { color: var(--color-cta); }
+
+    .container-tight { max-width: 720px; margin: 0 auto; padding: 0 1.5rem; }
+    .container-wide  { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
+
+    section { padding: 4rem 0; }
+    @media (min-width: 768px) { section { padding: 6rem 0; } }
+    #hero { padding: 6rem 0 5rem; }
+    @media (min-width: 768px) { #hero { padding: 9rem 0 7rem; } }
+
+    /* ===== Nav ===== */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: rgba(26, 11, 46, 0.7);
+      border-bottom: 1px solid var(--color-border);
+      transition: box-shadow var(--transition);
+    }
+    .site-nav.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.875rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .nav-brand {
+      font-family: var(--font-headline);
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: 0.04em;
+      color: var(--color-text);
+    }
+    .nav-brand:hover { color: var(--color-cta); }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      margin: 0 auto 0 1rem;
+      padding: 0;
+    }
+    .nav-links a {
+      color: var(--color-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 400;
+    }
+    .nav-links a:hover { color: var(--color-cta); }
+    .nav-cta {
+      background: var(--color-cta);
+      color: var(--color-cta-text) !important;
+      padding: 0.5rem 1.125rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all var(--transition);
+    }
+    .nav-cta:hover { box-shadow: var(--shadow-gold); transform: translateY(-1px); }
+    @media (max-width: 860px) { .nav-links { display: none; } }
+
+    /* ===== CTA ===== */
+    .cta-primary {
+      display: inline-block;
+      background: var(--color-cta);
+      color: var(--color-cta-text);
+      padding: 1rem 2.25rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 1.05rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all var(--transition);
+      box-shadow: var(--shadow-soft);
+      letter-spacing: 0.02em;
+    }
+    .cta-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-gold);
+      color: var(--color-cta-text);
+    }
+    .cta-primary:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 3px; }
+
+    /* ===== Glass card ===== */
+    .glass {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      transition: all var(--transition);
+    }
+    .glass:hover { background: rgba(255,255,255,0.08); transform: translateY(-2px); }
+
+    /* ===== Section common ===== */
+    #hook p, #about p { font-size: 1.1rem; margin-bottom: 1rem; color: var(--color-text); opacity: 0.9; }
+
+    /* Steps（怎麼用三步） */
+    .steps {
+      list-style: none;
+      padding: 0;
+      margin: 2rem 0 0;
+      display: grid;
+      gap: 1rem;
+    }
+    .steps li {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      padding: 1.5rem 1.75rem;
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--color-border);
+      border-radius: 14px;
+      transition: all var(--transition);
+    }
+    .steps li:hover { background: rgba(255,255,255,0.08); transform: translateY(-2px); }
+    .step-num {
+      font-family: var(--font-headline);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--color-cta);
+      line-height: 1;
+      letter-spacing: 0.04em;
+      flex-shrink: 0;
+      min-width: 2.5rem;
+    }
+    .steps h3 { margin: 0 0 0.25rem; color: var(--color-text); }
+    .steps p { margin: 0; color: var(--color-text); opacity: 0.85; font-size: 1rem; line-height: 1.7; }
+    @media (max-width: 480px) {
+      .steps li { padding: 1.25rem 1.25rem; gap: 1rem; }
+      .step-num { font-size: 1.6rem; min-width: 2rem; }
+    }
+
+    /* ===== Tarot Tool ===== */
+    .tool-wrap { padding: 2rem; margin-top: 2rem; }
+    @media (max-width: 480px) { .tool-wrap { padding: 1.5rem; } }
+
+    /* Mode tabs（segmented control） */
+    .mode-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0.375rem;
+      padding: 0.375rem;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--color-border);
+      border-radius: 999px;
+      margin-bottom: 1.75rem;
+    }
+    .mode-tab {
+      background: transparent;
+      border: 0;
+      color: var(--color-muted);
+      padding: 0.6rem 0.5rem;
+      border-radius: 999px;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .mode-tab:hover { color: var(--color-text); }
+    .mode-tab.active {
+      background: var(--color-cta);
+      color: var(--color-cta-text);
+      font-weight: 600;
+      box-shadow: var(--shadow-soft);
+    }
+    .mode-tab:focus-visible { outline: 2px solid var(--color-cta); outline-offset: 2px; }
+
+    /* Field（input / select / label 通用） */
+    .field { margin-bottom: 1.25rem; }
+    .field-label, .field > label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--color-muted);
+      letter-spacing: 0.04em;
+      margin-bottom: 0.5rem;
+    }
+    .field input[type="text"],
+    .field select,
+    .manual-row select {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.28);
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      color: var(--color-text);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      transition: all var(--transition);
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .field input[type="text"]::placeholder { color: var(--color-muted); opacity: 0.6; }
+    .field input[type="text"]:focus,
+    .field select:focus,
+    .manual-row select:focus {
+      outline: none;
+      border-color: var(--color-cta);
+      box-shadow: 0 0 0 3px rgba(232, 197, 71, 0.15);
+    }
+
+    /* Radio pill（隨機抽 / 我自己抽） */
+    .draw-mode { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .radio-pill { cursor: pointer; user-select: none; }
+    .radio-pill input { position: absolute; opacity: 0; pointer-events: none; }
+    .radio-pill span {
+      display: inline-block;
+      padding: 0.5rem 1.25rem;
+      border: 1px solid var(--color-border);
+      border-radius: 999px;
+      font-size: 0.95rem;
+      color: var(--color-muted);
+      background: rgba(0, 0, 0, 0.2);
+      transition: all var(--transition);
+    }
+    .radio-pill:hover span { color: var(--color-text); }
+    .radio-pill input:checked + span {
+      background: rgba(232, 197, 71, 0.12);
+      border-color: var(--color-cta);
+      color: var(--color-cta);
+    }
+    .radio-pill input:focus-visible + span { outline: 2px solid var(--color-cta); outline-offset: 2px; }
+
+    /* Manual input */
+    .manual-input { display: grid; gap: 0.875rem; margin-bottom: 1.25rem; }
+    .manual-row {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 0.75rem;
+      align-items: center;
+    }
+    .position-label {
+      font-family: var(--font-headline);
+      font-weight: 600;
+      color: var(--color-cta);
+      min-width: 3.5rem;
+      letter-spacing: 0.04em;
+    }
+    .reversed-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.9rem;
+      color: var(--color-muted);
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .reversed-check input { accent-color: var(--color-cta); width: 1rem; height: 1rem; }
+    @media (max-width: 480px) {
+      .manual-row { grid-template-columns: 1fr; }
+      .position-label { font-size: 1.1rem; }
+    }
+
+    /* Action */
+    .cta-block { display: block; width: 100%; text-align: center; }
+
+    /* Result */
+    .result {
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--color-border);
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+    .cards.spread-three { grid-template-columns: 1fr 1fr 1fr; }
+    @media (max-width: 600px) { .cards.spread-three { grid-template-columns: 1fr; } }
+
+    .card-tile {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      text-align: center;
+    }
+    .card-tile .pos {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--color-cta);
+      letter-spacing: 0.12em;
+      margin-bottom: 0.5rem;
+    }
+    .card-tile-img-wrap {
+      margin: 0 auto 0.875rem;
+      width: 100%;
+      max-width: 220px;
+      aspect-ratio: 3 / 5;
+      border-radius: 8px;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--color-border);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    }
+    .card-tile-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .card-tile-img-wrap.reversed img { transform: rotate(180deg); }
+    .card-tile .name {
+      font-family: var(--font-headline);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 0.25rem;
+      letter-spacing: 0.04em;
+    }
+    .card-tile .orientation {
+      font-size: 0.85rem;
+      color: var(--color-muted);
+    }
+
+    /* Prompt block */
+    .prompt-block > label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--color-muted);
+      letter-spacing: 0.04em;
+      margin-bottom: 0.5rem;
+    }
+    #prompt-preview {
+      background: rgba(0, 0, 0, 0.38);
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      padding: 1rem 1.125rem;
+      font-family: 'SF Mono', Menlo, monospace;
+      font-size: 0.88rem;
+      line-height: 1.65;
+      color: var(--color-text);
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      max-height: 360px;
+      overflow-y: auto;
+      margin: 0;
+    }
+    .prompt-actions {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      margin-top: 0.875rem;
+      flex-wrap: wrap;
+    }
+    .copy-status {
+      font-size: 0.85rem;
+      color: var(--color-cta);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .copy-status.show { opacity: 1; }
+    .hint {
+      font-size: 0.85rem;
+      color: var(--color-muted);
+      margin-top: 0.875rem;
+      line-height: 1.65;
+    }
+
+    /* FAQ */
+    .faq-item {
+      border: 1px solid var(--color-border);
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 0.75rem;
+      transition: all var(--transition);
+    }
+    .faq-item summary {
+      cursor: pointer;
+      font-weight: 500;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      color: var(--color-text);
+    }
+    .faq-item summary::after {
+      content: "+";
+      font-family: var(--font-headline);
+      font-size: 1.75rem;
+      color: var(--color-cta);
+      transition: transform var(--transition);
+      line-height: 1;
+    }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-item p {
+      padding-top: 0.875rem;
+      color: var(--color-text);
+      opacity: 0.85;
+      line-height: 1.8;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; animation: none !important; }
+      body::before { opacity: 0.3; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Nav（sticky top） ===== -->
+  <nav class="site-nav" id="siteNav">
+    <div class="nav-inner">
+      <a class="nav-brand" href="#top">claude-tarot</a>
+      <ul class="nav-links">
+        <li><a href="#about">關於</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <a class="nav-cta" href="#tarot-tool">立即試試</a>
+    </div>
+  </nav>
+
+  <a id="top"></a>
+
+  <!-- 1. Hero -->
+  <section id="hero">
+    <div class="container-tight text-center">
+      <h1>78 張塔羅，AI 幫你讀</h1>
+      <p class="text-xl" style="color: var(--color-muted); margin-top: 1.25rem; margin-bottom: 2.5rem;">
+        Rider-Waite-Smith 公共領域牌義｜抽牌後一鍵 copy prompt，貼到 ChatGPT / Claude / Gemini
+      </p>
+      <a class="cta-primary" href="#tarot-tool">立即試試</a>
+    </div>
+  </section>
+
+  <!-- 2. About — 怎麼用（四步流程，主介紹） -->
+  <section id="about">
+    <div class="container-tight">
+      <h2>怎麼用</h2>
+      <ol class="steps">
+        <li>
+          <span class="step-num">01</span>
+          <div>
+            <h3>選模式</h3>
+            <p>單張問卜、三牌陣（過去・現在・未來）、每日能量，三選一。</p>
+          </div>
+        </li>
+        <li>
+          <span class="step-num">02</span>
+          <div>
+            <h3>抽牌</h3>
+            <p>按「抽牌」讓系統隨機抽，或切到「手動」自己挑牌與正逆位。</p>
+          </div>
+        </li>
+        <li>
+          <span class="step-num">03</span>
+          <div>
+            <h3>複製 Prompt</h3>
+            <p>按複製鍵，貼到你常用的 ChatGPT / Claude / Gemini，送出拿解讀。</p>
+          </div>
+        </li>
+        <li>
+          <span class="step-num">04</span>
+          <div>
+            <h3>尋找專家</h3>
+            <p>想更深入？歡迎找身邊的塔羅師，或來找 AlexYeh 解牌。</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 4. Learn / 5. Testimonials / 6. Audience / 7. Info / 8. Pricing 皆已移除 -->
+
+  <!-- 9. Final CTA -->
+  <section id="cta-final">
+    <div class="container-tight text-center">
+      <h2>準備好抽牌了嗎</h2>
+      <p class="text-lg mb-6" style="color: var(--color-muted); margin-bottom: 2rem;">
+        滾到下方工具區、選模式、按下「抽牌」。
+      </p>
+      <a class="cta-primary" href="#tarot-tool">立即試試</a>
+    </div>
+  </section>
+
+  <!-- 10. Speaker（已依需求移除） -->
+
+  <!-- ===== Tarot Tool（抽牌工具區） ===== -->
+  <section id="tarot-tool">
+    <div class="container-tight">
+      <h2 class="text-center">抽牌工具</h2>
+
+      <div class="tool-wrap glass">
+
+        <!-- 模式 tabs -->
+        <div class="mode-tabs" role="tablist" aria-label="模式選擇">
+          <button type="button" class="mode-tab active" data-mode="single" role="tab" aria-selected="true">單張問卜</button>
+          <button type="button" class="mode-tab" data-mode="three" role="tab" aria-selected="false">三牌陣</button>
+          <button type="button" class="mode-tab" data-mode="daily" role="tab" aria-selected="false">每日能量</button>
+        </div>
+
+        <!-- 問題 input（每日能量模式隱藏） -->
+        <div class="field" id="question-field">
+          <label for="question">你的問題</label>
+          <input type="text" id="question" placeholder="輸入想問的問題（可留白）" autocomplete="off" />
+        </div>
+
+        <!-- 抽牌方式 radio -->
+        <div class="field">
+          <span class="field-label">抽牌方式</span>
+          <div class="draw-mode">
+            <label class="radio-pill">
+              <input type="radio" name="draw-mode" value="random" checked />
+              <span>隨機抽</span>
+            </label>
+            <label class="radio-pill">
+              <input type="radio" name="draw-mode" value="manual" />
+              <span>我自己抽</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 手動選牌（hidden 預設、JS 依模式渲染 1 或 3 組） -->
+        <div class="manual-input" id="manual-input" hidden></div>
+
+        <!-- 抽牌按鈕 -->
+        <div class="action">
+          <button type="button" id="draw-btn" class="cta-primary cta-block">抽牌</button>
+        </div>
+
+        <!-- 結果展示 -->
+        <div id="result" class="result" hidden>
+          <div class="cards" id="result-cards"></div>
+          <div class="prompt-block">
+            <label for="prompt-preview">產生的 Prompt</label>
+            <pre id="prompt-preview"></pre>
+            <div class="prompt-actions">
+              <button type="button" id="copy-btn" class="cta-primary">複製 Prompt</button>
+              <span id="copy-status" class="copy-status" aria-live="polite"></span>
+            </div>
+            <p class="hint">把上面複製到 ChatGPT / Claude / Gemini 任一個，貼上就會拿到解讀。</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. FAQ -->
+  <section id="faq">
+    <div class="container-tight">
+      <h2>常見問題</h2>
+      <div class="mt-6">
+        <details class="faq-item">
+          <summary>為什麼要做這個工具？</summary>
+          <p>叫 AI 解牌很容易，但 prompt 寫不好就只拿到罐頭答案。這頁幫你把 78 張牌的關鍵字、正逆位、牌陣位置打包成可用的 prompt——你抽，AI 讀。</p>
+        </details>
+        <details class="faq-item">
+          <summary>為什麼要 copy 去別的 LLM、不直接在這頁解？</summary>
+          <p>不綁特定 AI、不付 API 錢、你的問題不經我手。你抽完拿到 prompt，想貼 ChatGPT 就貼 ChatGPT、想貼 Claude 就貼 Claude，自由切換。</p>
+        </details>
+        <details class="faq-item">
+          <summary>能不能離線用？</summary>
+          <p>抽牌跟 prompt 生成都在你的瀏覽器、無網路也能跑。解讀要 LLM 才行，看你選的 ChatGPT/Claude/Gemini 是不是離線可用。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Step 3 將在這裡插入 <section id="tarot-tool"> ===== -->
+
+  <!-- ===== 牌組資料：78 張 Rider-Waite-Smith 公共領域（MIT 授權 JSON） ===== -->
+  <script>
+    const CARDS_META = {"source": "Rider-Waite-Smith tradition; keywords and symbolism derived from Arthur Edward Waite, The Pictorial Key to the Tarot (1910, public domain)", "license": "MIT (this JSON), public-domain source material", "updated": "2026-05-14", "card_count": 78};
+    const CARDS = [
+  {
+    "name_zh": "愚人",
+    "name_en": "The Fool",
+    "number": 0,
+    "arcana": "major",
+    "element": "Air",
+    "upright_keywords": [
+      "新開始",
+      "自由",
+      "純真",
+      "冒險",
+      "信任"
+    ],
+    "reversed_keywords": [
+      "輕率",
+      "天真過度",
+      "不成熟",
+      "錯失時機"
+    ],
+    "symbolism": "懸崖邊的旅人背著小包袱與白玫瑰，小狗相伴，象徵向未知躍出的第一步，以及對過程的信任。",
+    "image": "images/major-00-fool.jpg"
+  },
+  {
+    "name_zh": "魔術師",
+    "name_en": "The Magician",
+    "number": 1,
+    "arcana": "major",
+    "element": "Air",
+    "upright_keywords": [
+      "意志",
+      "創造",
+      "技藝",
+      "專注",
+      "顯化"
+    ],
+    "reversed_keywords": [
+      "操弄",
+      "自我欺騙",
+      "才能未發揮",
+      "虛張聲勢"
+    ],
+    "symbolism": "一手指天一手指地，桌上四元素齊備，象徵把意念化為現實的能力與完整工具箱。",
+    "image": "images/major-01-magician.jpg"
+  },
+  {
+    "name_zh": "高級女祭司",
+    "name_en": "The High Priestess",
+    "number": 2,
+    "arcana": "major",
+    "element": "Water",
+    "upright_keywords": [
+      "直覺",
+      "潛意識",
+      "靜觀",
+      "神秘",
+      "內在知曉"
+    ],
+    "reversed_keywords": [
+      "忽視直覺",
+      "表面解讀",
+      "秘密浮現",
+      "情緒混沌"
+    ],
+    "symbolism": "坐於兩柱之間、手持托拉卷軸，象徵通往潛意識與未知知識的守門人。",
+    "image": "images/major-02-high_priestess.jpg"
+  },
+  {
+    "name_zh": "女帝",
+    "name_en": "The Empress",
+    "number": 3,
+    "arcana": "major",
+    "element": "Earth",
+    "upright_keywords": [
+      "豐饒",
+      "滋養",
+      "創造力",
+      "感官",
+      "母性"
+    ],
+    "reversed_keywords": [
+      "過度依賴",
+      "創造力卡關",
+      "自我忽視",
+      "佔有慾"
+    ],
+    "symbolism": "坐於豐饒田野的女神，象徵自然循環、身體感官滿足與滋養他人的能力。",
+    "image": "images/major-03-empress.jpg"
+  },
+  {
+    "name_zh": "皇帝",
+    "name_en": "The Emperor",
+    "number": 4,
+    "arcana": "major",
+    "element": "Fire",
+    "upright_keywords": [
+      "權威",
+      "秩序",
+      "結構",
+      "領導",
+      "保護"
+    ],
+    "reversed_keywords": [
+      "專制",
+      "僵化",
+      "控制慾",
+      "父權壓力"
+    ],
+    "symbolism": "穩坐石製王座、手持權杖與球體，象徵以理性與規則建立秩序的力量。",
+    "image": "images/major-04-emperor.jpg"
+  },
+  {
+    "name_zh": "教皇",
+    "name_en": "The Hierophant",
+    "number": 5,
+    "arcana": "major",
+    "element": "Earth",
+    "upright_keywords": [
+      "傳統",
+      "教導",
+      "信仰",
+      "道德",
+      "制度"
+    ],
+    "reversed_keywords": [
+      "反叛",
+      "教條束縛",
+      "不守常規",
+      "私人靈性"
+    ],
+    "symbolism": "加冕的宗教導師，象徵既有體系的傳承與對規範的尊重。",
+    "image": "images/major-05-hierophant.jpg"
+  },
+  {
+    "name_zh": "戀人",
+    "name_en": "The Lovers",
+    "number": 6,
+    "arcana": "major",
+    "element": "Air",
+    "upright_keywords": [
+      "結合",
+      "選擇",
+      "愛",
+      "價值觀",
+      "和諧"
+    ],
+    "reversed_keywords": [
+      "失衡",
+      "難以抉擇",
+      "誘惑",
+      "關係破裂"
+    ],
+    "symbolism": "男女在天使祝福下相望，背景有生命樹與智慧樹，象徵重大選擇背後的價值對齊。",
+    "image": "images/major-06-lovers.jpg"
+  },
+  {
+    "name_zh": "戰車",
+    "name_en": "The Chariot",
+    "number": 7,
+    "arcana": "major",
+    "element": "Water",
+    "upright_keywords": [
+      "意志力",
+      "勝利",
+      "控制",
+      "前進",
+      "決心"
+    ],
+    "reversed_keywords": [
+      "失控",
+      "方向迷失",
+      "內在衝突",
+      "力道過猛"
+    ],
+    "symbolism": "駕馭黑白雙獸的騎士，象徵將對立力量統合以推進目標。",
+    "image": "images/major-07-chariot.jpg"
+  },
+  {
+    "name_zh": "力量",
+    "name_en": "Strength",
+    "number": 8,
+    "arcana": "major",
+    "element": "Fire",
+    "upright_keywords": [
+      "內在力量",
+      "勇氣",
+      "耐心",
+      "慈悲",
+      "馴服"
+    ],
+    "reversed_keywords": [
+      "自我懷疑",
+      "脆弱",
+      "失去耐性",
+      "野性失控"
+    ],
+    "symbolism": "女子輕撫獅子，象徵以柔克剛、以慈悲駕馭本能衝動的內在力量。",
+    "image": "images/major-08-strength.jpg"
+  },
+  {
+    "name_zh": "隱者",
+    "name_en": "The Hermit",
+    "number": 9,
+    "arcana": "major",
+    "element": "Earth",
+    "upright_keywords": [
+      "內省",
+      "獨處",
+      "智慧尋求",
+      "指引",
+      "沉思"
+    ],
+    "reversed_keywords": [
+      "孤立",
+      "逃避",
+      "拒絕協助",
+      "迷失方向"
+    ],
+    "symbolism": "手持燈籠的智者獨立山頭，象徵向內尋求、為自己點亮前路。",
+    "image": "images/major-09-hermit.jpg"
+  },
+  {
+    "name_zh": "命運之輪",
+    "name_en": "Wheel of Fortune",
+    "number": 10,
+    "arcana": "major",
+    "element": "Fire",
+    "upright_keywords": [
+      "命運",
+      "轉折點",
+      "循環",
+      "機遇",
+      "因果"
+    ],
+    "reversed_keywords": [
+      "運氣不佳",
+      "抗拒變化",
+      "負向循環",
+      "失控"
+    ],
+    "symbolism": "轉動的輪盤四角環繞守護者，象徵生命週期的自然轉動與順流而行的智慧。",
+    "image": "images/major-10-wheel_of_fortune.jpg"
+  },
+  {
+    "name_zh": "正義",
+    "name_en": "Justice",
+    "number": 11,
+    "arcana": "major",
+    "element": "Air",
+    "upright_keywords": [
+      "公平",
+      "真理",
+      "因果",
+      "法律",
+      "清晰"
+    ],
+    "reversed_keywords": [
+      "不公",
+      "偏見",
+      "推卸責任",
+      "不誠實"
+    ],
+    "symbolism": "持劍與天秤的法官，象徵客觀判斷與行為後果的清算。",
+    "image": "images/major-11-justice.jpg"
+  },
+  {
+    "name_zh": "吊人",
+    "name_en": "The Hanged Man",
+    "number": 12,
+    "arcana": "major",
+    "element": "Water",
+    "upright_keywords": [
+      "換角度",
+      "犧牲",
+      "暫停",
+      "放下",
+      "悟"
+    ],
+    "reversed_keywords": [
+      "頑固",
+      "徒勞等待",
+      "逃避承諾",
+      "停滯"
+    ],
+    "symbolism": "倒吊於樹的人面帶安詳，象徵主動暫停、用不同角度看事物所帶來的洞見。",
+    "image": "images/major-12-hanged_man.jpg"
+  },
+  {
+    "name_zh": "死神",
+    "name_en": "Death",
+    "number": 13,
+    "arcana": "major",
+    "element": "Water",
+    "upright_keywords": [
+      "結束",
+      "轉化",
+      "蛻變",
+      "放手",
+      "重生"
+    ],
+    "reversed_keywords": [
+      "抗拒改變",
+      "停滯",
+      "恐懼",
+      "未完結"
+    ],
+    "symbolism": "身披鎧甲的死神降臨眾人，象徵必然的結束與其後的新生。非字面的死亡。",
+    "image": "images/major-13-death.jpg"
+  },
+  {
+    "name_zh": "節制",
+    "name_en": "Temperance",
+    "number": 14,
+    "arcana": "major",
+    "element": "Fire",
+    "upright_keywords": [
+      "平衡",
+      "融合",
+      "中庸",
+      "耐心",
+      "療癒"
+    ],
+    "reversed_keywords": [
+      "失衡",
+      "過度",
+      "不耐",
+      "缺乏節制"
+    ],
+    "symbolism": "天使兩杯間傾倒水流，一腳在岸一腳在水，象徵對立元素的精細調和。",
+    "image": "images/major-14-temperance.jpg"
+  },
+  {
+    "name_zh": "惡魔",
+    "name_en": "The Devil",
+    "number": 15,
+    "arcana": "major",
+    "element": "Earth",
+    "upright_keywords": [
+      "束縛",
+      "物質執著",
+      "陰影",
+      "成癮",
+      "誘惑"
+    ],
+    "reversed_keywords": [
+      "解放",
+      "覺察束縛",
+      "戒除",
+      "重獲自由"
+    ],
+    "symbolism": "兩人被鬆綁的鎖鏈困住，象徵自我加諸的束縛——通常能選擇鬆開。",
+    "image": "images/major-15-devil.jpg"
+  },
+  {
+    "name_zh": "塔",
+    "name_en": "The Tower",
+    "number": 16,
+    "arcana": "major",
+    "element": "Fire",
+    "upright_keywords": [
+      "突變",
+      "崩解",
+      "真相揭露",
+      "解放",
+      "覺醒"
+    ],
+    "reversed_keywords": [
+      "避免崩解",
+      "拖延不可避免的改變",
+      "慢性崩壞"
+    ],
+    "symbolism": "雷電擊中高塔，人影墜落，象徵虛假結構的瞬間崩解與其後的清明。",
+    "image": "images/major-16-tower.jpg"
+  },
+  {
+    "name_zh": "星星",
+    "name_en": "The Star",
+    "number": 17,
+    "arcana": "major",
+    "element": "Air",
+    "upright_keywords": [
+      "希望",
+      "療癒",
+      "信念",
+      "靈感",
+      "寧靜"
+    ],
+    "reversed_keywords": [
+      "失去信心",
+      "灰心",
+      "斷連",
+      "信念動搖"
+    ],
+    "symbolism": "女子裸身於水畔倒水回歸大地與池塘，象徵暴風過後的療癒與對未來的溫柔希望。",
+    "image": "images/major-17-star.jpg"
+  },
+  {
+    "name_zh": "月亮",
+    "name_en": "The Moon",
+    "number": 18,
+    "arcana": "major",
+    "element": "Water",
+    "upright_keywords": [
+      "幻象",
+      "潛意識",
+      "不安",
+      "夢境",
+      "直覺"
+    ],
+    "reversed_keywords": [
+      "看清幻象",
+      "恐懼消退",
+      "壓抑浮現",
+      "迷惘"
+    ],
+    "symbolism": "月光下狗與狼對月嚎叫，水中龍蝦爬出，象徵潛意識恐懼與直覺訊息並陳。",
+    "image": "images/major-18-moon.jpg"
+  },
+  {
+    "name_zh": "太陽",
+    "name_en": "The Sun",
+    "number": 19,
+    "arcana": "major",
+    "element": "Fire",
+    "upright_keywords": [
+      "喜悅",
+      "成功",
+      "活力",
+      "清明",
+      "豐盛"
+    ],
+    "reversed_keywords": [
+      "過度樂觀",
+      "成功延遲",
+      "活力低",
+      "自我懷疑"
+    ],
+    "symbolism": "孩童騎白馬於向日葵花園，象徵純粹的喜悅、顯化與生命力的綻放。",
+    "image": "images/major-19-sun.jpg"
+  },
+  {
+    "name_zh": "審判",
+    "name_en": "Judgement",
+    "number": 20,
+    "arcana": "major",
+    "element": "Fire",
+    "upright_keywords": [
+      "召喚",
+      "覺醒",
+      "重生",
+      "反省",
+      "寬恕"
+    ],
+    "reversed_keywords": [
+      "自我批判",
+      "拒絕召喚",
+      "卡在過去",
+      "疑慮"
+    ],
+    "symbolism": "天使吹響號角，逝者從棺中復起，象徵靈魂層次的覺醒與召喚的回應。",
+    "image": "images/major-20-judgement.jpg"
+  },
+  {
+    "name_zh": "世界",
+    "name_en": "The World",
+    "number": 21,
+    "arcana": "major",
+    "element": "Earth",
+    "upright_keywords": [
+      "完成",
+      "整合",
+      "圓滿",
+      "達成",
+      "旅途結束"
+    ],
+    "reversed_keywords": [
+      "未竟",
+      "延宕",
+      "缺乏收尾",
+      "需要再一圈"
+    ],
+    "symbolism": "舞者在月桂花環中，四角守護者見證，象徵一個週期的圓滿完成與新起點。",
+    "image": "images/major-21-world.jpg"
+  },
+  {
+    "name_zh": "權杖一",
+    "name_en": "Ace of Wands",
+    "number": 1,
+    "arcana": "wands",
+    "element": "Fire",
+    "upright_keywords": [
+      "靈感",
+      "新行動",
+      "熱情",
+      "機會",
+      "創造火花"
+    ],
+    "reversed_keywords": [
+      "延遲",
+      "靈感卡住",
+      "方向不明",
+      "熱情缺乏"
+    ],
+    "symbolism": "雲中手持萌芽的權杖，象徵一個熱情計畫的種子剛剛遞給你。",
+    "image": "images/wands-01.jpg"
+  },
+  {
+    "name_zh": "權杖二",
+    "name_en": "Two of Wands",
+    "number": 2,
+    "arcana": "wands",
+    "element": "Fire",
+    "upright_keywords": [
+      "規劃",
+      "遠見",
+      "決定",
+      "展望",
+      "個人力量"
+    ],
+    "reversed_keywords": [
+      "猶豫",
+      "視野狹窄",
+      "怕踏出舒適圈",
+      "計畫失焦"
+    ],
+    "symbolism": "站在城堡眺望遠方、手持地球儀的人，象徵選擇路徑前的遠景考量。",
+    "image": "images/wands-02.jpg"
+  },
+  {
+    "name_zh": "權杖三",
+    "name_en": "Three of Wands",
+    "number": 3,
+    "arcana": "wands",
+    "element": "Fire",
+    "upright_keywords": [
+      "擴張",
+      "展望",
+      "前進",
+      "信心",
+      "結果等待"
+    ],
+    "reversed_keywords": [
+      "延宕",
+      "障礙",
+      "計畫延伸失敗",
+      "視野受限"
+    ],
+    "symbolism": "人物立於崖邊望向遠方船隊，象徵行動已啟動、等待回報的開闊期。",
+    "image": "images/wands-03.jpg"
+  },
+  {
+    "name_zh": "權杖四",
+    "name_en": "Four of Wands",
+    "number": 4,
+    "arcana": "wands",
+    "element": "Fire",
+    "upright_keywords": [
+      "慶祝",
+      "穩固",
+      "歸屬",
+      "里程碑",
+      "和諧"
+    ],
+    "reversed_keywords": [
+      "不穩",
+      "家庭張力",
+      "轉型期",
+      "慶祝延遲"
+    ],
+    "symbolism": "四根權杖撐起花環，人們歡慶，象徵階段性成就與社群歸屬。",
+    "image": "images/wands-04.jpg"
+  },
+  {
+    "name_zh": "權杖五",
+    "name_en": "Five of Wands",
+    "number": 5,
+    "arcana": "wands",
+    "element": "Fire",
+    "upright_keywords": [
+      "競爭",
+      "衝突",
+      "辯論",
+      "混亂",
+      "磨合"
+    ],
+    "reversed_keywords": [
+      "避免衝突",
+      "內心紛爭",
+      "和解",
+      "合作浮現"
+    ],
+    "symbolism": "五人各執權杖扭打，象徵眾人立場各異造成的摩擦與成長機會。",
+    "image": "images/wands-05.jpg"
+  },
+  {
+    "name_zh": "權杖六",
+    "name_en": "Six of Wands",
+    "number": 6,
+    "arcana": "wands",
+    "element": "Fire",
+    "upright_keywords": [
+      "勝利",
+      "肯定",
+      "領導",
+      "公眾認可",
+      "自信"
+    ],
+    "reversed_keywords": [
+      "失落",
+      "自負",
+      "名不符實",
+      "缺乏認可"
+    ],
+    "symbolism": "騎士戴桂冠凱旋而歸，象徵努力獲得的公開肯定。",
+    "image": "images/wands-06.jpg"
+  },
+  {
+    "name_zh": "權杖七",
+    "name_en": "Seven of Wands",
+    "number": 7,
+    "arcana": "wands",
+    "element": "Fire",
+    "upright_keywords": [
+      "防守",
+      "堅持立場",
+      "挑戰",
+      "勇氣",
+      "捍衛"
+    ],
+    "reversed_keywords": [
+      "疲於應付",
+      "放棄立場",
+      "被淹沒",
+      "自我懷疑"
+    ],
+    "symbolism": "高處的人以一支權杖對抗六支，象徵為立場堅守的勇氣。",
+    "image": "images/wands-07.jpg"
+  },
+  {
+    "name_zh": "權杖八",
+    "name_en": "Eight of Wands",
+    "number": 8,
+    "arcana": "wands",
+    "element": "Fire",
+    "upright_keywords": [
+      "快速",
+      "訊息",
+      "進展",
+      "行動迸發",
+      "飛速變化"
+    ],
+    "reversed_keywords": [
+      "延遲",
+      "錯過時機",
+      "溝通卡住",
+      "焦慮"
+    ],
+    "symbolism": "八支權杖同時射向天空，象徵訊息、機會、進度同時抵達。",
+    "image": "images/wands-08.jpg"
+  },
+  {
+    "name_zh": "權杖九",
+    "name_en": "Nine of Wands",
+    "number": 9,
+    "arcana": "wands",
+    "element": "Fire",
+    "upright_keywords": [
+      "堅忍",
+      "最後考驗",
+      "韌性",
+      "警戒",
+      "幾近完成"
+    ],
+    "reversed_keywords": [
+      "疲憊",
+      "放棄前最後一步",
+      "過度防備"
+    ],
+    "symbolism": "包紮傷口的戰士倚杖而立，象徵最後一關前的堅守。",
+    "image": "images/wands-09.jpg"
+  },
+  {
+    "name_zh": "權杖十",
+    "name_en": "Ten of Wands",
+    "number": 10,
+    "arcana": "wands",
+    "element": "Fire",
+    "upright_keywords": [
+      "重擔",
+      "責任",
+      "過度承擔",
+      "接近目標",
+      "疲憊"
+    ],
+    "reversed_keywords": [
+      "卸下負擔",
+      "委派",
+      "崩潰",
+      "釋放"
+    ],
+    "symbolism": "人扛著十支權杖蹣跚前行，象徵扛了過多責任以致看不見遠方。",
+    "image": "images/wands-10.jpg"
+  },
+  {
+    "name_zh": "權杖侍者",
+    "name_en": "Page of Wands",
+    "number": 11,
+    "arcana": "wands",
+    "element": "Fire",
+    "upright_keywords": [
+      "好奇",
+      "新消息",
+      "熱情初萌",
+      "探索",
+      "青年能量"
+    ],
+    "reversed_keywords": [
+      "分心",
+      "虎頭蛇尾",
+      "壞消息",
+      "不成熟衝動"
+    ],
+    "symbolism": "年輕人好奇看著手中權杖上的新芽，象徵對未來的熱切好奇。",
+    "image": "images/wands-11.jpg"
+  },
+  {
+    "name_zh": "權杖騎士",
+    "name_en": "Knight of Wands",
+    "number": 12,
+    "arcana": "wands",
+    "element": "Fire",
+    "upright_keywords": [
+      "行動",
+      "冒險",
+      "熱情",
+      "衝勁",
+      "改變"
+    ],
+    "reversed_keywords": [
+      "急躁",
+      "魯莽",
+      "計畫不周",
+      "推遲行動"
+    ],
+    "symbolism": "騎士騎著騰躍的駿馬奔馳，象徵熱情推動的積極行動。",
+    "image": "images/wands-12.jpg"
+  },
+  {
+    "name_zh": "權杖皇后",
+    "name_en": "Queen of Wands",
+    "number": 13,
+    "arcana": "wands",
+    "element": "Fire",
+    "upright_keywords": [
+      "自信",
+      "熱情",
+      "魅力",
+      "獨立",
+      "活力"
+    ],
+    "reversed_keywords": [
+      "嫉妒",
+      "過度要求",
+      "自我中心",
+      "失去信心"
+    ],
+    "symbolism": "皇后持權杖與向日葵端坐，黑貓在腳邊，象徵以熱情與魅力領導他人。",
+    "image": "images/wands-13.jpg"
+  },
+  {
+    "name_zh": "權杖國王",
+    "name_en": "King of Wands",
+    "number": 14,
+    "arcana": "wands",
+    "element": "Fire",
+    "upright_keywords": [
+      "願景",
+      "領導",
+      "果決",
+      "創業精神",
+      "遠見"
+    ],
+    "reversed_keywords": [
+      "獨裁",
+      "衝動決定",
+      "目標模糊",
+      "脾氣失控"
+    ],
+    "symbolism": "國王持發芽的權杖端坐，象徵有願景並能果斷執行的領袖能量。",
+    "image": "images/wands-14.jpg"
+  },
+  {
+    "name_zh": "聖杯一",
+    "name_en": "Ace of Cups",
+    "number": 1,
+    "arcana": "cups",
+    "element": "Water",
+    "upright_keywords": [
+      "情感新機",
+      "愛",
+      "直覺萌發",
+      "連結",
+      "靈性湧現"
+    ],
+    "reversed_keywords": [
+      "情感封閉",
+      "空杯",
+      "愛的延遲",
+      "創意枯竭"
+    ],
+    "symbolism": "雲中手遞出滿溢的聖杯，鴿子銜聖餅而入，象徵情感與靈性湧流的起點。",
+    "image": "images/cups-01.jpg"
+  },
+  {
+    "name_zh": "聖杯二",
+    "name_en": "Two of Cups",
+    "number": 2,
+    "arcana": "cups",
+    "element": "Water",
+    "upright_keywords": [
+      "結合",
+      "互相",
+      "平等關係",
+      "連結",
+      "和諧"
+    ],
+    "reversed_keywords": [
+      "失衡",
+      "關係裂痕",
+      "誤會",
+      "分離"
+    ],
+    "symbolism": "男女交換聖杯、頭頂有獅子與翅膀，象徵情感互敬的深度結合。",
+    "image": "images/cups-02.jpg"
+  },
+  {
+    "name_zh": "聖杯三",
+    "name_en": "Three of Cups",
+    "number": 3,
+    "arcana": "cups",
+    "element": "Water",
+    "upright_keywords": [
+      "慶祝",
+      "友誼",
+      "社群",
+      "團聚",
+      "共享喜悅"
+    ],
+    "reversed_keywords": [
+      "社交疲勞",
+      "八卦",
+      "第三者",
+      "派系"
+    ],
+    "symbolism": "三人舉杯起舞，象徵情感層面的友誼與共享的歡慶。",
+    "image": "images/cups-03.jpg"
+  },
+  {
+    "name_zh": "聖杯四",
+    "name_en": "Four of Cups",
+    "number": 4,
+    "arcana": "cups",
+    "element": "Water",
+    "upright_keywords": [
+      "冷淡",
+      "內省",
+      "錯過機會",
+      "不滿足",
+      "靜止"
+    ],
+    "reversed_keywords": [
+      "重新投入",
+      "醒覺",
+      "接受新機會",
+      "走出低潮"
+    ],
+    "symbolism": "人倚樹閉目，雲中遞來第四杯卻未察，象徵沉溺內在而錯過眼前禮物。",
+    "image": "images/cups-04.jpg"
+  },
+  {
+    "name_zh": "聖杯五",
+    "name_en": "Five of Cups",
+    "number": 5,
+    "arcana": "cups",
+    "element": "Water",
+    "upright_keywords": [
+      "失落",
+      "後悔",
+      "哀傷",
+      "聚焦在損失",
+      "情感創傷"
+    ],
+    "reversed_keywords": [
+      "接納",
+      "釋懷",
+      "原諒",
+      "回到當下"
+    ],
+    "symbolism": "黑袍人望三杯傾倒，卻沒看見身後兩杯仍立，象徵沉浸損失而忽視剩餘祝福。",
+    "image": "images/cups-05.jpg"
+  },
+  {
+    "name_zh": "聖杯六",
+    "name_en": "Six of Cups",
+    "number": 6,
+    "arcana": "cups",
+    "element": "Water",
+    "upright_keywords": [
+      "懷舊",
+      "童心",
+      "善意",
+      "舊友",
+      "純真回憶"
+    ],
+    "reversed_keywords": [
+      "活在過去",
+      "幼稚",
+      "舊傷復發",
+      "無法前進"
+    ],
+    "symbolism": "孩童交換花杯，象徵無條件的善意與童年記憶的力量。",
+    "image": "images/cups-06.jpg"
+  },
+  {
+    "name_zh": "聖杯七",
+    "name_en": "Seven of Cups",
+    "number": 7,
+    "arcana": "cups",
+    "element": "Water",
+    "upright_keywords": [
+      "選擇多",
+      "幻想",
+      "機會",
+      "難以選擇",
+      "願景"
+    ],
+    "reversed_keywords": [
+      "看清選項",
+      "做出決定",
+      "夢想落地",
+      "迷霧消散"
+    ],
+    "symbolism": "雲中七杯各裝不同願景與誘惑，象徵選擇多到令人眩目、需分辨虛實。",
+    "image": "images/cups-07.jpg"
+  },
+  {
+    "name_zh": "聖杯八",
+    "name_en": "Eight of Cups",
+    "number": 8,
+    "arcana": "cups",
+    "element": "Water",
+    "upright_keywords": [
+      "離開",
+      "放下",
+      "追尋深意",
+      "轉身",
+      "情感遷徙"
+    ],
+    "reversed_keywords": [
+      "猶豫離開",
+      "恐懼改變",
+      "回頭",
+      "拖延放下"
+    ],
+    "symbolism": "身影向山中走去，留下八杯，象徵願意放下熟悉去追尋更有意義之物。",
+    "image": "images/cups-08.jpg"
+  },
+  {
+    "name_zh": "聖杯九",
+    "name_en": "Nine of Cups",
+    "number": 9,
+    "arcana": "cups",
+    "element": "Water",
+    "upright_keywords": [
+      "心滿意足",
+      "願望成真",
+      "感官享受",
+      "豐盛",
+      "成就感"
+    ],
+    "reversed_keywords": [
+      "空虛感",
+      "膚淺滿足",
+      "過度耽溺",
+      "不感恩"
+    ],
+    "symbolism": "滿足的人端坐、背後九杯成排，象徵個人願望的實現（俗稱「願望牌」）。",
+    "image": "images/cups-09.jpg"
+  },
+  {
+    "name_zh": "聖杯十",
+    "name_en": "Ten of Cups",
+    "number": 10,
+    "arcana": "cups",
+    "element": "Water",
+    "upright_keywords": [
+      "家庭幸福",
+      "情感圓滿",
+      "和諧",
+      "長久伴侶",
+      "歸屬"
+    ],
+    "reversed_keywords": [
+      "家庭摩擦",
+      "情感不合",
+      "失和",
+      "理想與現實落差"
+    ],
+    "symbolism": "家人指向彩虹，彩虹上有十杯，象徵情感層面的終極豐盛與共享的幸福。",
+    "image": "images/cups-10.jpg"
+  },
+  {
+    "name_zh": "聖杯侍者",
+    "name_en": "Page of Cups",
+    "number": 11,
+    "arcana": "cups",
+    "element": "Water",
+    "upright_keywords": [
+      "創意訊息",
+      "浪漫啟蒙",
+      "敏感",
+      "童心",
+      "直覺訊號"
+    ],
+    "reversed_keywords": [
+      "情緒化",
+      "不成熟",
+      "白日夢",
+      "創意卡住"
+    ],
+    "symbolism": "年輕人杯中躍出一條魚，象徵意外湧現的直覺或創意邀請。",
+    "image": "images/cups-11.jpg"
+  },
+  {
+    "name_zh": "聖杯騎士",
+    "name_en": "Knight of Cups",
+    "number": 12,
+    "arcana": "cups",
+    "element": "Water",
+    "upright_keywords": [
+      "浪漫",
+      "理想主義",
+      "邀請",
+      "藝術追求",
+      "情感主動"
+    ],
+    "reversed_keywords": [
+      "情感操弄",
+      "不切實際",
+      "情緒起伏",
+      "拖泥帶水"
+    ],
+    "symbolism": "騎士緩行、聖杯遞出，象徵以優雅姿態獻出情感或邀請的能量。",
+    "image": "images/cups-12.jpg"
+  },
+  {
+    "name_zh": "聖杯皇后",
+    "name_en": "Queen of Cups",
+    "number": 13,
+    "arcana": "cups",
+    "element": "Water",
+    "upright_keywords": [
+      "同理",
+      "敏銳",
+      "滋養",
+      "直覺",
+      "情感成熟"
+    ],
+    "reversed_keywords": [
+      "情緒過載",
+      "共依存",
+      "逃避",
+      "情感界線模糊"
+    ],
+    "symbolism": "皇后凝視手中精緻聖杯，象徵深度同理與成熟的情感容器。",
+    "image": "images/cups-13.jpg"
+  },
+  {
+    "name_zh": "聖杯國王",
+    "name_en": "King of Cups",
+    "number": 14,
+    "arcana": "cups",
+    "element": "Water",
+    "upright_keywords": [
+      "情感穩定",
+      "外交",
+      "慈悲領導",
+      "內在平衡",
+      "諮商"
+    ],
+    "reversed_keywords": [
+      "情緒壓抑",
+      "被動攻擊",
+      "操控",
+      "失控憤怒"
+    ],
+    "symbolism": "國王在翻湧海面上端坐穩如磐石，象徵在情感風浪中保持清明的成熟。",
+    "image": "images/cups-14.jpg"
+  },
+  {
+    "name_zh": "寶劍一",
+    "name_en": "Ace of Swords",
+    "number": 1,
+    "arcana": "swords",
+    "element": "Air",
+    "upright_keywords": [
+      "突破",
+      "清晰",
+      "真相",
+      "新思維",
+      "決斷"
+    ],
+    "reversed_keywords": [
+      "混亂",
+      "誤解",
+      "言語傷害",
+      "決策卡住"
+    ],
+    "symbolism": "雲中手握立起的劍，劍頂冠冕，象徵突破迷霧的清晰思維。",
+    "image": "images/swords-01.jpg"
+  },
+  {
+    "name_zh": "寶劍二",
+    "name_en": "Two of Swords",
+    "number": 2,
+    "arcana": "swords",
+    "element": "Air",
+    "upright_keywords": [
+      "僵局",
+      "難以抉擇",
+      "平衡",
+      "防禦",
+      "暫停"
+    ],
+    "reversed_keywords": [
+      "做出決定",
+      "打破僵局",
+      "看清選項",
+      "資訊揭露"
+    ],
+    "symbolism": "蒙眼女子雙手交叉持劍於胸前，象徵在兩難中暫時關閉訊息以維持平衡。",
+    "image": "images/swords-02.jpg"
+  },
+  {
+    "name_zh": "寶劍三",
+    "name_en": "Three of Swords",
+    "number": 3,
+    "arcana": "swords",
+    "element": "Air",
+    "upright_keywords": [
+      "心碎",
+      "痛苦真相",
+      "背叛",
+      "悲傷",
+      "失落"
+    ],
+    "reversed_keywords": [
+      "開始療癒",
+      "寬恕",
+      "釋放傷痛",
+      "走出哀傷"
+    ],
+    "symbolism": "三把劍穿心於雨雲下，象徵被真相切開的痛、但也是清理的開始。",
+    "image": "images/swords-03.jpg"
+  },
+  {
+    "name_zh": "寶劍四",
+    "name_en": "Four of Swords",
+    "number": 4,
+    "arcana": "swords",
+    "element": "Air",
+    "upright_keywords": [
+      "休息",
+      "療養",
+      "沉思",
+      "撤退",
+      "暫停"
+    ],
+    "reversed_keywords": [
+      "過勞",
+      "焦慮",
+      "拒絕休息",
+      "恢復中"
+    ],
+    "symbolism": "騎士石像靜臥於教堂，象徵主動撤退以重整的必要休止。",
+    "image": "images/swords-04.jpg"
+  },
+  {
+    "name_zh": "寶劍五",
+    "name_en": "Five of Swords",
+    "number": 5,
+    "arcana": "swords",
+    "element": "Air",
+    "upright_keywords": [
+      "衝突",
+      "贏了輸",
+      "好鬥",
+      "羞辱",
+      "自我中心"
+    ],
+    "reversed_keywords": [
+      "和解",
+      "放下勝負",
+      "承認錯誤",
+      "轉化衝突"
+    ],
+    "symbolism": "贏家收劍、敗者遠去，象徵即使贏了也要思考代價。",
+    "image": "images/swords-05.jpg"
+  },
+  {
+    "name_zh": "寶劍六",
+    "name_en": "Six of Swords",
+    "number": 6,
+    "arcana": "swords",
+    "element": "Air",
+    "upright_keywords": [
+      "過渡",
+      "離開困難",
+      "前行",
+      "療癒旅程",
+      "平靜"
+    ],
+    "reversed_keywords": [
+      "卡在過去",
+      "延遲離開",
+      "回頭",
+      "阻礙前行"
+    ],
+    "symbolism": "船載母子緩行於平靜水面，象徵從紛亂向寧靜的過渡。",
+    "image": "images/swords-06.jpg"
+  },
+  {
+    "name_zh": "寶劍七",
+    "name_en": "Seven of Swords",
+    "number": 7,
+    "arcana": "swords",
+    "element": "Air",
+    "upright_keywords": [
+      "策略",
+      "隱瞞",
+      "閃避",
+      "自保",
+      "不誠實"
+    ],
+    "reversed_keywords": [
+      "承認",
+      "放棄欺瞞",
+      "誠實面對",
+      "良心回歸"
+    ],
+    "symbolism": "人躡手躡腳偷走五把劍、留下兩把，象徵抄近路或保留實力的策略行動（也可能暗示不坦白）。",
+    "image": "images/swords-07.jpg"
+  },
+  {
+    "name_zh": "寶劍八",
+    "name_en": "Eight of Swords",
+    "number": 8,
+    "arcana": "swords",
+    "element": "Air",
+    "upright_keywords": [
+      "受困感",
+      "自我設限",
+      "恐懼",
+      "被動",
+      "盲點"
+    ],
+    "reversed_keywords": [
+      "解放",
+      "看見出路",
+      "打破束縛",
+      "覺察"
+    ],
+    "symbolism": "蒙眼女子周圍八把劍圍成半開的籠，象徵大多是自我感受造成的受困。",
+    "image": "images/swords-08.jpg"
+  },
+  {
+    "name_zh": "寶劍九",
+    "name_en": "Nine of Swords",
+    "number": 9,
+    "arcana": "swords",
+    "element": "Air",
+    "upright_keywords": [
+      "焦慮",
+      "失眠",
+      "自我折磨",
+      "夢魘",
+      "過度擔憂"
+    ],
+    "reversed_keywords": [
+      "釋放焦慮",
+      "看清現實",
+      "走出低潮",
+      "尋求協助"
+    ],
+    "symbolism": "人坐床上雙手掩面，牆上九把劍，象徵多為想像放大的恐懼折磨。",
+    "image": "images/swords-09.jpg"
+  },
+  {
+    "name_zh": "寶劍十",
+    "name_en": "Ten of Swords",
+    "number": 10,
+    "arcana": "swords",
+    "element": "Air",
+    "upright_keywords": [
+      "結束",
+      "觸底",
+      "背刺",
+      "痛苦終結",
+      "投降"
+    ],
+    "reversed_keywords": [
+      "正在復原",
+      "走出谷底",
+      "新黎明",
+      "拒絕接受"
+    ],
+    "symbolism": "人臥地、十劍插背、遠方曙光初升，象徵痛苦抵達盡頭、新的一天即將來臨。",
+    "image": "images/swords-10.jpg"
+  },
+  {
+    "name_zh": "寶劍侍者",
+    "name_en": "Page of Swords",
+    "number": 11,
+    "arcana": "swords",
+    "element": "Air",
+    "upright_keywords": [
+      "好奇",
+      "好問",
+      "警覺",
+      "學習",
+      "直率"
+    ],
+    "reversed_keywords": [
+      "八卦",
+      "口無遮攔",
+      "過度戒備",
+      "思慮零散"
+    ],
+    "symbolism": "年輕人舉劍立於風中山丘，象徵銳利的好奇心與求知慾。",
+    "image": "images/swords-11.jpg"
+  },
+  {
+    "name_zh": "寶劍騎士",
+    "name_en": "Knight of Swords",
+    "number": 12,
+    "arcana": "swords",
+    "element": "Air",
+    "upright_keywords": [
+      "行動迅速",
+      "理性追求",
+      "直言",
+      "目標導向",
+      "衝勁"
+    ],
+    "reversed_keywords": [
+      "魯莽",
+      "咄咄逼人",
+      "計畫脫離",
+      "衝動失控"
+    ],
+    "symbolism": "騎士舉劍飛馳，象徵以清晰思維高速切過障礙的行動。",
+    "image": "images/swords-12.jpg"
+  },
+  {
+    "name_zh": "寶劍皇后",
+    "name_en": "Queen of Swords",
+    "number": 13,
+    "arcana": "swords",
+    "element": "Air",
+    "upright_keywords": [
+      "清晰",
+      "獨立",
+      "誠實",
+      "冷靜判斷",
+      "界線分明"
+    ],
+    "reversed_keywords": [
+      "冷漠",
+      "刻薄",
+      "批判",
+      "情感疏離"
+    ],
+    "symbolism": "皇后端坐舉劍，象徵經歷過才懂的清晰與不被情緒左右的判斷。",
+    "image": "images/swords-13.jpg"
+  },
+  {
+    "name_zh": "寶劍國王",
+    "name_en": "King of Swords",
+    "number": 14,
+    "arcana": "swords",
+    "element": "Air",
+    "upright_keywords": [
+      "理性領導",
+      "權威",
+      "公正",
+      "戰略",
+      "智慧"
+    ],
+    "reversed_keywords": [
+      "濫用權力",
+      "操縱",
+      "冷血",
+      "獨斷"
+    ],
+    "symbolism": "國王正面持劍而坐，象徵以理性與原則行使權威的成熟領袖。",
+    "image": "images/swords-14.jpg"
+  },
+  {
+    "name_zh": "錢幣一",
+    "name_en": "Ace of Pentacles",
+    "number": 1,
+    "arcana": "pentacles",
+    "element": "Earth",
+    "upright_keywords": [
+      "物質新機",
+      "豐盛",
+      "機會",
+      "健康",
+      "實際基礎"
+    ],
+    "reversed_keywords": [
+      "錯過機會",
+      "延遲",
+      "浪費資源",
+      "短視"
+    ],
+    "symbolism": "雲中手遞出金幣、花園盛開，象徵物質或健康層面的禮物降臨。",
+    "image": "images/pentacles-01.jpg"
+  },
+  {
+    "name_zh": "錢幣二",
+    "name_en": "Two of Pentacles",
+    "number": 2,
+    "arcana": "pentacles",
+    "element": "Earth",
+    "upright_keywords": [
+      "平衡",
+      "靈活",
+      "多工",
+      "優先排序",
+      "適應"
+    ],
+    "reversed_keywords": [
+      "超載",
+      "時間管理失控",
+      "失去平衡",
+      "顧此失彼"
+    ],
+    "symbolism": "雜技者以無限符號玩轉兩金幣，背景有波濤船隻，象徵在變動中保持平衡的能力。",
+    "image": "images/pentacles-02.jpg"
+  },
+  {
+    "name_zh": "錢幣三",
+    "name_en": "Three of Pentacles",
+    "number": 3,
+    "arcana": "pentacles",
+    "element": "Earth",
+    "upright_keywords": [
+      "團隊合作",
+      "專業",
+      "學習",
+      "成長",
+      "肯定"
+    ],
+    "reversed_keywords": [
+      "合作不良",
+      "缺乏肯定",
+      "技能不足",
+      "團隊失和"
+    ],
+    "symbolism": "工匠在教堂內工作、兩位主顧旁觀，象徵專業合作的早期成果。",
+    "image": "images/pentacles-03.jpg"
+  },
+  {
+    "name_zh": "錢幣四",
+    "name_en": "Four of Pentacles",
+    "number": 4,
+    "arcana": "pentacles",
+    "element": "Earth",
+    "upright_keywords": [
+      "守成",
+      "節儉",
+      "保守",
+      "安全感",
+      "積累"
+    ],
+    "reversed_keywords": [
+      "貪婪",
+      "吝嗇",
+      "不放手",
+      "失去"
+    ],
+    "symbolism": "人緊抱四金幣，象徵過度抓牢安全感的傾向（也是穩固保有的姿態）。",
+    "image": "images/pentacles-04.jpg"
+  },
+  {
+    "name_zh": "錢幣五",
+    "name_en": "Five of Pentacles",
+    "number": 5,
+    "arcana": "pentacles",
+    "element": "Earth",
+    "upright_keywords": [
+      "困境",
+      "匱乏感",
+      "孤立",
+      "健康挑戰",
+      "財務壓力"
+    ],
+    "reversed_keywords": [
+      "走出困境",
+      "尋求協助",
+      "恢復",
+      "看見支援"
+    ],
+    "symbolism": "雪中兩人經過燈火教堂卻未進入，象徵困頓中忽略身旁仍有的溫暖。",
+    "image": "images/pentacles-05.jpg"
+  },
+  {
+    "name_zh": "錢幣六",
+    "name_en": "Six of Pentacles",
+    "number": 6,
+    "arcana": "pentacles",
+    "element": "Earth",
+    "upright_keywords": [
+      "給予",
+      "接受",
+      "慷慨",
+      "分享",
+      "平衡互惠"
+    ],
+    "reversed_keywords": [
+      "不平衡給予",
+      "施受失衡",
+      "債務",
+      "條件交換"
+    ],
+    "symbolism": "富人施予乞丐、持天秤，象徵資源流動的公平分配。",
+    "image": "images/pentacles-06.jpg"
+  },
+  {
+    "name_zh": "錢幣七",
+    "name_en": "Seven of Pentacles",
+    "number": 7,
+    "arcana": "pentacles",
+    "element": "Earth",
+    "upright_keywords": [
+      "評估",
+      "耐心",
+      "中長期投資",
+      "檢視成果",
+      "再規劃"
+    ],
+    "reversed_keywords": [
+      "缺乏耐心",
+      "努力未見回報",
+      "投資失當",
+      "徒勞"
+    ],
+    "symbolism": "農夫倚鋤望向果實累累的樹叢，象徵暫停評估努力的成效。",
+    "image": "images/pentacles-07.jpg"
+  },
+  {
+    "name_zh": "錢幣八",
+    "name_en": "Eight of Pentacles",
+    "number": 8,
+    "arcana": "pentacles",
+    "element": "Earth",
+    "upright_keywords": [
+      "專注",
+      "學習",
+      "磨練",
+      "精進",
+      "工藝"
+    ],
+    "reversed_keywords": [
+      "停滯",
+      "失焦",
+      "得過且過",
+      "技能退化"
+    ],
+    "symbolism": "工匠專心雕刻第八枚金幣，象徵日積月累的精進。",
+    "image": "images/pentacles-08.jpg"
+  },
+  {
+    "name_zh": "錢幣九",
+    "name_en": "Nine of Pentacles",
+    "number": 9,
+    "arcana": "pentacles",
+    "element": "Earth",
+    "upright_keywords": [
+      "獨立",
+      "自給自足",
+      "豐盛",
+      "享受成果",
+      "優雅生活"
+    ],
+    "reversed_keywords": [
+      "依賴",
+      "成果空虛",
+      "物質迷失",
+      "獨享失衡"
+    ],
+    "symbolism": "貴婦獨享葡萄園、鷹立其手，象徵自律結出的優雅與自給自足。",
+    "image": "images/pentacles-09.jpg"
+  },
+  {
+    "name_zh": "錢幣十",
+    "name_en": "Ten of Pentacles",
+    "number": 10,
+    "arcana": "pentacles",
+    "element": "Earth",
+    "upright_keywords": [
+      "家族富足",
+      "傳承",
+      "長期穩固",
+      "血脈",
+      "體制完備"
+    ],
+    "reversed_keywords": [
+      "家族衝突",
+      "傳承難題",
+      "財務糾紛",
+      "結構動盪"
+    ],
+    "symbolism": "三代同堂於家族庭院，象徵物質層面的跨代豐盛與傳承。",
+    "image": "images/pentacles-10.jpg"
+  },
+  {
+    "name_zh": "錢幣侍者",
+    "name_en": "Page of Pentacles",
+    "number": 11,
+    "arcana": "pentacles",
+    "element": "Earth",
+    "upright_keywords": [
+      "學習",
+      "機會",
+      "踏實",
+      "新實務起步",
+      "計畫成形"
+    ],
+    "reversed_keywords": [
+      "拖延",
+      "不踏實",
+      "計畫延宕",
+      "浪費機會"
+    ],
+    "symbolism": "年輕人專注端詳手中金幣，象徵對具體計畫的踏實投入。",
+    "image": "images/pentacles-11.jpg"
+  },
+  {
+    "name_zh": "錢幣騎士",
+    "name_en": "Knight of Pentacles",
+    "number": 12,
+    "arcana": "pentacles",
+    "element": "Earth",
+    "upright_keywords": [
+      "穩健",
+      "可靠",
+      "按部就班",
+      "毅力",
+      "實務"
+    ],
+    "reversed_keywords": [
+      "固執",
+      "停滯",
+      "不願變通",
+      "拖延"
+    ],
+    "symbolism": "騎士立於耕耘過的田野持金幣，象徵穩扎穩打的可靠行動。",
+    "image": "images/pentacles-12.jpg"
+  },
+  {
+    "name_zh": "錢幣皇后",
+    "name_en": "Queen of Pentacles",
+    "number": 13,
+    "arcana": "pentacles",
+    "element": "Earth",
+    "upright_keywords": [
+      "務實滋養",
+      "身體力行",
+      "豐饒",
+      "經營",
+      "居家智慧"
+    ],
+    "reversed_keywords": [
+      "工作/家庭失衡",
+      "過度物質",
+      "忽略自我",
+      "疲憊"
+    ],
+    "symbolism": "皇后於花園端坐懷抱金幣，小兔於腳邊，象徵務實持家的滋養能量。",
+    "image": "images/pentacles-13.jpg"
+  },
+  {
+    "name_zh": "錢幣國王",
+    "name_en": "King of Pentacles",
+    "number": 14,
+    "arcana": "pentacles",
+    "element": "Earth",
+    "upright_keywords": [
+      "物質成功",
+      "企業家",
+      "穩定領導",
+      "投資智慧",
+      "富足"
+    ],
+    "reversed_keywords": [
+      "物質執著",
+      "守財",
+      "僵化",
+      "商業失敗"
+    ],
+    "symbolism": "國王於葡萄藤王座上端坐持金幣，象徵以務實智慧建立的長期成功。",
+    "image": "images/pentacles-14.jpg"
+  }
+];
+  </script>
+
+  <script>
+    // Nav scroll shadow
+    const nav = document.getElementById('siteNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 8);
+    }, { passive: true });
+  </script>
+
+  <!-- ===== Tarot Tool 抽牌邏輯（Step 5；Step 6 補 prompt 生成 + copy） ===== -->
+  <script>
+    (function () {
+      const $ = (sel, root) => (root || document).querySelector(sel);
+      const $$ = (sel, root) => Array.from((root || document).querySelectorAll(sel));
+
+      const POSITIONS = {
+        single: [null],
+        three:  ['過去', '現在', '未來'],
+        daily:  [null],
+      };
+
+      const state = {
+        mode: 'single',       // 'single' | 'three' | 'daily'
+        drawMode: 'random',   // 'random' | 'manual'
+        lastDraws: null,      // 最近一次抽牌結果（Step 6 使用）
+      };
+
+      // DOM refs
+      const modeTabs = $$('.mode-tab');
+      const questionField = $('#question-field');
+      const drawModeRadios = $$('input[name="draw-mode"]');
+      const manualInput = $('#manual-input');
+      const drawBtn = $('#draw-btn');
+      const resultSection = $('#result');
+      const resultCards = $('#result-cards');
+      const promptPreview = $('#prompt-preview');
+
+      // 無放回抽樣：從 [0, n) 隨機抽 k 個不重複 index
+      function sampleWithoutReplacement(n, k) {
+        const pool = Array.from({ length: n }, (_, i) => i);
+        const out = [];
+        for (let i = 0; i < k; i++) {
+          const j = Math.floor(Math.random() * pool.length);
+          out.push(pool.splice(j, 1)[0]);
+        }
+        return out;
+      }
+
+      function getCardCount() {
+        return state.mode === 'three' ? 3 : 1;
+      }
+
+      // ===== Mode tabs =====
+      function setMode(mode) {
+        state.mode = mode;
+        modeTabs.forEach(t => {
+          const active = t.dataset.mode === mode;
+          t.classList.toggle('active', active);
+          t.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+        // 每日能量隱藏問題 input
+        questionField.hidden = (mode === 'daily');
+        // 切模式重渲染 manual-input
+        if (state.drawMode === 'manual') renderManualInput();
+        // 收結果
+        resultSection.hidden = true;
+      }
+
+      // ===== Draw mode（隨機 / 手動） =====
+      function setDrawMode(dm) {
+        state.drawMode = dm;
+        if (dm === 'manual') {
+          renderManualInput();
+          manualInput.hidden = false;
+        } else {
+          manualInput.hidden = true;
+        }
+      }
+
+      // ===== 手動選牌渲染 =====
+      function renderManualInput() {
+        const count = getCardCount();
+        const positions = POSITIONS[state.mode];
+        const options = CARDS.map((c, idx) =>
+          `<option value="${idx}">${c.name_zh}</option>`
+        ).join('');
+
+        const rows = [];
+        for (let i = 0; i < count; i++) {
+          const pos = positions[i];
+          const posHtml = pos
+            ? `<span class="position-label">${pos}</span>`
+            : `<span class="position-label" aria-hidden="true"></span>`;
+          rows.push(`
+            <div class="manual-row" data-slot="${i}">
+              ${posHtml}
+              <select class="manual-card-select" data-slot="${i}" aria-label="${pos || '選擇一張牌'}">
+                ${options}
+              </select>
+              <label class="reversed-check">
+                <input type="checkbox" class="manual-reversed" data-slot="${i}" />
+                <span>逆位</span>
+              </label>
+            </div>
+          `);
+        }
+        manualInput.innerHTML = rows.join('');
+
+        // 三牌陣手動：預設 3 張不同牌，避免一開始 3 個都「愚人」
+        if (count === 3) {
+          const selects = $$('.manual-card-select', manualInput);
+          selects.forEach((s, i) => { s.value = String(i % CARDS.length); });
+        }
+      }
+
+      // ===== 抽牌 =====
+      function drawRandom() {
+        const count = getCardCount();
+        const positions = POSITIONS[state.mode];
+        const indices = sampleWithoutReplacement(CARDS.length, count);
+        return indices.map((idx, i) => ({
+          card: CARDS[idx],
+          reversed: Math.random() < 0.5,
+          position: positions[i],
+        }));
+      }
+
+      function drawManual() {
+        const count = getCardCount();
+        const positions = POSITIONS[state.mode];
+        const selects = $$('.manual-card-select', manualInput);
+        const checks = $$('.manual-reversed', manualInput);
+        const out = [];
+        for (let i = 0; i < count; i++) {
+          const idx = parseInt(selects[i].value, 10);
+          out.push({
+            card: CARDS[idx],
+            reversed: checks[i].checked,
+            position: positions[i],
+          });
+        }
+        return out;
+      }
+
+      // ===== Prompt 生成器 =====
+      const ARCANA_ZH = {
+        major: '大阿爾克納',
+        wands: '小阿爾克納 · 權杖',
+        cups: '小阿爾克納 · 聖杯',
+        swords: '小阿爾克納 · 寶劍',
+        pentacles: '小阿爾克納 · 錢幣',
+      };
+
+      function buildPrompt(mode, draws, question) {
+        const targetWords =
+          mode === 'three' ? '350-500'
+          : mode === 'daily' ? '100-180'
+          : '150-250';
+
+        const role = `你是塔羅解讀師，依 Rider-Waite-Smith 傳統解讀。`;
+        const style = `回應 ${targetWords} 字，繁體中文，語氣沉穩、不誇大、不命定論。`;
+
+        const cardLines = draws.map(d => {
+          const kws = (d.reversed ? d.card.reversed_keywords : d.card.upright_keywords).slice(0, 3).join('、');
+          const pos = d.position ? `[${d.position}] ` : '';
+          const arcana = ARCANA_ZH[d.card.arcana] || d.card.arcana;
+          return `${pos}${d.card.name_zh}（${d.reversed ? '逆位' : '正位'}）— ${arcana}；關鍵字：${kws}`;
+        }).join('\n');
+
+        let ask = '';
+        if (mode === 'daily') {
+          ask = '\n\n請給今日能量提醒，包含：核心訊息、建議行動、需留意的傾向。';
+        } else if (question && question.trim()) {
+          ask = `\n\n問題：${question.trim()}`;
+        } else if (mode === 'three') {
+          ask = '\n\n請依「過去 → 現在 → 未來」三段解讀，並在末尾給出整體建議。';
+        } else {
+          ask = '\n\n請依抽到的牌解讀。';
+        }
+
+        return `${role}\n${style}\n\n抽到的牌：\n${cardLines}${ask}`;
+      }
+
+      // ===== 結果渲染 =====
+      function renderResult(draws) {
+        resultCards.className = 'cards' + (draws.length === 3 ? ' spread-three' : '');
+        resultCards.innerHTML = draws.map(d => `
+          <div class="card-tile">
+            ${d.position ? `<span class="pos">${d.position}</span>` : ''}
+            <div class="card-tile-img-wrap ${d.reversed ? 'reversed' : ''}">
+              <img src="${d.card.image}" alt="${d.card.name_zh}" loading="lazy" />
+            </div>
+            <div class="name">${d.card.name_zh}</div>
+            <div class="orientation">${d.reversed ? '逆位' : '正位'} · ${d.card.name_en}</div>
+          </div>
+        `).join('');
+
+        // 真實 prompt 生成
+        const question = $('#question').value;
+        const promptText = buildPrompt(state.mode, draws, question);
+        promptPreview.textContent = promptText;
+        state.lastPrompt = promptText;
+
+        resultSection.hidden = false;
+        resultSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      // ===== Copy 按鈕 =====
+      const copyBtn = $('#copy-btn');
+      const copyStatus = $('#copy-status');
+      let copyResetTimer = null;
+      async function handleCopy() {
+        const text = promptPreview.textContent || '';
+        if (!text) return;
+        try {
+          await navigator.clipboard.writeText(text);
+          copyStatus.textContent = '✓ 已複製，貼到任一 LLM';
+          copyStatus.classList.add('show');
+        } catch (err) {
+          // 退路：select-all 提示手動複製
+          const range = document.createRange();
+          range.selectNodeContents(promptPreview);
+          const sel = window.getSelection();
+          sel.removeAllRanges();
+          sel.addRange(range);
+          copyStatus.textContent = '⚠ 自動複製被擋，請手動 ⌘+C';
+          copyStatus.classList.add('show');
+        }
+        clearTimeout(copyResetTimer);
+        copyResetTimer = setTimeout(() => copyStatus.classList.remove('show'), 2500);
+      }
+      copyBtn.addEventListener('click', handleCopy);
+
+      // ===== 抽牌按鈕 =====
+      function handleDraw() {
+        let draws;
+        if (state.drawMode === 'manual') {
+          draws = drawManual();
+          if (draws.length === 3) {
+            const ids = draws.map(d => d.card.name_en);
+            if (new Set(ids).size < 3) {
+              alert('三牌陣手動模式請選 3 張不同的牌');
+              return;
+            }
+          }
+        } else {
+          draws = drawRandom();
+        }
+        state.lastDraws = draws;
+        renderResult(draws);
+      }
+
+      // ===== Events =====
+      modeTabs.forEach(t => t.addEventListener('click', () => setMode(t.dataset.mode)));
+      drawModeRadios.forEach(r => r.addEventListener('change', (e) => setDrawMode(e.target.value)));
+      drawBtn.addEventListener('click', handleDraw);
+
+      // ===== Init =====
+      setMode('single');
+      setDrawMode('random');
+
+      // 暴露給 Step 6 用（prompt 生成器讀 state.lastDraws）
+      window.__tarotState = state;
+    })();
+  </script>
+
+</body>
+</html>
