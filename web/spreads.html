@@ -3,13 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>claude-tarot — 78 張塔羅，AI 幫你讀</title>
-  <meta name="description" content="Rider-Waite-Smith 公共領域牌義｜抽牌後一鍵 copy prompt，貼到 ChatGPT/Claude/Gemini">
+  <title>進階牌陣 — claude-tarot</title>
+  <meta name="description" content="意識與淺意識 / 時間之流 / 二多擇一 — 含心態牌的進階塔羅牌陣，AI 解讀 prompt 一鍵生成">
 
-  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Google Fonts — 統一 Noto Serif TC（中英 serif 一致） -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -45,7 +43,6 @@
       position: relative;
     }
 
-    /* 微星空：覆蓋層撒淡白點 */
     body::before {
       content: "";
       position: fixed;
@@ -74,20 +71,19 @@
       color: var(--color-text);
       letter-spacing: 0.04em;
     }
-    h1 { font-size: clamp(2.25rem, 5.5vw, 3.75rem); }
-    h2 { font-size: clamp(1.625rem, 3.5vw, 2.375rem); margin-bottom: 1rem; }
-    h3 { font-size: 1.375rem; font-weight: 600; margin-bottom: 0.75rem; }
+    h1 { font-size: clamp(2rem, 5vw, 3.25rem); }
+    h2 { font-size: clamp(1.5rem, 3.5vw, 2.25rem); margin-bottom: 1rem; }
+    h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem; }
 
     a { color: var(--color-primary); transition: color var(--transition); }
     a:hover { color: var(--color-cta); }
 
-    .container-tight { max-width: 720px; margin: 0 auto; padding: 0 1.5rem; }
-    .container-wide  { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
+    .container-tight { max-width: 760px; margin: 0 auto; padding: 0 1.5rem; }
 
-    section { padding: 4rem 0; }
-    @media (min-width: 768px) { section { padding: 6rem 0; } }
-    #hero { padding: 6rem 0 5rem; }
-    @media (min-width: 768px) { #hero { padding: 9rem 0 7rem; } }
+    section { padding: 3rem 0; }
+    @media (min-width: 768px) { section { padding: 5rem 0; } }
+    #hero { padding: 4.5rem 0 2.5rem; }
+    @media (min-width: 768px) { #hero { padding: 7rem 0 4rem; } }
 
     /* ===== Nav ===== */
     .site-nav {
@@ -107,144 +103,75 @@
       padding: 0.875rem 1.5rem;
       display: flex;
       align-items: center;
-      gap: 1.5rem;
+      gap: 1rem;
     }
     .nav-brand {
       font-family: var(--font-headline);
       font-weight: 700;
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       letter-spacing: 0.04em;
       color: var(--color-text);
+      text-decoration: none;
     }
     .nav-brand:hover { color: var(--color-cta); }
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-      list-style: none;
-      margin: 0 auto 0 1rem;
-      padding: 0;
-    }
-    .nav-links a {
+    .nav-back {
+      font-size: 0.92rem;
       color: var(--color-muted);
       text-decoration: none;
-      font-size: 0.95rem;
-      font-weight: 400;
+      transition: color var(--transition);
     }
-    .nav-links a:hover { color: var(--color-cta); }
-    .nav-cta {
-      background: var(--color-cta);
-      color: var(--color-cta-text) !important;
-      padding: 0.5rem 1.125rem;
-      border-radius: 999px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      text-decoration: none;
-      transition: all var(--transition);
-    }
-    .nav-cta:hover { box-shadow: var(--shadow-gold); transform: translateY(-1px); }
-    .nav-cta-secondary {
-      padding: 0.5rem 1.05rem;
-      background: rgba(232, 197, 71, 0.1);
+    .nav-back:hover { color: var(--color-cta); }
+    .nav-spacer { flex: 1; }
+    .nav-pill {
+      padding: 0.4rem 0.95rem;
+      background: rgba(232, 197, 71, 0.12);
       border: 1px solid var(--color-cta);
       color: var(--color-cta);
       border-radius: 999px;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       font-weight: 500;
       letter-spacing: 0.04em;
       text-decoration: none;
       transition: all var(--transition);
-      margin-right: 0.5rem;
-      white-space: nowrap;
     }
-    .nav-cta-secondary:hover {
+    a.nav-pill:hover {
       background: var(--color-cta);
       color: var(--color-cta-text);
-    }
-    @media (max-width: 860px) { .nav-links { display: none; } }
-    @media (max-width: 520px) {
-      .nav-cta-secondary { font-size: 0.8rem; padding: 0.4rem 0.75rem; }
-      .nav-cta { font-size: 0.82rem; padding: 0.4rem 0.85rem; }
     }
 
-    /* ===== CTA ===== */
-    .cta-primary {
+    /* ===== Hero ===== */
+    .hero-tag {
       display: inline-block;
-      background: var(--color-cta);
-      color: var(--color-cta-text);
-      padding: 1rem 2.25rem;
+      padding: 0.35rem 0.9rem;
+      background: rgba(232, 197, 71, 0.1);
+      border: 1px solid rgba(232, 197, 71, 0.3);
       border-radius: 999px;
-      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--color-cta);
+      letter-spacing: 0.08em;
+      margin-bottom: 1.25rem;
+    }
+    .hero-desc {
+      color: var(--color-muted);
       font-size: 1.05rem;
-      text-decoration: none;
-      cursor: pointer;
-      transition: all var(--transition);
-      box-shadow: var(--shadow-soft);
-      letter-spacing: 0.02em;
+      margin-top: 1rem;
     }
-    .cta-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-gold);
-      color: var(--color-cta-text);
-    }
-    .cta-primary:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 3px; }
 
     /* ===== Glass card ===== */
     .glass {
       background: var(--glass-bg);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border: 1px solid var(--color-border);
       border-radius: 16px;
-      transition: all var(--transition);
-    }
-    .glass:hover { background: rgba(255,255,255,0.08); transform: translateY(-2px); }
-
-    /* ===== Section common ===== */
-    #hook p, #about p { font-size: 1.1rem; margin-bottom: 1rem; color: var(--color-text); opacity: 0.9; }
-
-    /* Steps（怎麼用三步） */
-    .steps {
-      list-style: none;
-      padding: 0;
-      margin: 2rem 0 0;
-      display: grid;
-      gap: 1rem;
-    }
-    .steps li {
-      display: flex;
-      gap: 1.25rem;
-      align-items: flex-start;
-      padding: 1.5rem 1.75rem;
-      background: var(--glass-bg);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid var(--color-border);
-      border-radius: 14px;
-      transition: all var(--transition);
-    }
-    .steps li:hover { background: rgba(255,255,255,0.08); transform: translateY(-2px); }
-    .step-num {
-      font-family: var(--font-headline);
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--color-cta);
-      line-height: 1;
-      letter-spacing: 0.04em;
-      flex-shrink: 0;
-      min-width: 2.5rem;
-    }
-    .steps h3 { margin: 0 0 0.25rem; color: var(--color-text); }
-    .steps p { margin: 0; color: var(--color-text); opacity: 0.85; font-size: 1rem; line-height: 1.7; }
-    @media (max-width: 480px) {
-      .steps li { padding: 1.25rem 1.25rem; gap: 1rem; }
-      .step-num { font-size: 1.6rem; min-width: 2rem; }
+      box-shadow: var(--shadow-soft);
     }
 
-    /* ===== Tarot Tool ===== */
-    .tool-wrap { padding: 2rem; margin-top: 2rem; }
+    /* ===== Tool ===== */
+    .tool-wrap { padding: 2rem; margin-top: 1.5rem; }
     @media (max-width: 480px) { .tool-wrap { padding: 1.5rem; } }
 
-    /* Mode tabs（segmented control） */
+    /* Mode tabs（3 個進階牌陣） */
     .mode-tabs {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
@@ -259,13 +186,14 @@
       background: transparent;
       border: 0;
       color: var(--color-muted);
-      padding: 0.6rem 0.5rem;
+      padding: 0.6rem 0.4rem;
       border-radius: 999px;
       font-family: var(--font-body);
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 500;
       cursor: pointer;
       transition: all var(--transition);
+      white-space: nowrap;
     }
     .mode-tab:hover { color: var(--color-text); }
     .mode-tab.active {
@@ -275,8 +203,11 @@
       box-shadow: var(--shadow-soft);
     }
     .mode-tab:focus-visible { outline: 2px solid var(--color-cta); outline-offset: 2px; }
+    @media (max-width: 520px) {
+      .mode-tab { font-size: 0.82rem; padding: 0.55rem 0.3rem; }
+    }
 
-    /* Field（input / select / label 通用） */
+    /* Field */
     .field { margin-bottom: 1.25rem; }
     .field-label, .field > label {
       display: block;
@@ -288,12 +219,13 @@
     }
     .field input[type="text"],
     .field select,
-    .manual-row select {
+    .manual-row select,
+    .choice-title input {
       width: 100%;
       background: rgba(0, 0, 0, 0.28);
       border: 1px solid var(--color-border);
       border-radius: 10px;
-      padding: 0.75rem 1rem;
+      padding: 0.7rem 1rem;
       color: var(--color-text);
       font-family: var(--font-body);
       font-size: 1rem;
@@ -301,25 +233,27 @@
       appearance: none;
       -webkit-appearance: none;
     }
-    .field input[type="text"]::placeholder { color: var(--color-muted); opacity: 0.6; }
+    .field input[type="text"]::placeholder,
+    .choice-title input::placeholder { color: var(--color-muted); opacity: 0.6; }
     .field input[type="text"]:focus,
     .field select:focus,
-    .manual-row select:focus {
+    .manual-row select:focus,
+    .choice-title input:focus {
       outline: none;
       border-color: var(--color-cta);
       box-shadow: 0 0 0 3px rgba(232, 197, 71, 0.15);
     }
 
-    /* Radio pill（隨機抽 / 我自己抽） */
-    .draw-mode { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-    .radio-pill { cursor: pointer; user-select: none; }
+    /* Radio pill（隨機 / 手動 / N 選擇） */
+    .draw-mode, .n-choices { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .radio-pill { cursor: pointer; user-select: none; position: relative; }
     .radio-pill input { position: absolute; opacity: 0; pointer-events: none; }
     .radio-pill span {
       display: inline-block;
-      padding: 0.5rem 1.25rem;
+      padding: 0.5rem 1.2rem;
       border: 1px solid var(--color-border);
       border-radius: 999px;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       color: var(--color-muted);
       background: rgba(0, 0, 0, 0.2);
       transition: all var(--transition);
@@ -332,11 +266,47 @@
     }
     .radio-pill input:focus-visible + span { outline: 2px solid var(--color-cta); outline-offset: 2px; }
 
+    /* Choices block（二多擇一專用：N + 各選擇標題） */
+    .choices-block {
+      padding: 1rem 1.1rem;
+      background: rgba(0, 0, 0, 0.18);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      margin-bottom: 1.25rem;
+    }
+    .choice-title { display: grid; gap: 0.625rem; margin-top: 0.875rem; }
+    .choice-title-row {
+      display: grid;
+      grid-template-columns: 4rem 1fr;
+      gap: 0.75rem;
+      align-items: center;
+    }
+    .choice-title-row .label-tag {
+      font-family: var(--font-headline);
+      font-weight: 600;
+      color: var(--color-cta);
+      letter-spacing: 0.06em;
+      text-align: center;
+      padding: 0.45rem 0;
+      border: 1px solid var(--color-cta);
+      border-radius: 8px;
+      background: rgba(232, 197, 71, 0.08);
+    }
+
     /* Manual input */
     .manual-input { display: grid; gap: 0.875rem; margin-bottom: 1.25rem; }
+    .manual-group-label {
+      font-family: var(--font-headline);
+      font-size: 0.95rem;
+      color: var(--color-cta);
+      letter-spacing: 0.08em;
+      margin-top: 0.5rem;
+      padding-bottom: 0.25rem;
+      border-bottom: 1px dashed rgba(232, 197, 71, 0.25);
+    }
     .manual-row {
       display: grid;
-      grid-template-columns: auto 1fr auto;
+      grid-template-columns: 6rem 1fr auto;
       gap: 0.75rem;
       align-items: center;
     }
@@ -344,25 +314,46 @@
       font-family: var(--font-headline);
       font-weight: 600;
       color: var(--color-cta);
-      min-width: 3.5rem;
       letter-spacing: 0.04em;
+      font-size: 0.95rem;
     }
     .reversed-check {
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--color-muted);
       white-space: nowrap;
       cursor: pointer;
     }
     .reversed-check input { accent-color: var(--color-cta); width: 1rem; height: 1rem; }
-    @media (max-width: 480px) {
-      .manual-row { grid-template-columns: 1fr; }
-      .position-label { font-size: 1.1rem; }
+    @media (max-width: 520px) {
+      .manual-row { grid-template-columns: 1fr; gap: 0.4rem; }
+      .position-label { font-size: 1.05rem; }
     }
 
-    /* Action */
+    /* CTA button */
+    .cta-primary {
+      display: inline-block;
+      padding: 0.9rem 2rem;
+      background: var(--color-cta);
+      color: var(--color-cta-text);
+      border-radius: 999px;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      border: 0;
+      cursor: pointer;
+      transition: all var(--transition);
+      box-shadow: var(--shadow-soft);
+    }
+    .cta-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-gold);
+    }
+    .cta-primary:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 3px; }
     .cta-block { display: block; width: 100%; text-align: center; }
 
     /* Result */
@@ -371,20 +362,51 @@
       padding-top: 2rem;
       border-top: 1px solid var(--color-border);
     }
+    .spread-heading {
+      font-family: var(--font-headline);
+      font-size: 1rem;
+      color: var(--color-muted);
+      letter-spacing: 0.1em;
+      margin: 1.5rem 0 0.875rem;
+      text-align: center;
+    }
+    .spread-heading:first-child { margin-top: 0; }
+
     .cards {
       display: grid;
-      grid-template-columns: 1fr;
       gap: 1rem;
-      margin-bottom: 1.75rem;
+      margin-bottom: 0.75rem;
     }
-    .cards.spread-three { grid-template-columns: 1fr 1fr 1fr; }
-    @media (max-width: 600px) { .cards.spread-three { grid-template-columns: 1fr; } }
+    .cards.row-2 { grid-template-columns: 1fr 1fr; }
+    .cards.row-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .cards.row-1 { grid-template-columns: 1fr; max-width: 220px; margin-left: auto; margin-right: auto; }
+    @media (max-width: 600px) {
+      .cards.row-2, .cards.row-3 { grid-template-columns: 1fr; }
+    }
 
+    /* Choice group（二多擇一：每個選擇 2 張並列） */
+    .choice-group {
+      padding: 1rem;
+      border: 1px dashed rgba(232, 197, 71, 0.25);
+      border-radius: 12px;
+      margin-bottom: 1rem;
+    }
+    .choice-group-title {
+      font-family: var(--font-headline);
+      font-weight: 600;
+      color: var(--color-cta);
+      letter-spacing: 0.06em;
+      text-align: center;
+      margin-bottom: 0.875rem;
+      font-size: 1.05rem;
+    }
+
+    /* Card tile */
     .card-tile {
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--color-border);
       border-radius: 12px;
-      padding: 1.25rem;
+      padding: 1.1rem;
       text-align: center;
     }
     .card-tile .pos {
@@ -395,9 +417,9 @@
       margin-bottom: 0.5rem;
     }
     .card-tile-img-wrap {
-      margin: 0 auto 0.875rem;
+      margin: 0 auto 0.75rem;
       width: 100%;
-      max-width: 220px;
+      max-width: 200px;
       aspect-ratio: 3 / 5;
       border-radius: 8px;
       overflow: hidden;
@@ -415,18 +437,42 @@
     .card-tile-img-wrap.reversed img { transform: rotate(180deg); }
     .card-tile .name {
       font-family: var(--font-headline);
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       font-weight: 700;
       color: var(--color-text);
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.2rem;
       letter-spacing: 0.04em;
     }
     .card-tile .orientation {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--color-muted);
     }
 
+    /* 心態牌（底牌）— 金邊 + 置中 + 區隔 */
+    .bottom-card-wrap {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px dashed rgba(232, 197, 71, 0.35);
+    }
+    .bottom-card-label {
+      text-align: center;
+      font-family: var(--font-headline);
+      font-size: 0.95rem;
+      color: var(--color-cta);
+      letter-spacing: 0.18em;
+      margin-bottom: 0.875rem;
+    }
+    .bottom-card {
+      max-width: 240px;
+      margin: 0 auto;
+      background: rgba(232, 197, 71, 0.08);
+      border: 2px solid var(--color-cta);
+      box-shadow: var(--shadow-gold);
+    }
+    .bottom-card .pos { color: var(--color-cta); font-weight: 600; }
+
     /* Prompt block */
+    .prompt-block { margin-top: 2rem; }
     .prompt-block > label {
       display: block;
       font-size: 0.88rem;
@@ -441,12 +487,12 @@
       border-radius: 10px;
       padding: 1rem 1.125rem;
       font-family: 'SF Mono', Menlo, monospace;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       line-height: 1.65;
       color: var(--color-text);
       white-space: pre-wrap;
       word-wrap: break-word;
-      max-height: 360px;
+      max-height: 400px;
       overflow-y: auto;
       margin: 0;
     }
@@ -471,41 +517,17 @@
       line-height: 1.65;
     }
 
-    /* FAQ */
-    .faq-item {
-      border: 1px solid var(--color-border);
-      background: var(--glass-bg);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-radius: 12px;
-      padding: 1.25rem 1.5rem;
-      margin-bottom: 0.75rem;
-      transition: all var(--transition);
-    }
-    .faq-item summary {
-      cursor: pointer;
-      font-weight: 500;
-      list-style: none;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      color: var(--color-text);
-    }
-    .faq-item summary::after {
-      content: "+";
-      font-family: var(--font-headline);
-      font-size: 1.75rem;
-      color: var(--color-cta);
-      transition: transform var(--transition);
-      line-height: 1;
-    }
-    .faq-item[open] summary::after { transform: rotate(45deg); }
-    .faq-item p {
-      padding-top: 0.875rem;
+    /* Mode intro */
+    .mode-intro {
+      padding: 0.875rem 1rem;
+      background: rgba(155, 126, 189, 0.08);
+      border-left: 3px solid var(--color-primary);
+      border-radius: 8px;
+      font-size: 0.92rem;
       color: var(--color-text);
       opacity: 0.85;
-      line-height: 1.8;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -516,16 +538,13 @@
 </head>
 <body>
 
-  <!-- ===== Nav（sticky top） ===== -->
+  <!-- ===== Nav ===== -->
   <nav class="site-nav" id="siteNav">
     <div class="nav-inner">
-      <a class="nav-brand" href="#top">claude-tarot</a>
-      <ul class="nav-links">
-        <li><a href="#about">關於</a></li>
-        <li><a href="#faq">FAQ</a></li>
-      </ul>
-      <a class="nav-cta-secondary" href="spreads.html">專家模式 →</a>
-      <a class="nav-cta" href="#tarot-tool">立即試試</a>
+      <a class="nav-back" href="index.html">← 回首頁</a>
+      <a class="nav-brand" href="index.html">claude-tarot</a>
+      <span class="nav-spacer"></span>
+      <a class="nav-pill" href="index.html">基本牌陣</a>
     </div>
   </nav>
 
@@ -534,87 +553,54 @@
   <!-- 1. Hero -->
   <section id="hero">
     <div class="container-tight text-center">
-      <h1>78 張塔羅，AI 幫你讀</h1>
-      <p class="text-xl" style="color: var(--color-muted); margin-top: 1.25rem; margin-bottom: 2.5rem;">
-        Rider-Waite-Smith 公共領域牌義｜抽牌後一鍵 copy prompt，貼到 ChatGPT / Claude / Gemini
+      <span class="hero-tag">專家模式</span>
+      <h1>進階牌陣</h1>
+      <p class="hero-desc">
+        意識與淺意識・時間之流・二多擇一<br>
+        每個牌陣末尾自動帶一張「心態牌」當底牌
       </p>
-      <a class="cta-primary" href="#tarot-tool">立即試試</a>
     </div>
   </section>
 
-  <!-- 2. About — 怎麼用（四步流程，主介紹） -->
-  <section id="about">
-    <div class="container-tight">
-      <h2>怎麼用</h2>
-      <ol class="steps">
-        <li>
-          <span class="step-num">01</span>
-          <div>
-            <h3>選模式</h3>
-            <p>單張問卜、三牌陣（過去・現在・未來）、每日能量，三選一。</p>
-          </div>
-        </li>
-        <li>
-          <span class="step-num">02</span>
-          <div>
-            <h3>抽牌</h3>
-            <p>按「抽牌」讓系統隨機抽，或切到「手動」自己挑牌與正逆位。</p>
-          </div>
-        </li>
-        <li>
-          <span class="step-num">03</span>
-          <div>
-            <h3>複製 Prompt</h3>
-            <p>按複製鍵，貼到你常用的 ChatGPT / Claude / Gemini，送出拿解讀。</p>
-          </div>
-        </li>
-        <li>
-          <span class="step-num">04</span>
-          <div>
-            <h3>尋找專家</h3>
-            <p>想更深入？歡迎找身邊的塔羅師，或來找 AlexYeh 解牌。</p>
-          </div>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <!-- 4. Learn / 5. Testimonials / 6. Audience / 7. Info / 8. Pricing 皆已移除 -->
-
-  <!-- 9. Final CTA -->
-  <section id="cta-final">
-    <div class="container-tight text-center">
-      <h2>準備好抽牌了嗎</h2>
-      <p class="text-lg mb-6" style="color: var(--color-muted); margin-bottom: 2rem;">
-        滾到下方工具區、選模式、按下「抽牌」。
-      </p>
-      <a class="cta-primary" href="#tarot-tool">立即試試</a>
-    </div>
-  </section>
-
-  <!-- 10. Speaker（已依需求移除） -->
-
-  <!-- ===== Tarot Tool（抽牌工具區） ===== -->
+  <!-- ===== Tool ===== -->
   <section id="tarot-tool">
     <div class="container-tight">
-      <h2 class="text-center">抽牌工具</h2>
 
       <div class="tool-wrap glass">
 
         <!-- 模式 tabs -->
         <div class="mode-tabs" role="tablist" aria-label="模式選擇">
-          <button type="button" class="mode-tab active" data-mode="single" role="tab" aria-selected="true">單張問卜</button>
-          <button type="button" class="mode-tab" data-mode="three" role="tab" aria-selected="false">三牌陣</button>
-          <button type="button" class="mode-tab" data-mode="daily" role="tab" aria-selected="false">每日能量</button>
+          <button type="button" class="mode-tab active" data-mode="awareness" role="tab" aria-selected="true">意識與淺意識</button>
+          <button type="button" class="mode-tab" data-mode="timeflow" role="tab" aria-selected="false">時間之流</button>
+          <button type="button" class="mode-tab" data-mode="choices" role="tab" aria-selected="false">二多擇一</button>
         </div>
 
-        <!-- 問題 input（每日能量模式隱藏） -->
+        <!-- 模式說明 -->
+        <div class="mode-intro" id="mode-intro"></div>
+
+        <!-- 二多擇一專用：N 選擇器 + 選擇標題 -->
+        <div class="choices-block" id="choices-block" hidden>
+          <span class="field-label">幾個選擇？</span>
+          <div class="n-choices">
+            <label class="radio-pill">
+              <input type="radio" name="n-choices" value="2" checked />
+              <span>2 個</span>
+            </label>
+            <label class="radio-pill">
+              <input type="radio" name="n-choices" value="3" />
+              <span>3 個</span>
+            </label>
+          </div>
+          <div class="choice-title" id="choice-title-list"></div>
+        </div>
+
+        <!-- 問題 input -->
         <div class="field" id="question-field">
           <label for="question">你的問題</label>
           <input type="text" id="question" placeholder="輸入想問的問題（可留白）" autocomplete="off" />
         </div>
 
-        <!-- 抽牌方式 radio -->
+        <!-- 抽牌方式 -->
         <div class="field">
           <span class="field-label">抽牌方式</span>
           <div class="draw-mode">
@@ -629,7 +615,7 @@
           </div>
         </div>
 
-        <!-- 手動選牌（hidden 預設、JS 依模式渲染 1 或 3 組） -->
+        <!-- 手動選牌 -->
         <div class="manual-input" id="manual-input" hidden></div>
 
         <!-- 抽牌按鈕 -->
@@ -637,9 +623,9 @@
           <button type="button" id="draw-btn" class="cta-primary cta-block">抽牌</button>
         </div>
 
-        <!-- 結果展示 -->
+        <!-- 結果 -->
         <div id="result" class="result" hidden>
-          <div class="cards" id="result-cards"></div>
+          <div id="result-cards"></div>
           <div class="prompt-block">
             <label for="prompt-preview">產生的 Prompt</label>
             <pre id="prompt-preview"></pre>
@@ -655,30 +641,7 @@
     </div>
   </section>
 
-  <!-- 11. FAQ -->
-  <section id="faq">
-    <div class="container-tight">
-      <h2>常見問題</h2>
-      <div class="mt-6">
-        <details class="faq-item">
-          <summary>為什麼要做這個工具？</summary>
-          <p>叫 AI 解牌很容易，但 prompt 寫不好就只拿到罐頭答案。這頁幫你把 78 張牌的關鍵字、正逆位、牌陣位置打包成可用的 prompt——你抽，AI 讀。</p>
-        </details>
-        <details class="faq-item">
-          <summary>為什麼要 copy 去別的 LLM、不直接在這頁解？</summary>
-          <p>不綁特定 AI、不付 API 錢、你的問題不經我手。你抽完拿到 prompt，想貼 ChatGPT 就貼 ChatGPT、想貼 Claude 就貼 Claude，自由切換。</p>
-        </details>
-        <details class="faq-item">
-          <summary>能不能離線用？</summary>
-          <p>抽牌跟 prompt 生成都在你的瀏覽器、無網路也能跑。解讀要 LLM 才行，看你選的 ChatGPT/Claude/Gemini 是不是離線可用。</p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Step 3 將在這裡插入 <section id="tarot-tool"> ===== -->
-
-  <!-- ===== 牌組資料：78 張 Rider-Waite-Smith 公共領域（MIT 授權 JSON） ===== -->
+  <!-- ===== 牌組資料：78 張 RWS（與 index.html 同步） ===== -->
   <script>
     const CARDS_META = {"source": "Rider-Waite-Smith tradition; keywords and symbolism derived from Arthur Edward Waite, The Pictorial Key to the Tarot (1910, public domain)", "license": "MIT (this JSON), public-domain source material", "updated": "2026-05-14", "card_count": 78};
     const CARDS = [
@@ -2407,26 +2370,40 @@
     }, { passive: true });
   </script>
 
-  <!-- ===== Tarot Tool 抽牌邏輯（Step 5；Step 6 補 prompt 生成 + copy） ===== -->
+  <!-- ===== 進階牌陣邏輯 ===== -->
   <script>
     (function () {
       const $ = (sel, root) => (root || document).querySelector(sel);
       const $$ = (sel, root) => Array.from((root || document).querySelectorAll(sel));
 
+      // 牌位定義：每模式陣列是「主牌位」、心態牌統一額外加在最後
       const POSITIONS = {
-        single: [null],
-        three:  ['過去', '現在', '未來'],
-        daily:  [null],
+        awareness: ['意識（頭腦）', '潛意識（身體・直覺）'],
+        timeflow:  ['過去', '現在', '未來'],
+        // choices: 動態組成「現況、A·過程、A·結果、B·過程、B·結果、...」
+      };
+
+      const MODE_INTRO = {
+        awareness: '抽 2 張＋心態牌底牌。比較頭腦怎麼想跟身體/直覺怎麼感受、適合內外不一致時釐清。',
+        timeflow:  '抽 3 張＋心態牌底牌。過去→現在→未來，看事件的能量流動方向。',
+        choices:   '抽 1 張（現況）＋每個選擇 2 張（過程、結果）＋心態牌底牌。最多 3 個選擇、適合在岔路口比較。',
       };
 
       const state = {
-        mode: 'single',       // 'single' | 'three' | 'daily'
-        drawMode: 'random',   // 'random' | 'manual'
-        lastDraws: null,      // 最近一次抽牌結果（Step 6 使用）
+        mode: 'awareness',     // 'awareness' | 'timeflow' | 'choices'
+        drawMode: 'random',    // 'random' | 'manual'
+        nChoices: 2,           // choices 模式專用：2 或 3
+        choiceTitles: ['A', 'B', 'C'],
+        lastDraws: null,
+        lastPrompt: '',
       };
 
       // DOM refs
       const modeTabs = $$('.mode-tab');
+      const modeIntro = $('#mode-intro');
+      const choicesBlock = $('#choices-block');
+      const choiceTitleList = $('#choice-title-list');
+      const nChoicesRadios = $$('input[name="n-choices"]');
       const questionField = $('#question-field');
       const drawModeRadios = $$('input[name="draw-mode"]');
       const manualInput = $('#manual-input');
@@ -2435,7 +2412,7 @@
       const resultCards = $('#result-cards');
       const promptPreview = $('#prompt-preview');
 
-      // 無放回抽樣：從 [0, n) 隨機抽 k 個不重複 index
+      // 無放回抽樣
       function sampleWithoutReplacement(n, k) {
         const pool = Array.from({ length: n }, (_, i) => i);
         const out = [];
@@ -2446,8 +2423,23 @@
         return out;
       }
 
-      function getCardCount() {
-        return state.mode === 'three' ? 3 : 1;
+      // 主牌位陣列（不含心態牌）
+      function getMainPositions() {
+        if (state.mode === 'choices') {
+          const titles = state.choiceTitles.slice(0, state.nChoices);
+          const out = ['現況'];
+          titles.forEach(t => {
+            out.push(`${t} · 過程`);
+            out.push(`${t} · 結果`);
+          });
+          return out;
+        }
+        return POSITIONS[state.mode];
+      }
+
+      // 總牌數（含心態牌）
+      function getTotalCount() {
+        return getMainPositions().length + 1; // +1 心態牌
       }
 
       // ===== Mode tabs =====
@@ -2458,15 +2450,43 @@
           t.classList.toggle('active', active);
           t.setAttribute('aria-selected', active ? 'true' : 'false');
         });
-        // 每日能量隱藏問題 input
-        questionField.hidden = (mode === 'daily');
-        // 切模式重渲染 manual-input
+        modeIntro.textContent = MODE_INTRO[mode];
+        choicesBlock.hidden = (mode !== 'choices');
+        if (mode === 'choices') renderChoiceTitleList();
         if (state.drawMode === 'manual') renderManualInput();
-        // 收結果
         resultSection.hidden = true;
       }
 
-      // ===== Draw mode（隨機 / 手動） =====
+      // ===== 二多擇一：選擇標題 input =====
+      function renderChoiceTitleList() {
+        const defaults = ['A', 'B', 'C'];
+        const rows = [];
+        for (let i = 0; i < state.nChoices; i++) {
+          const cur = state.choiceTitles[i] || defaults[i];
+          rows.push(`
+            <div class="choice-title-row">
+              <span class="label-tag">${defaults[i]}</span>
+              <input type="text" data-idx="${i}" value="${cur}" placeholder="如「接受 offer」、「不接」、「再等等」" />
+            </div>
+          `);
+        }
+        choiceTitleList.innerHTML = rows.join('');
+        $$('input', choiceTitleList).forEach(inp => {
+          inp.addEventListener('input', (e) => {
+            const idx = parseInt(e.target.dataset.idx, 10);
+            state.choiceTitles[idx] = e.target.value.trim() || defaults[idx];
+            if (state.drawMode === 'manual') renderManualInput();
+          });
+        });
+      }
+
+      function setNChoices(n) {
+        state.nChoices = n;
+        renderChoiceTitleList();
+        if (state.drawMode === 'manual') renderManualInput();
+      }
+
+      // ===== Draw mode =====
       function setDrawMode(dm) {
         state.drawMode = dm;
         if (dm === 'manual') {
@@ -2477,24 +2497,21 @@
         }
       }
 
-      // ===== 手動選牌渲染 =====
+      // ===== 手動選牌渲染（含心態牌） =====
       function renderManualInput() {
-        const count = getCardCount();
-        const positions = POSITIONS[state.mode];
+        const mainPositions = getMainPositions();
+        const total = mainPositions.length + 1;
         const options = CARDS.map((c, idx) =>
           `<option value="${idx}">${c.name_zh}</option>`
         ).join('');
 
         const rows = [];
-        for (let i = 0; i < count; i++) {
-          const pos = positions[i];
-          const posHtml = pos
-            ? `<span class="position-label">${pos}</span>`
-            : `<span class="position-label" aria-hidden="true"></span>`;
+        // 主牌位
+        mainPositions.forEach((pos, i) => {
           rows.push(`
             <div class="manual-row" data-slot="${i}">
-              ${posHtml}
-              <select class="manual-card-select" data-slot="${i}" aria-label="${pos || '選擇一張牌'}">
+              <span class="position-label">${pos}</span>
+              <select class="manual-card-select" data-slot="${i}" aria-label="${pos}">
                 ${options}
               </select>
               <label class="reversed-check">
@@ -2503,40 +2520,55 @@
               </label>
             </div>
           `);
-        }
+        });
+        // 心態牌（最後一張、特殊樣式）
+        rows.push(`
+          <div class="manual-group-label">底牌</div>
+          <div class="manual-row" data-slot="${total - 1}">
+            <span class="position-label">心態牌</span>
+            <select class="manual-card-select" data-slot="${total - 1}" aria-label="心態牌">
+              ${options}
+            </select>
+            <label class="reversed-check">
+              <input type="checkbox" class="manual-reversed" data-slot="${total - 1}" />
+              <span>逆位</span>
+            </label>
+          </div>
+        `);
         manualInput.innerHTML = rows.join('');
 
-        // 三牌陣手動：預設 3 張不同牌，避免一開始 3 個都「愚人」
-        if (count === 3) {
-          const selects = $$('.manual-card-select', manualInput);
-          selects.forEach((s, i) => { s.value = String(i % CARDS.length); });
-        }
+        // 預設 N 張不同牌避免一開始全部「愚人」
+        const selects = $$('.manual-card-select', manualInput);
+        selects.forEach((s, i) => { s.value = String(i % CARDS.length); });
       }
 
       // ===== 抽牌 =====
       function drawRandom() {
-        const count = getCardCount();
-        const positions = POSITIONS[state.mode];
-        const indices = sampleWithoutReplacement(CARDS.length, count);
-        return indices.map((idx, i) => ({
+        const mainPositions = getMainPositions();
+        const total = mainPositions.length + 1;
+        const indices = sampleWithoutReplacement(CARDS.length, total);
+        const out = indices.map((idx, i) => ({
           card: CARDS[idx],
           reversed: Math.random() < 0.5,
-          position: positions[i],
+          position: i < mainPositions.length ? mainPositions[i] : '心態牌',
+          isBottom: i === mainPositions.length, // 最後一張是心態牌
         }));
+        return out;
       }
 
       function drawManual() {
-        const count = getCardCount();
-        const positions = POSITIONS[state.mode];
+        const mainPositions = getMainPositions();
+        const total = mainPositions.length + 1;
         const selects = $$('.manual-card-select', manualInput);
         const checks = $$('.manual-reversed', manualInput);
         const out = [];
-        for (let i = 0; i < count; i++) {
+        for (let i = 0; i < total; i++) {
           const idx = parseInt(selects[i].value, 10);
           out.push({
             card: CARDS[idx],
             reversed: checks[i].checked,
-            position: positions[i],
+            position: i < mainPositions.length ? mainPositions[i] : '心態牌',
+            isBottom: i === mainPositions.length,
           });
         }
         return out;
@@ -2553,49 +2585,104 @@
 
       function buildPrompt(mode, draws, question) {
         const targetWords =
-          mode === 'three' ? '350-500'
-          : mode === 'daily' ? '100-180'
-          : '150-250';
+          mode === 'awareness' ? '200-300'
+          : mode === 'timeflow' ? '350-500'
+          : '500-800';
 
-        const role = `你是塔羅解讀師，依 Rider-Waite-Smith 傳統解讀。`;
+        const modeName =
+          mode === 'awareness' ? '意識與淺意識（2 牌 + 心態牌）'
+          : mode === 'timeflow' ? '時間之流（3 牌 + 心態牌）'
+          : `二多擇一（現況 + ${state.nChoices} 選擇 × 過程結果 + 心態牌）`;
+
+        const role = `你是塔羅解讀師，依 Rider-Waite-Smith 傳統解讀「${modeName}」牌陣。`;
         const style = `回應 ${targetWords} 字，繁體中文，語氣沉穩、不誇大、不命定論。`;
 
+        // 牌列
         const cardLines = draws.map(d => {
           const kws = (d.reversed ? d.card.reversed_keywords : d.card.upright_keywords).slice(0, 3).join('、');
-          const pos = d.position ? `[${d.position}] ` : '';
           const arcana = ARCANA_ZH[d.card.arcana] || d.card.arcana;
-          return `${pos}${d.card.name_zh}（${d.reversed ? '逆位' : '正位'}）— ${arcana}；關鍵字：${kws}`;
+          const tag = d.isBottom ? `[心態牌·底牌]` : `[${d.position}]`;
+          return `${tag} ${d.card.name_zh}（${d.reversed ? '逆位' : '正位'}）— ${arcana}；關鍵字：${kws}`;
         }).join('\n');
 
-        let ask = '';
-        if (mode === 'daily') {
-          ask = '\n\n請給今日能量提醒，包含：核心訊息、建議行動、需留意的傾向。';
-        } else if (question && question.trim()) {
-          ask = `\n\n問題：${question.trim()}`;
-        } else if (mode === 'three') {
-          ask = '\n\n請依「過去 → 現在 → 未來」三段解讀，並在末尾給出整體建議。';
+        // 解讀任務
+        let task = '';
+        if (mode === 'awareness') {
+          task = '請依「意識面 vs 潛意識」對比解讀：頭腦怎麼想、身體/直覺怎麼感受、兩者落差在哪、心態牌如何承接。';
+        } else if (mode === 'timeflow') {
+          task = '請依「過去 → 現在 → 未來」三段解讀，並用心態牌串接整體調性、給整體建議。';
         } else {
-          ask = '\n\n請依抽到的牌解讀。';
+          const titles = state.choiceTitles.slice(0, state.nChoices).join(' / ');
+          task = `請依「現況」起手、逐一比較 ${state.nChoices} 個選擇（${titles}）的過程與結果，最後用心態牌收束、給整體建議。`;
         }
 
-        return `${role}\n${style}\n\n抽到的牌：\n${cardLines}${ask}`;
+        const askLine = question && question.trim() ? `\n\n問題：${question.trim()}` : '';
+
+        return `${role}\n${style}\n\n抽到的牌：\n${cardLines}${askLine}\n\n${task}`;
       }
 
       // ===== 結果渲染 =====
-      function renderResult(draws) {
-        resultCards.className = 'cards' + (draws.length === 3 ? ' spread-three' : '');
-        resultCards.innerHTML = draws.map(d => `
-          <div class="card-tile">
-            ${d.position ? `<span class="pos">${d.position}</span>` : ''}
+      function renderCardTile(d, isBottom) {
+        const cls = 'card-tile' + (isBottom ? ' bottom-card' : '');
+        const posLine = isBottom ? '' : `<span class="pos">${d.position}</span>`;
+        return `
+          <div class="${cls}">
+            ${posLine}
             <div class="card-tile-img-wrap ${d.reversed ? 'reversed' : ''}">
               <img src="${d.card.image}" alt="${d.card.name_zh}" loading="lazy" />
             </div>
             <div class="name">${d.card.name_zh}</div>
             <div class="orientation">${d.reversed ? '逆位' : '正位'} · ${d.card.name_en}</div>
           </div>
-        `).join('');
+        `;
+      }
 
-        // 真實 prompt 生成
+      function renderResult(draws) {
+        const mainDraws = draws.filter(d => !d.isBottom);
+        const bottomDraw = draws.find(d => d.isBottom);
+        let html = '';
+
+        if (state.mode === 'awareness') {
+          // 2 張並列
+          html += '<div class="spread-heading">意識 / 潛意識</div>';
+          html += '<div class="cards row-2">';
+          html += mainDraws.map(d => renderCardTile(d, false)).join('');
+          html += '</div>';
+        } else if (state.mode === 'timeflow') {
+          // 3 張並列
+          html += '<div class="spread-heading">過去 → 現在 → 未來</div>';
+          html += '<div class="cards row-3">';
+          html += mainDraws.map(d => renderCardTile(d, false)).join('');
+          html += '</div>';
+        } else {
+          // choices: 現況 1 張在上、N 組（過程+結果）並列
+          html += '<div class="spread-heading">現況</div>';
+          html += '<div class="cards row-1">';
+          html += renderCardTile(mainDraws[0], false);
+          html += '</div>';
+
+          const titles = state.choiceTitles.slice(0, state.nChoices);
+          for (let i = 0; i < state.nChoices; i++) {
+            const procDraw = mainDraws[1 + i * 2];
+            const resultDraw = mainDraws[2 + i * 2];
+            html += `<div class="choice-group">`;
+            html += `<div class="choice-group-title">${titles[i]}</div>`;
+            html += '<div class="cards row-2">';
+            html += renderCardTile(procDraw, false);
+            html += renderCardTile(resultDraw, false);
+            html += '</div>';
+            html += '</div>';
+          }
+        }
+
+        // 心態牌底牌
+        html += '<div class="bottom-card-wrap">';
+        html += '<div class="bottom-card-label">心態牌 · 底牌</div>';
+        html += renderCardTile(bottomDraw, true);
+        html += '</div>';
+
+        resultCards.innerHTML = html;
+
         const question = $('#question').value;
         const promptText = buildPrompt(state.mode, draws, question);
         promptPreview.textContent = promptText;
@@ -2617,7 +2704,6 @@
           copyStatus.textContent = '✓ 已複製，貼到任一 LLM';
           copyStatus.classList.add('show');
         } catch (err) {
-          // 退路：select-all 提示手動複製
           const range = document.createRange();
           range.selectNodeContents(promptPreview);
           const sel = window.getSelection();
@@ -2636,12 +2722,10 @@
         let draws;
         if (state.drawMode === 'manual') {
           draws = drawManual();
-          if (draws.length === 3) {
-            const ids = draws.map(d => d.card.name_en);
-            if (new Set(ids).size < 3) {
-              alert('三牌陣手動模式請選 3 張不同的牌');
-              return;
-            }
+          const names = draws.map(d => d.card.name_en);
+          if (new Set(names).size < names.length) {
+            alert(`此牌陣需 ${names.length} 張不同的牌、請調整手動選擇。`);
+            return;
           }
         } else {
           draws = drawRandom();
@@ -2653,13 +2737,13 @@
       // ===== Events =====
       modeTabs.forEach(t => t.addEventListener('click', () => setMode(t.dataset.mode)));
       drawModeRadios.forEach(r => r.addEventListener('change', (e) => setDrawMode(e.target.value)));
+      nChoicesRadios.forEach(r => r.addEventListener('change', (e) => setNChoices(parseInt(e.target.value, 10))));
       drawBtn.addEventListener('click', handleDraw);
 
       // ===== Init =====
-      setMode('single');
+      setMode('awareness');
       setDrawMode('random');
 
-      // 暴露給 Step 6 用（prompt 生成器讀 state.lastDraws）
       window.__tarotState = state;
     })();
   </script>
