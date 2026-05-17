@@ -631,9 +631,10 @@
             <pre id="prompt-preview"></pre>
             <div class="prompt-actions">
               <button type="button" id="copy-btn" class="cta-primary">複製 Prompt</button>
+              <button type="button" id="ask-gpt-btn" class="cta-primary">詢問 ChatGPT →</button>
               <span id="copy-status" class="copy-status" aria-live="polite"></span>
             </div>
-            <p class="hint">把上面複製到 ChatGPT / Claude / Gemini 任一個，貼上就會拿到解讀。</p>
+            <p class="hint">按「詢問 ChatGPT」自動開新分頁帶 prompt 過去、或複製貼到 Claude / Gemini 任一個。</p>
           </div>
         </div>
 
@@ -2716,6 +2717,16 @@
         copyResetTimer = setTimeout(() => copyStatus.classList.remove('show'), 2500);
       }
       copyBtn.addEventListener('click', handleCopy);
+
+      // ===== 詢問 ChatGPT 按鈕（URL ?prompt= 帶 prompt 開新 tab、無需 API key）=====
+      const askGptBtn = $('#ask-gpt-btn');
+      function handleAskGpt() {
+        const text = promptPreview.textContent || '';
+        if (!text) return;
+        const url = `https://chatgpt.com/?prompt=${encodeURIComponent(text)}`;
+        window.open(url, '_blank', 'noopener,noreferrer');
+      }
+      if (askGptBtn) askGptBtn.addEventListener('click', handleAskGpt);
 
       // ===== 抽牌按鈕 =====
       function handleDraw() {
