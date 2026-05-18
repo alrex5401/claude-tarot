@@ -632,9 +632,10 @@
             <div class="prompt-actions">
               <button type="button" id="copy-btn" class="cta-primary">複製 Prompt</button>
               <button type="button" id="ask-gpt-btn" class="cta-primary">詢問 ChatGPT →</button>
+              <button type="button" id="ask-claude-btn" class="cta-primary">詢問 Claude →</button>
               <span id="copy-status" class="copy-status" aria-live="polite"></span>
             </div>
-            <p class="hint">按「詢問 ChatGPT」自動開新分頁帶 prompt 過去、或複製貼到 Claude / Gemini 任一個。</p>
+            <p class="hint">按「詢問 ChatGPT」或「詢問 Claude」自動開新分頁帶 prompt 過去、或複製貼到 Gemini。</p>
           </div>
         </div>
 
@@ -2727,6 +2728,16 @@
         window.open(url, '_blank', 'noopener,noreferrer');
       }
       if (askGptBtn) askGptBtn.addEventListener('click', handleAskGpt);
+
+      // ===== 詢問 Claude 按鈕（URL ?q= 帶 prompt 開新 tab、無需 API key）=====
+      const askClaudeBtn = $('#ask-claude-btn');
+      function handleAskClaude() {
+        const text = promptPreview.textContent || '';
+        if (!text) return;
+        const url = `https://claude.ai/new?q=${encodeURIComponent(text)}`;
+        window.open(url, '_blank', 'noopener,noreferrer');
+      }
+      if (askClaudeBtn) askClaudeBtn.addEventListener('click', handleAskClaude);
 
       // ===== 抽牌按鈕 =====
       function handleDraw() {
