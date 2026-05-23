@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>隱私政策 — TAROT</title>
+  <meta name="description" content="TAROT App 隱私政策：不收集個人資料、抽牌紀錄僅存本機、無第三方追蹤。">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --color-primary: #9B7EBD;
+      --color-cta: #E8C547;
+      --color-text: #F5F0FA;
+      --color-muted: #9F8AB8;
+      --color-border: rgba(255, 255, 255, 0.12);
+      --glass-bg: rgba(255, 255, 255, 0.06);
+      --font: 'Noto Serif TC', serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: var(--font);
+      font-weight: 400;
+      color: var(--color-text);
+      background: linear-gradient(135deg, #1A0B2E 0%, #3D1F5F 50%, #1A0B2E 100%);
+      background-attachment: fixed;
+      line-height: 1.85;
+      letter-spacing: 0.015em;
+      min-height: 100vh;
+    }
+
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(26, 11, 46, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--color-border);
+      padding-top: env(safe-area-inset-top);
+    }
+    .nav-inner {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .nav-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--color-cta);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: 0.08em;
+    }
+    .nav-logo { width: 26px; height: 26px; }
+    .nav-back {
+      margin-left: auto;
+      color: var(--color-muted);
+      text-decoration: none;
+      font-size: 0.92rem;
+    }
+    .nav-back:hover { color: var(--color-cta); }
+
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      margin: 0 0 0.5rem;
+    }
+    .updated {
+      color: var(--color-muted);
+      font-size: 0.92rem;
+      margin-bottom: 2.5rem;
+    }
+
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--color-cta);
+      margin: 2.5rem 0 0.85rem;
+      letter-spacing: 0.03em;
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: 0.4rem;
+    }
+
+    h3 {
+      font-size: 1.08rem;
+      font-weight: 600;
+      color: var(--color-primary);
+      margin: 1.5rem 0 0.6rem;
+    }
+
+    p { margin: 0.6rem 0 1rem; }
+
+    ul {
+      padding-left: 1.4rem;
+      margin: 0.6rem 0 1rem;
+    }
+    li { margin-bottom: 0.4rem; }
+
+    a { color: var(--color-cta); }
+    a:hover { color: #fff; }
+
+    .callout {
+      background: var(--glass-bg);
+      border-left: 3px solid var(--color-cta);
+      padding: 1rem 1.2rem;
+      margin: 1.25rem 0;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.96rem;
+    }
+
+    .lang-divider {
+      margin: 3.5rem 0 1.5rem;
+      text-align: center;
+      color: var(--color-muted);
+      font-size: 0.88rem;
+      letter-spacing: 0.15em;
+    }
+    .lang-divider::before,
+    .lang-divider::after {
+      content: '';
+      display: inline-block;
+      width: 60px;
+      height: 1px;
+      background: var(--color-border);
+      vertical-align: middle;
+      margin: 0 1rem;
+    }
+
+    footer {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 1.5rem;
+      border-top: 1px solid var(--color-border);
+      color: var(--color-muted);
+      font-size: 0.88rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a class="nav-brand" href="index.html">
+        <svg class="nav-logo" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs><mask id="nav-moon-priv"><rect width="32" height="32" fill="white"/><circle cx="19.5" cy="13" r="8" fill="black"/></mask></defs>
+          <circle cx="16" cy="16" r="10" fill="currentColor" mask="url(#nav-moon-priv)"/>
+          <path d="M7 5 L8.2 7.8 L11 9 L8.2 10.2 L7 13 L5.8 10.2 L3 9 L5.8 7.8 Z" fill="currentColor"/>
+          <circle cx="25" cy="24" r="1.1" fill="currentColor"/>
+        </svg>
+        <span>TAROT</span>
+      </a>
+      <a class="nav-back" href="index.html">← 回首頁</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <h1>隱私政策</h1>
+    <p class="updated">最後更新：2026 年 5 月 23 日　・　生效日：2026 年 5 月 23 日</p>
+
+    <div class="callout">
+      <strong>一句話總結：</strong>本 App 不收集任何個人資料；抽牌紀錄、心得、API 金鑰、提醒設定全部僅存於您的裝置本機，不上傳任何伺服器。
+    </div>
+
+    <h2>1. 我們是誰</h2>
+    <p>TAROT（以下簡稱「本 App」）是一款 78 張塔羅抽牌與 AI 解讀工具，所有功能皆在您的裝置本機運作，沒有後端伺服器。</p>
+
+    <h2>2. 我們不收集的資料</h2>
+    <p>本 App <strong>不收集、不儲存、不上傳</strong>以下任何資料至我方伺服器（事實上我方並無伺服器）：</p>
+    <ul>
+      <li>姓名、Email、電話、Apple ID、IDFA / IDFV 等任何個人識別資訊</li>
+      <li>地理位置、裝置位置權限</li>
+      <li>通訊錄、相簿、麥克風、相機、健康資料等系統權限</li>
+      <li>使用行為分析（無 Google Analytics、無 Firebase、無 Sentry、無 Crashlytics）</li>
+      <li>廣告追蹤識別碼（無任何廣告 SDK）</li>
+    </ul>
+
+    <h2>3. 僅儲存在您裝置本機的資料</h2>
+    <p>以下資料皆透過 iOS 系統 API（<code>Capacitor Preferences</code>、iOS Keychain）儲存於您的裝置本機，您解除安裝 App 即完全刪除：</p>
+    <ul>
+      <li><strong>抽牌紀錄</strong>：每次抽牌的時間、牌組、正逆位、模式、您自行填寫的問題與心得</li>
+      <li><strong>OpenAI API 金鑰</strong>（若您主動於設定頁貼上）：以 iOS Keychain 加密儲存，本 App 程式碼以外無法讀取</li>
+      <li><strong>每日提醒設定</strong>：開關狀態與提醒時間</li>
+      <li><strong>付費解鎖狀態</strong>：透過 Apple StoreKit 驗證，狀態僅存本機</li>
+    </ul>
+
+    <h2>4. 主動觸發的第三方傳輸</h2>
+
+    <h3>4-1 OpenAI（AI 解讀功能，可選）</h3>
+    <p>當您在抽牌結果頁主動點擊「✨ AI 解讀」按鈕時，本 App 會將以下內容<strong>直接從您的裝置</strong>傳送至 OpenAI API（不經過任何中間伺服器）：</p>
+    <ul>
+      <li>抽到的牌組（牌名、正逆位、牌位）</li>
+      <li>您自行填寫的問題（若有）</li>
+      <li>您於設定頁貼上的 OpenAI API 金鑰（透過 HTTPS 標頭認證）</li>
+    </ul>
+    <p>此資料的後續處理依 OpenAI 的隱私政策辦理，本 App 無法控制：<a href="https://openai.com/policies/privacy-policy/" target="_blank" rel="noopener">openai.com/policies/privacy-policy/</a></p>
+    <p>若您不希望任何資料離開您的裝置，請勿於設定頁貼上 OpenAI API 金鑰；不貼上即無法觸發 AI 解讀功能，其他功能（抽牌、紀錄、提醒、Widget）皆不受影響。</p>
+
+    <h3>4-2 Apple StoreKit（付費解鎖）</h3>
+    <p>付費解鎖功能透過 Apple 內建的 StoreKit 進行，本 App 僅取得「是否已購買」的布林結果，不取得您的 Apple ID、付款方式或交易明細。完整付款資料由 Apple 處理，依 Apple 隱私政策辦理：<a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">apple.com/legal/privacy/</a></p>
+
+    <h2>5. 兒童隱私</h2>
+    <p>本 App 不針對未滿 13 歲（或您所在司法管轄區之相應年齡）兒童設計，亦不蓄意收集兒童個人資料。本 App 提供之塔羅內容屬靈性 / 心理探索性質，建議成年人使用。</p>
+
+    <h2>6. 您的權利</h2>
+    <ul>
+      <li><strong>刪除單筆抽牌紀錄</strong>：於紀錄頁點各紀錄旁的刪除按鈕</li>
+      <li><strong>清除 OpenAI 金鑰</strong>：於設定頁點「清除金鑰」按鈕</li>
+      <li><strong>關閉每日提醒</strong>：於設定頁切換提醒開關</li>
+      <li><strong>刪除全部資料</strong>：從 iOS 主畫面長按 App 圖示 → 刪除 App，所有本機資料隨之清除</li>
+    </ul>
+
+    <h2>7. 資料安全</h2>
+    <p>OpenAI API 金鑰透過 <code>@aparajita/capacitor-secure-storage</code> 寫入 iOS Keychain，由 iOS 系統以裝置硬體加密保護。其他資料透過 <code>Capacitor Preferences</code> 寫入 iOS 沙盒，僅本 App 可讀取。</p>
+    <p>所有與 OpenAI API 的通訊皆透過 HTTPS / TLS 1.2+ 加密。</p>
+
+    <h2>8. 內容免責聲明</h2>
+    <p>塔羅解讀屬靈性 / 心理探索工具，僅供自我覺察與反思參考，<strong>不構成醫療、心理治療、法律、財務、投資或任何專業建議</strong>。若您正面臨情緒困擾或心理危機，請尋求專業協助（台灣 24 小時生命線：1995；張老師專線：1980；衛福部安心專線：1925）。</p>
+
+    <h2>9. 政策變更</h2>
+    <p>本政策若有重大變更，將更新本頁面之「最後更新」日期；變更內容自更新日起生效。建議您定期回顧本頁面。</p>
+
+    <h2>10. 聯絡方式</h2>
+    <p>若您對本政策有任何疑問，請來信：<a href="mailto:alex.yeh@isc2chapter.tw">alex.yeh@isc2chapter.tw</a></p>
+
+    <div class="lang-divider">ENGLISH VERSION</div>
+
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: May 23, 2026　・　Effective date: May 23, 2026</p>
+
+    <div class="callout">
+      <strong>TL;DR:</strong> This app collects <strong>no personal data</strong>. All draw history, notes, API keys, and reminder settings are stored locally on your device only. Nothing is uploaded to any server.
+    </div>
+
+    <h2>1. Who We Are</h2>
+    <p>TAROT is a 78-card tarot drawing and AI-reading utility. All functionality runs locally on your device. There is no backend server.</p>
+
+    <h2>2. Data We Do NOT Collect</h2>
+    <p>The app does <strong>not collect, store, or upload</strong> any of the following to our servers (we have no servers):</p>
+    <ul>
+      <li>Name, email, phone number, Apple ID, IDFA / IDFV, or any personal identifiers</li>
+      <li>Location data or location permissions</li>
+      <li>Contacts, photos, microphone, camera, or health data</li>
+      <li>Usage analytics (no Google Analytics, Firebase, Sentry, or Crashlytics)</li>
+      <li>Advertising identifiers (no ad SDKs whatsoever)</li>
+    </ul>
+
+    <h2>3. Data Stored Locally on Your Device</h2>
+    <p>The following data is stored on your device only (via <code>Capacitor Preferences</code> and iOS Keychain) and is fully deleted when you uninstall the app:</p>
+    <ul>
+      <li><strong>Draw history</strong>: timestamp, cards, orientation, mode, your typed questions and notes</li>
+      <li><strong>OpenAI API key</strong> (if you choose to enter one): encrypted in iOS Keychain</li>
+      <li><strong>Daily reminder settings</strong>: on/off state and reminder time</li>
+      <li><strong>Premium unlock status</strong>: verified via Apple StoreKit, stored locally</li>
+    </ul>
+
+    <h2>4. User-Triggered Third-Party Transmissions</h2>
+
+    <h3>4-1 OpenAI (AI Reading Feature, Optional)</h3>
+    <p>When you actively tap the "✨ AI Reading" button on a draw result, the app sends the following <strong>directly from your device</strong> to the OpenAI API (no intermediary server):</p>
+    <ul>
+      <li>The drawn cards (name, orientation, position)</li>
+      <li>Your typed question, if any</li>
+      <li>Your OpenAI API key (via HTTPS Authorization header)</li>
+    </ul>
+    <p>Subsequent handling of this data is governed by OpenAI's privacy policy, beyond our control: <a href="https://openai.com/policies/privacy-policy/" target="_blank" rel="noopener">openai.com/policies/privacy-policy/</a></p>
+    <p>If you prefer no data ever leaves your device, simply do not enter an OpenAI API key. All other features (drawing, history, reminders, Widget) work without it.</p>
+
+    <h3>4-2 Apple StoreKit (Premium Unlock)</h3>
+    <p>Premium unlock is handled by Apple's built-in StoreKit. The app receives only a boolean "purchased" result and never accesses your Apple ID, payment method, or transaction details. Payment data is handled by Apple per Apple's privacy policy: <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">apple.com/legal/privacy/</a></p>
+
+    <h2>5. Children's Privacy</h2>
+    <p>The app is not directed to children under 13 (or the applicable age in your jurisdiction) and does not knowingly collect data from children. Tarot content is spiritual / introspective in nature and intended for adult use.</p>
+
+    <h2>6. Your Rights</h2>
+    <ul>
+      <li><strong>Delete a single draw record</strong>: tap the delete button next to any record on the history page</li>
+      <li><strong>Clear OpenAI key</strong>: tap "Clear Key" on the settings page</li>
+      <li><strong>Disable daily reminder</strong>: toggle the reminder switch on the settings page</li>
+      <li><strong>Delete all data</strong>: long-press the app icon on iOS home screen → Delete App, removing all local data</li>
+    </ul>
+
+    <h2>7. Data Security</h2>
+    <p>OpenAI API keys are stored via <code>@aparajita/capacitor-secure-storage</code> in iOS Keychain, protected by iOS hardware-backed encryption. Other data is stored via <code>Capacitor Preferences</code> in the iOS app sandbox, readable only by this app.</p>
+    <p>All communication with the OpenAI API uses HTTPS / TLS 1.2+.</p>
+
+    <h2>8. Content Disclaimer</h2>
+    <p>Tarot readings are spiritual / introspective tools for self-reflection and <strong>do not constitute medical, psychological, legal, financial, investment, or any other professional advice</strong>. If you are experiencing emotional distress or a mental health crisis, please seek professional support.</p>
+
+    <h2>9. Policy Changes</h2>
+    <p>If this policy materially changes, the "Last updated" date above will be revised; changes take effect from the updated date. We encourage you to review this page periodically.</p>
+
+    <h2>10. Contact</h2>
+    <p>Questions about this policy: <a href="mailto:alex.yeh@isc2chapter.tw">alex.yeh@isc2chapter.tw</a></p>
+
+  </main>
+
+  <footer>
+    © 2026 TAROT　・　<a href="index.html">回首頁</a>　・　<a href="spreads.html">專家模式</a>
+  </footer>
+
+</body>
+</html>
