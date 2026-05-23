@@ -106,14 +106,18 @@
       gap: 1rem;
     }
     .nav-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
       font-family: var(--font-headline);
       font-weight: 700;
-      font-size: 1.15rem;
-      letter-spacing: 0.04em;
-      color: var(--color-text);
+      font-size: 1.05rem;
+      letter-spacing: 0.12em;
+      color: var(--color-cta);
       text-decoration: none;
     }
-    .nav-brand:hover { color: var(--color-cta); }
+    .nav-brand:hover { filter: brightness(1.15); }
+    .nav-logo { width: 26px; height: 26px; flex-shrink: 0; }
     .nav-back {
       font-size: 0.92rem;
       color: var(--color-muted);
@@ -542,7 +546,15 @@
   <nav class="site-nav" id="siteNav">
     <div class="nav-inner">
       <a class="nav-back" href="index.html">← 回首頁</a>
-      <a class="nav-brand" href="index.html">claude-tarot</a>
+      <a class="nav-brand" href="index.html" aria-label="claude-tarot 回首頁">
+        <svg class="nav-logo" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs><mask id="nav-moon-web-2"><rect width="32" height="32" fill="white"/><circle cx="19.5" cy="13" r="8" fill="black"/></mask></defs>
+          <circle cx="16" cy="16" r="10" fill="currentColor" mask="url(#nav-moon-web-2)"/>
+          <path d="M7 5 L8.2 7.8 L11 9 L8.2 10.2 L7 13 L5.8 10.2 L3 9 L5.8 7.8 Z" fill="currentColor"/>
+          <circle cx="25" cy="24" r="1.1" fill="currentColor"/>
+        </svg>
+        <span>TAROT</span>
+      </a>
       <span class="nav-spacer"></span>
       <a class="nav-pill" href="index.html">基本牌陣</a>
     </div>
