@@ -2756,9 +2756,10 @@
         let draws;
         if (state.drawMode === 'manual') {
           draws = drawManual();
-          const names = draws.map(d => d.card.name_en);
-          if (new Set(names).size < names.length) {
-            alert(`此牌陣需 ${names.length} 張不同的牌、請調整手動選擇。`);
+          // 主牌位需互不重複；心態牌（底牌）可與任何主牌重複（塔羅實務允許）
+          const mainNames = draws.filter(d => !d.isBottom).map(d => d.card.name_en);
+          if (new Set(mainNames).size < mainNames.length) {
+            alert(`主牌位需 ${mainNames.length} 張不同的牌（心態牌可與主牌重複）、請調整手動選擇。`);
             return;
           }
         } else {
