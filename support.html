@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>支援與常見問題 — TAROT</title>
+  <meta name="description" content="TAROT App 支援頁面：API key、AI 解讀、付費還原、抽牌紀錄等常見問題與聯絡方式。">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --color-primary: #9B7EBD;
+      --color-cta: #E8C547;
+      --color-text: #F5F0FA;
+      --color-muted: #9F8AB8;
+      --color-border: rgba(255, 255, 255, 0.12);
+      --glass-bg: rgba(255, 255, 255, 0.06);
+      --font: 'Noto Serif TC', serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      font-weight: 400;
+      color: var(--color-text);
+      background: linear-gradient(135deg, #1A0B2E 0%, #3D1F5F 50%, #1A0B2E 100%);
+      background-attachment: fixed;
+      line-height: 1.85;
+      letter-spacing: 0.015em;
+      min-height: 100vh;
+    }
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(26, 11, 46, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--color-border);
+      padding-top: env(safe-area-inset-top);
+    }
+    .nav-inner {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .nav-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--color-cta);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: 0.08em;
+    }
+    .nav-logo { width: 26px; height: 26px; }
+    .nav-back {
+      margin-left: auto;
+      color: var(--color-muted);
+      text-decoration: none;
+      font-size: 0.92rem;
+    }
+    .nav-back:hover { color: var(--color-cta); }
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+    h1 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      margin: 0 0 0.5rem;
+    }
+    .updated {
+      color: var(--color-muted);
+      font-size: 0.92rem;
+      margin-bottom: 2.5rem;
+    }
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--color-cta);
+      margin: 2.5rem 0 0.85rem;
+      letter-spacing: 0.03em;
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: 0.4rem;
+    }
+    h3 {
+      font-size: 1.08rem;
+      font-weight: 600;
+      color: var(--color-primary);
+      margin: 1.5rem 0 0.6rem;
+    }
+    p { margin: 0.6rem 0 1rem; }
+    ul, ol {
+      padding-left: 1.4rem;
+      margin: 0.6rem 0 1rem;
+    }
+    li { margin-bottom: 0.4rem; }
+    a { color: var(--color-cta); }
+    a:hover { color: #fff; }
+    code {
+      background: var(--glass-bg);
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.92em;
+    }
+    .callout {
+      background: var(--glass-bg);
+      border-left: 3px solid var(--color-cta);
+      padding: 1rem 1.2rem;
+      margin: 1.25rem 0;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.96rem;
+    }
+    .lang-divider {
+      margin: 3.5rem 0 1.5rem;
+      text-align: center;
+      color: var(--color-muted);
+      font-size: 0.88rem;
+      letter-spacing: 0.15em;
+    }
+    .lang-divider::before,
+    .lang-divider::after {
+      content: '';
+      display: inline-block;
+      width: 60px;
+      height: 1px;
+      background: var(--color-border);
+      vertical-align: middle;
+      margin: 0 1rem;
+    }
+    footer {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 1.5rem;
+      border-top: 1px solid var(--color-border);
+      color: var(--color-muted);
+      font-size: 0.88rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a class="nav-brand" href="index.html">
+        <svg class="nav-logo" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs><mask id="nav-moon-sup"><rect width="32" height="32" fill="white"/><circle cx="19.5" cy="13" r="8" fill="black"/></mask></defs>
+          <circle cx="16" cy="16" r="10" fill="currentColor" mask="url(#nav-moon-sup)"/>
+          <path d="M7 5 L8.2 7.8 L11 9 L8.2 10.2 L7 13 L5.8 10.2 L3 9 L5.8 7.8 Z" fill="currentColor"/>
+          <circle cx="25" cy="24" r="1.1" fill="currentColor"/>
+        </svg>
+        <span>TAROT</span>
+      </a>
+      <a class="nav-back" href="index.html">← 回首頁</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <h1>支援與常見問題</h1>
+    <p class="updated">最後更新：2026 年 5 月 24 日</p>
+
+    <div class="callout">
+      找不到答案？來信：<a href="mailto:alex.yeh@angelz13.com">alex.yeh@angelz13.com</a>（通常 1-2 個工作天內回覆）
+    </div>
+
+    <h2>1. 如何取得 OpenAI API key？</h2>
+    <p>App 內的 AI 解讀功能需要您自帶 OpenAI API key。首次設定約 5 分鐘、需綁信用卡：</p>
+    <ol>
+      <li>到 <a href="https://platform.openai.com/signup" target="_blank" rel="noopener">platform.openai.com/signup</a> 註冊 OpenAI 開發者帳號（與一般 ChatGPT 帳號為不同入口）</li>
+      <li>登入後左側點 <code>Billing</code> → 加信用卡 → 首次儲值 ≥ 美金 5 元</li>
+      <li>左側點 <code>API keys</code> → <code>Create new secret key</code> → 命名「Tarot iOS」→ 複製整串（以 <code>sk-</code> 開頭）</li>
+      <li>回到 App 進「⚙️ 設定」貼上、按儲存、按「測試連線」確認綠燈</li>
+    </ol>
+    <p>單次 AI 解讀成本約美金 0.01-0.05（依模型選擇與牌陣大小）。</p>
+
+    <h2>2. AI 解讀沒回應或報錯怎麼辦？</h2>
+    <ul>
+      <li><strong>連線錯誤 / Timeout</strong>：確認網路通暢、再試一次。AI 解讀預設 60 秒 timeout。</li>
+      <li><strong>401 Unauthorized</strong>：API key 錯誤或失效。回設定頁重貼一次、按「測試連線」確認。</li>
+      <li><strong>429 Too Many Requests</strong>：超過 OpenAI 速率限制、稍候 1 分鐘再試。</li>
+      <li><strong>402 / Insufficient quota</strong>：OpenAI 帳號餘額用罄、回 <code>platform.openai.com</code> 加值。</li>
+      <li><strong>5xx Server Error</strong>：OpenAI 端服務暫時異常、稍候再試。</li>
+    </ul>
+
+    <h2>3. 抽牌紀錄不見了？</h2>
+    <p>抽牌紀錄存於 iOS 系統的 <code>Capacitor Preferences</code> 沙盒。以下情況會清空：</p>
+    <ul>
+      <li>解除安裝 App（再裝回不會還原）</li>
+      <li>於 iOS 系統「設定 → 一般 → iPhone 儲存空間 → TAROT → 卸載 App」（保留資料）vs「刪除 App」（清空資料）</li>
+      <li>於紀錄頁手動逐筆刪除</li>
+    </ul>
+    <p>本 App 不提供雲端備份（為符合「資料只在本機」的隱私承諾）。如需保留珍貴紀錄，建議定期截圖。</p>
+
+    <h2>4. 怎麼還原 NT$30 解鎖？</h2>
+    <p>換新手機、重灌 App、或更換 Apple ID 後想還原已購買的「專家模式」：</p>
+    <ol>
+      <li>確認目前登入的 Apple ID 與當初購買時相同</li>
+      <li>進「⚙️ 設定」→ 點「還原購買 (Restore Purchases)」</li>
+      <li>等系統驗證、解鎖狀態回復</li>
+    </ol>
+    <p>Apple 規定 non-consumable 購買終身可還原、無額外費用。</p>
+
+    <h2>5. 我可以離線使用嗎？</h2>
+    <p>抽牌、查看 78 張牌的關鍵字、紀錄、每日提醒都可在無網路下使用。</p>
+    <p>但 <strong>AI 解讀必須連線</strong>（App 連線到 <code>api.openai.com</code>），無網路時請改用「複製 Prompt」按鈕、上線後再貼到其他 LLM。</p>
+
+    <h2>6. 隱私問題</h2>
+    <p>本 App 完整隱私說明：<a href="privacy.html">隱私政策</a></p>
+    <p>一句話總結：本 App 不收集任何個人資料、所有資料僅存在您的裝置本機、沒有第三方追蹤、沒有伺服器。</p>
+
+    <h2>7. 回報 Bug / 建議功能</h2>
+    <p>歡迎來信 <a href="mailto:alex.yeh@angelz13.com">alex.yeh@angelz13.com</a>。回報 Bug 時請附上：</p>
+    <ul>
+      <li>iOS 版本（設定 → 一般 → 關於本機 → 軟體版本）</li>
+      <li>iPhone 機型</li>
+      <li>復現步驟（哪個頁面、按了什麼、預期 vs 實際）</li>
+      <li>截圖（若可）</li>
+    </ul>
+
+    <h2>8. 聯絡方式</h2>
+    <p>Email：<a href="mailto:alex.yeh@angelz13.com">alex.yeh@angelz13.com</a></p>
+    <p>網站：<a href="https://tarot.angelz13.com">tarot.angelz13.com</a></p>
+
+    <div class="lang-divider">ENGLISH VERSION</div>
+
+    <h1>Support & FAQ</h1>
+    <p class="updated">Last updated: May 24, 2026</p>
+
+    <div class="callout">
+      Can't find what you need? Email <a href="mailto:alex.yeh@angelz13.com">alex.yeh@angelz13.com</a> (response within 1-2 business days).
+    </div>
+
+    <h2>1. How do I get an OpenAI API key?</h2>
+    <p>AI reading requires you to bring your own OpenAI API key. First-time setup takes ~5 minutes and requires a credit card:</p>
+    <ol>
+      <li>Sign up at <a href="https://platform.openai.com/signup" target="_blank" rel="noopener">platform.openai.com/signup</a> (this is the developer portal, separate from ChatGPT)</li>
+      <li>In the left sidebar, click <code>Billing</code> → add a credit card → top up at least USD $5</li>
+      <li>Click <code>API keys</code> → <code>Create new secret key</code> → name it "Tarot iOS" → copy the full string (starts with <code>sk-</code>)</li>
+      <li>Back in TAROT, go to "⚙️ Settings", paste the key, tap save, then tap "Test connection" to verify</li>
+    </ol>
+    <p>Each AI reading costs roughly USD $0.01-0.05 depending on model and spread size.</p>
+
+    <h2>2. AI reading not responding or showing errors?</h2>
+    <ul>
+      <li><strong>Connection error / timeout</strong>: check your network and retry. AI reading has a 60s timeout.</li>
+      <li><strong>401 Unauthorized</strong>: invalid or expired API key. Re-paste in Settings and tap "Test connection".</li>
+      <li><strong>429 Too Many Requests</strong>: OpenAI rate limit exceeded. Wait 1 minute and retry.</li>
+      <li><strong>402 / Insufficient quota</strong>: OpenAI account balance depleted. Top up at <code>platform.openai.com</code>.</li>
+      <li><strong>5xx Server Error</strong>: OpenAI service issue. Wait and retry.</li>
+    </ul>
+
+    <h2>3. My draw history is gone?</h2>
+    <p>Draw history is stored in iOS <code>Capacitor Preferences</code> sandbox. It is cleared when:</p>
+    <ul>
+      <li>You uninstall the app (reinstalling does NOT restore data)</li>
+      <li>You "Delete App" (vs "Offload App" which preserves data) in iOS Settings → General → iPhone Storage</li>
+      <li>You delete entries individually in the history page</li>
+    </ul>
+    <p>This app provides no cloud backup (to honor the "data stays on device" privacy promise). For valuable entries, please screenshot.</p>
+
+    <h2>4. How do I restore my NT$30 unlock?</h2>
+    <p>After a new phone, reinstall, or Apple ID change, restore your "Expert Mode" purchase:</p>
+    <ol>
+      <li>Verify you are signed in with the same Apple ID used for purchase</li>
+      <li>Go to "⚙️ Settings" → tap "Restore Purchases"</li>
+      <li>Wait for system verification — unlock state will be restored</li>
+    </ol>
+    <p>Apple non-consumable purchases are restorable for life at no additional cost.</p>
+
+    <h2>5. Can I use the app offline?</h2>
+    <p>Drawing cards, viewing 78-card keywords, history, and daily reminders all work offline.</p>
+    <p>However, <strong>AI reading requires internet</strong> (the app connects to <code>api.openai.com</code>). When offline, use the "Copy Prompt" button instead and paste into another LLM later.</p>
+
+    <h2>6. Privacy questions</h2>
+    <p>Full privacy details: <a href="privacy.html">Privacy Policy</a></p>
+    <p>TL;DR: this app collects no personal data, all data stays on your device, no third-party tracking, no server.</p>
+
+    <h2>7. Report a bug / Suggest a feature</h2>
+    <p>Email <a href="mailto:alex.yeh@angelz13.com">alex.yeh@angelz13.com</a>. When reporting a bug please include:</p>
+    <ul>
+      <li>iOS version (Settings → General → About → Software Version)</li>
+      <li>iPhone model</li>
+      <li>Steps to reproduce (which page, what you tapped, expected vs actual)</li>
+      <li>Screenshot if available</li>
+    </ul>
+
+    <h2>8. Contact</h2>
+    <p>Email: <a href="mailto:alex.yeh@angelz13.com">alex.yeh@angelz13.com</a></p>
+    <p>Website: <a href="https://tarot.angelz13.com">tarot.angelz13.com</a></p>
+
+  </main>
+
+  <footer>
+    © 2026 TAROT　・　<a href="index.html">首頁 / Home</a>　・　<a href="privacy.html">隱私政策 / Privacy</a>
+  </footer>
+
+</body>
+</html>
