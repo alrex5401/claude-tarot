@@ -9,7 +9,7 @@
 ## 特色
 
 - ✅ **三種模式**：單張問卜 / 三牌陣 / 每日能量
-- ✅ **Rider-Waite-Smith 傳統**：牌義基於 Arthur Edward Waite《The Pictorial Key to the Tarot》(1910) 公共領域版，現代繁中重寫
+- ✅ **Waite 1910 公共領域版本**：牌義基於 Arthur Edward Waite《The Pictorial Key to the Tarot》(1910) 公共領域版，現代繁中重寫
 - ✅ **78 張完整牌義庫**：22 大阿爾克納 + 56 小阿爾克納（權杖、聖杯、寶劍、錢幣）
 - ✅ **無隨機邏輯**：你自己抽，AI 不碰隨機
 - ✅ **開源可自由散布**：MIT License，可安心送朋友
@@ -84,7 +84,7 @@ cp skill/tarot/cards.json ~/.claude/data/tarot_cards.json
 - **Skill 內容（SKILL.md、cards.json 的現代繁中重寫）**：MIT License
 - **來源資料**：
   - Arthur Edward Waite, *The Pictorial Key to the Tarot* (1910) — 公共領域
-  - Rider-Waite-Smith 塔羅圖像 (1909) — 公共領域
+  - Pamela Colman Smith 1909 塔羅圖像 — 公共領域（Wikimedia Commons）
 
 詳細出處見 `SOURCES.md`。
 

@@ -17,12 +17,28 @@ Waite 對每張牌提供：
 - Reversed（逆位含義）
 - Symbolism（象徵描述）
 
-### 2. Rider-Waite-Smith 塔羅圖像 (1909)
+### 2. Pamela Colman Smith 1909 塔羅圖像
 
-由 Pamela Colman Smith（1878-1951）繪製的 78 張塔羅牌圖像。
+由 Pamela Colman Smith（1878-1951）繪製的 78 張塔羅牌圖像，業界俗稱 "Rider-Waite-Smith" 牌組（以原出版商 Rider & Co. 命名）。
 
 - 出版：1909 年
-- 授權狀態：美國自 1938 年起進入公共領域；在大多數司法管轄區（含台灣）亦屬公共領域
+- 授權狀態：美國自 1931 年前出版即進入公共領域；歐盟 / 英國 / 台灣於作者 1951 過世 + 70 年（即 2021 年）後進入公共領域
+- **本專案圖像具體來源**：[Wikimedia Commons](https://commons.wikimedia.org/) 的 `RWS_Tarot_NN_*.jpg`（大阿）/ `Cups0N.jpg` / `Wands0N.jpg` / `Swords0N.jpg` / `Pents0N.jpg`（小阿）系列、Resize 至 500-wide
+- **可重現驗證**（perceptual hash 比對、distance = 0 表完全同源）：
+  ```python
+  from PIL import Image
+  import imagehash
+  wm = Image.open(urlopen('https://upload.wikimedia.org/wikipedia/commons/9/90/RWS_Tarot_00_Fool.jpg'))
+  local = Image.open('public/images/major-00-fool.jpg')
+  assert imagehash.phash(wm) - imagehash.phash(local) == 0
+  ```
+
+### 「Rider-Waite」商標說明
+
+"RIDER-WAITE®" 為 US Games Systems, Inc. 註冊商標（US Trademark Reg. No. 1,309,015）。本專案：
+- 圖像本身為公共領域（Pamela Colman Smith 1909 / A.E. Waite 1942）
+- 文案 / 行銷 / App 名稱皆不使用 "Rider-Waite" 商標
+- 學術引用 "Rider-Waite-Smith" 為業界俗稱、屬指示性合理使用（nominative fair use）、非暗示官方授權
 
 ## 本 Skill 的加值
 

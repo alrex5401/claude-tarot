@@ -1,6 +1,6 @@
 {
   "meta": {
-    "source": "Rider-Waite-Smith tradition; keywords and symbolism derived from Arthur Edward Waite, The Pictorial Key to the Tarot (1910, public domain)",
+    "source": "Public domain — A. E. Waite, The Pictorial Key to the Tarot (1910); Pamela Colman Smith 1909 illustrations",
     "license": "MIT (this JSON), public-domain source material",
     "updated": "2026-05-14",
     "card_count": 78
@@ -205,7 +205,7 @@
       "image": "images/major-08-strength.jpg"
     },
     {
-      "name_zh": "隱者",
+      "name_zh": "隱士",
       "name_en": "The Hermit",
       "number": 9,
       "arcana": "major",
