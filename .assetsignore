@@ -1,0 +1,14 @@
+.git
+.gitignore
+.assetsignore
+wrangler.jsonc
+README.md
+CNAME
+LICENSE
+SOURCES.md
+tarot-lite.md
+給朋友的 2 分鐘教學.md
+dist
+skill
+.DS_Store
+**/.DS_Store

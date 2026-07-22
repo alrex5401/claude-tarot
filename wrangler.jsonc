@@ -1,0 +1,12 @@
+{
+  // Cloudflare Workers 靜態託管設定（tarot.angelz13.com、由 GitHub Pages 遷入）
+  // Worker 名稱必須與 Cloudflare dashboard 建立的 Worker 一致（官方硬性要求）
+  "name": "claude-tarot",
+  "compatibility_date": "2026-07-22",
+  "assets": {
+    // 網站檔在 repo 根目錄（index.html 在根）；非網站檔由 .assetsignore 排除
+    "directory": ".",
+    // 純靜態站：找不到的路徑回最近的 404 頁（無則預設 404）；不是 SPA
+    "not_found_handling": "404-page"
+  }
+}
