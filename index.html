@@ -12,8 +12,6 @@
   <title>TAROT 塔羅密語 — 每天一張牌，與自己對話</title>
   <meta name="description" content="不預測未來，用塔羅陪你每天停一秒、跟自己對話。Waite 1910 公共領域牌義、抽完一鍵 copy prompt、貼到任何 LLM 解讀。免費、零註冊、不上傳。">
 
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Google Fonts — 統一 Noto Serif TC（中英 serif 一致） -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -524,6 +522,9 @@
       body::before { opacity: 0.3; }
     }
   </style>
+  <!-- Tailwind：本機 build（改了 class 要重跑 000_Agent/scripts/tailwind_build.py targets Tarot/tailwind_targets.json）；
+       放在 head 最後＝與原本 Play CDN 附加 <style> 的位置相同，覆蓋順序不變 -->
+  <link rel="stylesheet" href="css/tailwind.css">
 </head>
 <body>
 
