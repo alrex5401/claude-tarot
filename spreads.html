@@ -771,6 +771,11 @@
         resultSection.hidden = true;
       }
 
+      // 使用者自填的選擇標題會組進牌位名稱，放進 innerHTML 前一律跳脫
+      function esc(s) {
+        return String(s).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+      }
+
       // ===== 多擇一：選擇標題 input =====
       function renderChoiceTitleList() {
         const defaults = ['A', 'B', 'C'];
@@ -780,7 +785,7 @@
           rows.push(`
             <div class="choice-title-row">
               <span class="label-tag">${defaults[i]}</span>
-              <input type="text" data-idx="${i}" value="${cur}" placeholder="如「接受 offer」、「不接」、「再等等」" />
+              <input type="text" data-idx="${i}" value="${esc(cur)}" placeholder="如「接受 offer」、「不接」、「再等等」" />
             </div>
           `);
         }
@@ -824,8 +829,8 @@
         mainPositions.forEach((pos, i) => {
           rows.push(`
             <div class="manual-row" data-slot="${i}">
-              <span class="position-label">${pos}</span>
-              <select class="manual-card-select" data-slot="${i}" aria-label="${pos}">
+              <span class="position-label">${esc(pos)}</span>
+              <select class="manual-card-select" data-slot="${i}" aria-label="${esc(pos)}">
                 ${options}
               </select>
               <label class="reversed-check">
@@ -939,7 +944,7 @@
       // ===== 結果渲染 =====
       function renderCardTile(d, isBottom) {
         const cls = 'card-tile' + (isBottom ? ' bottom-card' : '');
-        const posLine = isBottom ? '' : `<span class="pos">${d.position}</span>`;
+        const posLine = isBottom ? '' : `<span class="pos">${esc(d.position)}</span>`;
         return `
           <div class="${cls}">
             ${posLine}
@@ -987,7 +992,7 @@
             const procDraw = mainDraws[1 + i * 2];
             const resultDraw = mainDraws[2 + i * 2];
             html += `<div class="choice-group">`;
-            html += `<div class="choice-group-title">${titles[i]}</div>`;
+            html += `<div class="choice-group-title">${esc(titles[i])}</div>`;
             html += '<div class="cards row-2">';
             html += renderCardTile(procDraw, false);
             html += renderCardTile(resultDraw, false);
