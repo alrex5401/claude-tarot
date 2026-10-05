@@ -711,6 +711,8 @@
 
   <!-- ===== 牌組資料：78 張 Waite 1910 公共領域（MIT 授權 JSON） ===== -->
   <script src="js/cards.js"></script>
+  <!-- 翻牌儀式（正本在 Tarot/ritual/ritual.js、用 sync.py 複製過來，不要直接改這份） -->
+  <script src="js/ritual.js"></script>
 
   <script>
     // Nav scroll shadow
@@ -965,22 +967,44 @@
       if (askClaudeBtn) askClaudeBtn.addEventListener('click', handleAskClaude);
 
       // ===== 抽牌按鈕 =====
-      function handleDraw() {
-        let draws;
-        if (state.drawMode === 'manual') {
-          draws = drawManual();
-          if (draws.length === 3) {
-            const ids = draws.map(d => d.card.name_en);
-            if (new Set(ids).size < 3) {
-              alert('三牌陣手動模式請選 3 張不同的牌');
-              return;
-            }
-          }
-        } else {
-          draws = drawRandom();
+      // 翻牌儀式：只管畫面，交回同一份陣列（內容不變）；取消回 null；模組出錯就退回直接出結果
+      async function playRitual(draws) {
+        if (!window.TarotRitual) return draws;
+        try {
+          return await window.TarotRitual.run({ spread: state.mode, nChoices: 1, draws, drawMode: state.drawMode });
+        } catch (err) {
+          console.error('[ritual]', err);
+          return draws;
         }
-        state.lastDraws = draws;
-        renderResult(draws);
+      }
+
+      let drawing = false;
+      async function handleDraw() {
+        if (drawing) return;   // 防連點：第一行就鎖、finally 統一解開
+        drawing = true;
+        drawBtn.disabled = true;
+        try {
+          let draws;
+          if (state.drawMode === 'manual') {
+            draws = drawManual();
+            if (draws.length === 3) {
+              const ids = draws.map(d => d.card.name_en);
+              if (new Set(ids).size < 3) {
+                alert('三牌陣手動模式請選 3 張不同的牌');
+                return;
+              }
+            }
+          } else {
+            draws = drawRandom();
+          }
+          draws = await playRitual(draws);
+          if (!draws) return;
+          state.lastDraws = draws;
+          renderResult(draws);
+        } finally {
+          drawing = false;
+          drawBtn.disabled = false;
+        }
       }
 
       // ===== Events =====
