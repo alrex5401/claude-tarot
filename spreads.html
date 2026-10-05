@@ -9,7 +9,7 @@
   <link rel="apple-touch-icon" href="images/favicon-180.png">
 
   <title>進階牌陣 — claude-tarot</title>
-  <meta name="description" content="意識與淺意識 / 時間之流 / 二多擇一 — 含心態牌的進階塔羅牌陣，AI 解讀 prompt 一鍵生成">
+  <meta name="description" content="意識與淺意識 / 時間之流 / 多擇一 — 含心態牌的進階塔羅牌陣，AI 解讀 prompt 一鍵生成">
 
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -274,7 +274,7 @@
     }
     .radio-pill input:focus-visible + span { outline: 2px solid var(--color-cta); outline-offset: 2px; }
 
-    /* Choices block（二多擇一專用：N + 各選擇標題） */
+    /* Choices block（多擇一專用：N + 各選擇標題） */
     .choices-block {
       padding: 1rem 1.1rem;
       background: rgba(0, 0, 0, 0.18);
@@ -392,7 +392,7 @@
       .cards.row-2, .cards.row-3 { grid-template-columns: 1fr; }
     }
 
-    /* Choice group（二多擇一：每個選擇 2 張並列） */
+    /* Choice group（多擇一：每個選擇 2 張並列） */
     .choice-group {
       padding: 1rem;
       border: 1px dashed rgba(232, 197, 71, 0.25);
@@ -575,7 +575,7 @@
       <span class="hero-tag">專家模式</span>
       <h1>進階牌陣</h1>
       <p class="hero-desc">
-        意識與淺意識・時間之流・二多擇一<br>
+        意識與淺意識・時間之流・多擇一<br>
         每個牌陣末尾自動帶一張「心態牌」當底牌
       </p>
     </div>
@@ -591,13 +591,13 @@
         <div class="mode-tabs" role="tablist" aria-label="模式選擇">
           <button type="button" class="mode-tab active" data-mode="awareness" role="tab" aria-selected="true">意識與淺意識</button>
           <button type="button" class="mode-tab" data-mode="timeflow" role="tab" aria-selected="false">時間之流</button>
-          <button type="button" class="mode-tab" data-mode="choices" role="tab" aria-selected="false">二多擇一</button>
+          <button type="button" class="mode-tab" data-mode="choices" role="tab" aria-selected="false">多擇一</button>
         </div>
 
         <!-- 模式說明 -->
         <div class="mode-intro" id="mode-intro"></div>
 
-        <!-- 二多擇一專用：N 選擇器 + 選擇標題 -->
+        <!-- 多擇一專用：N 選擇器 + 選擇標題 -->
         <div class="choices-block" id="choices-block" hidden>
           <span class="field-label">幾個選擇？</span>
           <div class="n-choices">
@@ -771,7 +771,7 @@
         resultSection.hidden = true;
       }
 
-      // ===== 二多擇一：選擇標題 input =====
+      // ===== 多擇一：選擇標題 input =====
       function renderChoiceTitleList() {
         const defaults = ['A', 'B', 'C'];
         const rows = [];
@@ -906,7 +906,7 @@
         const modeName =
           mode === 'awareness' ? '意識與淺意識（2 牌 + 心態牌）'
           : mode === 'timeflow' ? '時間之流（3 牌 + 心態牌）'
-          : `二多擇一（現況 + ${state.nChoices} 選擇 × 過程結果 + 心態牌）`;
+          : `多擇一（現況 + ${state.nChoices} 選擇 × 過程結果 + 心態牌）`;
 
         const role = `你是塔羅解讀師，依 Waite 1910 傳統解讀「${modeName}」牌陣。`;
         const style = `回應 ${targetWords} 字，繁體中文，語氣沉穩、不誇大、不命定論。`;
