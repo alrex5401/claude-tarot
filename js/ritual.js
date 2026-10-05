@@ -58,7 +58,7 @@
   // 只關點兩下放大、雙指縮放照常可用。
   const CSS = `
 .tr-overlay{position:fixed;inset:0;z-index:2147483000;display:flex;flex-direction:column;align-items:center;touch-action:manipulation;
-  overflow-y:auto;padding:16px 16px 24px;box-sizing:border-box;color:#F5F0FA;font-family:'Noto Serif TC',serif;
+  overflow-y:auto;padding:calc(16px + env(safe-area-inset-top)) 16px calc(24px + env(safe-area-inset-bottom));box-sizing:border-box;color:#F5F0FA;font-family:'Noto Serif TC',serif;
   background-color:#1A0B2E;background-image:linear-gradient(135deg,#1A0B2E 0%,#3D1F5F 50%,#1A0B2E 100%)}
 .tr-overlay *{box-sizing:border-box}
 .tr-top{width:100%;max-width:640px;display:flex;justify-content:space-between;align-items:center;gap:12px}
@@ -88,7 +88,8 @@
 .tr-plain::after{content:"✦";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#E8C547;
   font-size:calc(var(--tr-w) * .22);opacity:.8}
 .tr-stage{width:100%;max-width:640px;display:flex;flex-direction:column;align-items:center;margin-top:16px}
-.tr-deck{position:relative;width:84px;height:140px;margin:8px 0 18px}
+.tr-deck{position:relative;width:64px;height:106px;margin:8px 0 4px}
+.tr-stage .tr-stop{margin:0 0 6px}
 .tr-deck .tr-plain{position:absolute;inset:0;border-radius:6px;animation:tr-shuffle 1s ease-in-out infinite}
 .tr-deck .tr-plain:nth-child(2){animation-delay:.15s}
 .tr-deck .tr-plain:nth-child(3){animation-delay:.3s}
@@ -124,11 +125,27 @@
   }
 
   // 牌寬同時受寬與高限制：整個牌陣加上下方的牌背列與按鈕，要在一個畫面內放得下、不必捲動
-  const CHROME_H = 270;  // 上方列＋提示＋下方牌背列／按鈕的高度
+  // 310＝外框上下內距 40＋上方列 30＋提示 48＋牌堆區上距 16＋「停」48＋牌堆 118（逐項對 CSS 加總；
+  // 原本 270 少算約 50，四列的多擇一在 iPhone 上把「停」擠到畫面外，2026-10-05 實機）
+  const CHROME_H = 310;
+  // 瀏海與底部橫條佔掉的高度（viewport-fit=cover 時 innerHeight 含這兩塊）；讀不到回 0
+  function safeInsetsY() {
+    try {
+      const p = document.createElement('div');
+      p.style.cssText = 'position:fixed;visibility:hidden;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)';
+      document.body.appendChild(p);
+      const cs = getComputedStyle(p);
+      const v = (parseFloat(cs.paddingTop) || 0) + (parseFloat(cs.paddingBottom) || 0);
+      p.remove();
+      return v;
+    } catch (e) {
+      return 0;
+    }
+  }
   function cardWidth(maxCols, rows) {
     const vw = Math.min(window.innerWidth || 640, 640) - 32;
     const byW = Math.floor((vw - (maxCols - 1) * 10) / maxCols);
-    const vh = window.innerHeight || 800;
+    const vh = (window.innerHeight || 800) - safeInsetsY();
     const byH = Math.floor(((vh - CHROME_H) / rows - 28) / 1.67); // 28＝名稱一行＋列間距
     return Math.max(40, Math.min(byW, byH, 96));
   }
@@ -301,8 +318,9 @@
         for (let i = 0; i < 3; i++) deck.appendChild(el('div', 'tr-plain'));
         const stop = el('button', 'tr-btn tr-stop', '停');
         stop.type = 'button';
-        stage.appendChild(deck);
+        // 「停」放在牌堆上方：空間不夠時被切掉的是牌堆下緣、不是按鈕
         stage.appendChild(stop);
+        stage.appendChild(deck);
         stop.addEventListener('click', () => {
           stage.innerHTML = '';
           const fan = el('div', 'tr-fan');
