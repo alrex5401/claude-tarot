@@ -54,8 +54,10 @@
   }
 
   // ===== 樣式：純 CSS、不用 Tailwind class（計劃書定案：模組複製到兩邊都要能獨立運作） =====
+  // touch-action:manipulation：選牌要連點同一區，iOS 會把它當成「點兩下放大」、整個牌陣放大偏移（2026-10-05 實機）；
+  // 只關點兩下放大、雙指縮放照常可用。
   const CSS = `
-.tr-overlay{position:fixed;inset:0;z-index:2147483000;display:flex;flex-direction:column;align-items:center;
+.tr-overlay{position:fixed;inset:0;z-index:2147483000;display:flex;flex-direction:column;align-items:center;touch-action:manipulation;
   overflow-y:auto;padding:16px 16px 24px;box-sizing:border-box;color:#F5F0FA;font-family:'Noto Serif TC',serif;
   background-color:#1A0B2E;background-image:linear-gradient(135deg,#1A0B2E 0%,#3D1F5F 50%,#1A0B2E 100%)}
 .tr-overlay *{box-sizing:border-box}
