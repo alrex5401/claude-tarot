@@ -458,9 +458,9 @@
 
     /* 心態牌（底牌）— 金邊 + 置中 + 區隔 */
     .bottom-card-wrap {
-      margin-top: 2rem;
-      padding-top: 1.5rem;
-      border-top: 1px dashed rgba(232, 197, 71, 0.35);
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px dashed rgba(232, 197, 71, 0.35);
     }
     .bottom-card-label {
       text-align: center;
@@ -576,7 +576,7 @@
       <h1>進階牌陣</h1>
       <p class="hero-desc">
         意識與淺意識・時間之流・多擇一<br>
-        每個牌陣末尾自動帶一張「心態牌」當底牌
+        每個牌陣都先抽一張「心態牌」當底牌
       </p>
     </div>
   </section>
@@ -911,8 +911,9 @@
         const role = `你是塔羅解讀師，依 Waite 1910 傳統解讀「${modeName}」牌陣。`;
         const style = `回應 ${targetWords} 字，繁體中文，語氣沉穩、不誇大、不命定論。`;
 
-        // 牌列
-        const cardLines = draws.map(d => {
+        // 牌列：心態牌排第一（2026-10-05 起；draws 本身的順序不動、存檔格式不變）
+        const ordered = draws.filter(d => d.isBottom).concat(draws.filter(d => !d.isBottom));
+        const cardLines = ordered.map(d => {
           const kws = (d.reversed ? d.card.reversed_keywords : d.card.upright_keywords).slice(0, 3).join('、');
           const arcana = ARCANA_ZH[d.card.arcana] || d.card.arcana;
           const tag = d.isBottom ? `[心態牌·底牌]` : `[${d.position}]`;
@@ -922,12 +923,12 @@
         // 解讀任務
         let task = '';
         if (mode === 'awareness') {
-          task = '請依「意識面 vs 潛意識」對比解讀：頭腦怎麼想、身體/直覺怎麼感受、兩者落差在哪、心態牌如何承接。';
+          task = '請先讀心態牌（問卜者對這件事的內心感受），再依「意識面 vs 潛意識」對比解讀：頭腦怎麼想、身體/直覺怎麼感受、兩者落差在哪。';
         } else if (mode === 'timeflow') {
-          task = '請依「過去 → 現在 → 未來」三段解讀，並用心態牌串接整體調性、給整體建議。';
+          task = '請先讀心態牌定下整體調性，再依「過去 → 現在 → 未來」三段解讀、給整體建議。';
         } else {
           const titles = state.choiceTitles.slice(0, state.nChoices).join(' / ');
-          task = `請依「現況」起手、逐一比較 ${state.nChoices} 個選擇（${titles}）的過程與結果，最後用心態牌收束、給整體建議。`;
+          task = `請先讀心態牌（問卜者對整件事的內心真實感受），再從「現況」起手、逐一比較 ${state.nChoices} 個選擇（${titles}）的過程與結果、給整體建議。`;
         }
 
         const askLine = question && question.trim() ? `\n\n問題：${question.trim()}` : '';
@@ -955,6 +956,12 @@
         const mainDraws = draws.filter(d => !d.isBottom);
         const bottomDraw = draws.find(d => d.isBottom);
         let html = '';
+
+        // 心態牌底牌：排第一（2026-10-05 起）
+        html += '<div class="bottom-card-wrap">';
+        html += '<div class="bottom-card-label">心態牌 · 底牌</div>';
+        html += renderCardTile(bottomDraw, true);
+        html += '</div>';
 
         if (state.mode === 'awareness') {
           // 2 張並列
@@ -988,12 +995,6 @@
             html += '</div>';
           }
         }
-
-        // 心態牌底牌
-        html += '<div class="bottom-card-wrap">';
-        html += '<div class="bottom-card-label">心態牌 · 底牌</div>';
-        html += renderCardTile(bottomDraw, true);
-        html += '</div>';
 
         resultCards.innerHTML = html;
 
