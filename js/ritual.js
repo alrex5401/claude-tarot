@@ -1,7 +1,7 @@
 /* 仆洛宅塔羅・翻牌儀式模組（網站 public/ 與 app/www/ 共用）
  *
  * 🔒 正本只有這一份：Tarot/ritual/ritual.js。兩邊的 js/ritual.js 由 Tarot/ritual/sync.py 複製，不要直接改副本。
- * 計劃書：000_Agent/plans/2026-10-04-塔羅翻牌儀式.md
+ * 計劃書：000_Agent/plans/archive/2026-10-04-塔羅翻牌儀式.md
  *
  * 硬約束：儀式只管「畫面上怎麼抽、怎麼翻」。交回頁面的抽牌陣列一個位置都不動
  * （spreads.html 的結果渲染、app 的 AI 解讀、心態牌標記都靠陣列順序推牌位）。
