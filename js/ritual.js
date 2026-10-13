@@ -58,7 +58,7 @@
   // 只關點兩下放大、雙指縮放照常可用。
   const CSS = `
 .tr-overlay{position:fixed;inset:0;z-index:2147483000;display:flex;flex-direction:column;align-items:center;touch-action:manipulation;
-  overflow-y:auto;padding:calc(16px + env(safe-area-inset-top)) 16px calc(24px + env(safe-area-inset-bottom));box-sizing:border-box;color:#F5F0FA;font-family:'Noto Serif TC',serif;
+  overflow-y:auto;padding:calc(16px + env(safe-area-inset-top)) 16px calc(24px + env(safe-area-inset-bottom));box-sizing:border-box;color:#F5F0FA;font-family:inherit;
   background-color:#1A0B2E;background-image:linear-gradient(135deg,#1A0B2E 0%,#3D1F5F 50%,#1A0B2E 100%)}
 .tr-overlay *{box-sizing:border-box}
 .tr-top{width:100%;max-width:640px;display:flex;justify-content:space-between;align-items:center;gap:12px}
