@@ -8,8 +8,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
   <link rel="apple-touch-icon" href="images/favicon-180.png">
 
-  <title>隱私政策 — TAROT</title>
-  <meta name="description" content="TAROT App 隱私政策：不收集個人資料、抽牌紀錄僅存本機、無第三方追蹤。">
+  <title>隱私政策 — 塔羅手帳 App／塔羅密語網站</title>
+  <meta name="description" content="塔羅手帳 iPhone App 與塔羅密語網站的隱私政策：沒有伺服器、不收集個人資料；App 的紀錄存在你的 iPhone 和你自己的 iCloud，送到 OpenAI／ChatGPT 前會先問你；網站不存任何紀錄。">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -160,6 +160,9 @@
       font-size: 0.88rem;
       text-align: center;
     }
+    /* 頁尾 LOGO：原圖是深藍墨色、透明底，深紫底上看不見 ⇒ 墊塔羅牌套框同一個米色紙底（與 App 同一份寫法） */
+    .footer-mark { display: inline-block; background: #F3ECDF; border-radius: 10px; padding: 4px 10px; margin-bottom: 8px; }
+    .footer-mark img { display: block; height: 30px; width: auto; }
   </style>
 </head>
 <body>
@@ -182,147 +185,206 @@
   <main>
 
     <h1>隱私政策</h1>
-    <p class="updated">最後更新：2026 年 5 月 23 日　・　生效日：2026 年 5 月 23 日</p>
+    <p class="updated">最後更新：2026 年 10 月 14 日　・　生效日：2026 年 10 月 14 日</p>
 
     <div class="callout">
-      <strong>一句話總結：</strong>本 App 不收集任何個人資料；抽牌紀錄、心得、API 金鑰、提醒設定全部僅存於您的裝置本機，不上傳任何伺服器。
+      <strong>一句話總結：</strong>我們沒有自己的伺服器，不收集你的個人資料。iPhone App「塔羅手帳」的抽牌紀錄和心得存在你的 iPhone，並自動備份到你自己的 iCloud；只有在你按下按鈕、而且同意之後，內容才會送到 OpenAI 或 ChatGPT。網站「塔羅密語」不存任何紀錄。
     </div>
 
     <h2>1. 我們是誰</h2>
-    <p>TAROT（以下簡稱「本 App」）是一款 78 張塔羅抽牌與 AI 解讀工具，所有功能皆在您的裝置本機運作，沒有後端伺服器。</p>
+    <p>本政策涵蓋兩個產品：</p>
+    <ul>
+      <li><strong>塔羅手帳</strong>：iPhone App（英文系統顯示為 TAROT，以下簡稱「本 App」），一本塔羅日記：抽牌、寫下當下的想法，之後回頭看自己的心情起伏。本 App 沒有後端伺服器，也沒有帳號系統。第 2～10 節說的是本 App。</li>
+      <li><strong>塔羅密語</strong>：網站 <a href="https://tarot.angelz13.com/">tarot.angelz13.com</a>，在瀏覽器裡抽牌、產生可以帶去問 AI 的提示文字。見第 11 節。</li>
+    </ul>
 
     <h2>2. 我們不收集的資料</h2>
-    <p>本 App <strong>不收集、不儲存、不上傳</strong>以下任何資料至我方伺服器（事實上我方並無伺服器）：</p>
+    <p>我們沒有伺服器，所以不會收到、也不會保存你的任何資料，包括：</p>
     <ul>
-      <li>姓名、Email、電話、Apple ID、IDFA / IDFV 等任何個人識別資訊</li>
-      <li>地理位置、裝置位置權限</li>
-      <li>通訊錄、相簿、麥克風、相機、健康資料等系統權限</li>
-      <li>使用行為分析（無 Google Analytics、無 Firebase、無 Sentry、無 Crashlytics）</li>
-      <li>廣告追蹤識別碼（無任何廣告 SDK）</li>
+      <li>姓名、Email、電話、Apple ID、IDFA／IDFV 等任何可以識別你的資訊</li>
+      <li>位置、通訊錄、相簿、麥克風、相機、健康資料（本 App 不要求這些權限）</li>
+      <li>使用行為分析（沒有 Google Analytics、Firebase、Sentry、Crashlytics 這類分析或當機回報套件）</li>
+      <li>廣告識別碼（沒有任何廣告套件）</li>
     </ul>
 
-    <h2>3. 僅儲存在您裝置本機的資料</h2>
-    <p>以下資料皆透過 iOS 系統 API（<code>Capacitor Preferences</code>、iOS Keychain）儲存於您的裝置本機，您解除安裝 App 即完全刪除：</p>
+    <h2>3. 存在你 iPhone 上的資料</h2>
+    <p>以下資料透過 iOS 的 <code>Capacitor Preferences</code> 與 Keychain 存在你的手機，只有本 App 讀得到：</p>
     <ul>
-      <li><strong>抽牌紀錄</strong>：每次抽牌的時間、牌組、正逆位、模式、您自行填寫的問題與心得</li>
-      <li><strong>OpenAI API 金鑰</strong>（若您主動於設定頁貼上）：以 iOS Keychain 加密儲存，本 App 程式碼以外無法讀取</li>
-      <li><strong>每日提醒設定</strong>：開關狀態與提醒時間</li>
-      <li><strong>付費解鎖狀態</strong>：透過 Apple StoreKit 驗證，狀態僅存本機</li>
+      <li><strong>抽牌紀錄</strong>：時間、抽到的牌、正逆位、牌位、模式，以及你填的問題、心得、心情、主題標籤；按過 AI 解讀的，解讀內容也會一起存。</li>
+      <li><strong>自訂的主題標籤</strong></li>
+      <li><strong>OpenAI API 金鑰</strong>（只有你在設定頁貼上才有）：存在 iOS Keychain，不會放進本 App 的 iCloud 備份。</li>
+      <li><strong>設定</strong>：每日提醒、解讀引擎與模型，以及你對第三方 AI 的同意紀錄。</li>
+      <li><strong>主畫面小工具</strong>：今天的牌透過 iOS 的 App Group 跟小工具共用，只在這支手機上。</li>
     </ul>
 
-    <h2>4. 主動觸發的第三方傳輸</h2>
+    <h2>4. 你自己的 iCloud 備份</h2>
+    <p>抽牌紀錄和自訂標籤有變動時，本 App 會自動存一份到你自己的 iCloud（本 App 專屬的資料夾，最多 10 分鐘一份；清空紀錄前也會另外存一份）。備份放在你的 Apple 帳號裡，由 Apple 依 <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple 隱私政策</a>保管，我們看不到、也拿不到。</p>
+    <p>要救回紀錄，到「紀錄」頁按「從 iCloud 還原」挑一個時間點。要一次刪光所有備份，到 iPhone「設定 &gt; Apple 帳號 &gt; iCloud &gt; 管理儲存空間」找到本 App 刪除。</p>
 
-    <h3>4-1 OpenAI（AI 解讀功能，可選）</h3>
-    <p>當您在抽牌結果頁主動點擊「✨ AI 解讀」按鈕時，本 App 會將以下內容<strong>直接從您的裝置</strong>傳送至 OpenAI API（不經過任何中間伺服器）：</p>
+    <h2>5. iPhone 本機 AI</h2>
+    <p>預設的 AI 解讀用 Apple 的 Foundation Models 框架，直接在你的 iPhone 上產生，你的問題、牌和紀錄不會離開手機。這需要支援 Apple 智慧的 iPhone，並開啟 Apple 智慧。</p>
+
+    <h2>6. 你同意之後才會送出的資料</h2>
+    <p>下面兩個去處，第一次用到時本 App 會先說明會送出什麼、問你同不同意；你同意之後才會送出，之後可以在「設定 › 第三方 AI 分享」逐一撤回。撤回只影響之後的使用；已經送出的內容由對方依它的隱私政策處理，要刪除請向對方申請。</p>
+
+    <h3>6-1 OpenAI（AI 解讀用 OpenAI 時）</h3>
+    <p>你在設定頁選了 OpenAI，或本機 AI 不能用而你有設金鑰時，本 App 會用你自己的 API 金鑰、<strong>直接從你的手機</strong>連到 OpenAI API（不經過任何中間伺服器），送出：</p>
     <ul>
-      <li>抽到的牌組（牌名、正逆位、牌位）</li>
-      <li>您自行填寫的問題（若有）</li>
-      <li>您於設定頁貼上的 OpenAI API 金鑰（透過 HTTPS 標頭認證）</li>
+      <li>這次的問題、抽到的牌和牌位（多擇一牌陣會含你填的選項名稱）</li>
+      <li>之後的追問，以及從本機 AI 轉過來時的整段對話</li>
+      <li>在「紀錄」頁用回顧時，那段期間的抽牌紀錄和心得</li>
     </ul>
-    <p>此資料的後續處理依 OpenAI 的隱私政策辦理，本 App 無法控制：<a href="https://openai.com/policies/privacy-policy/" target="_blank" rel="noopener">openai.com/policies/privacy-policy/</a></p>
-    <p>若您不希望任何資料離開您的裝置，請勿於設定頁貼上 OpenAI API 金鑰；不貼上即無法觸發 AI 解讀功能，其他功能（抽牌、紀錄、提醒、Widget）皆不受影響。</p>
+    <p>OpenAI 依它的隱私政策處理這些內容：<a href="https://openai.com/policies/privacy-policy/" target="_blank" rel="noopener">openai.com/policies/privacy-policy/</a></p>
 
-    <h3>4-2 Apple StoreKit（付費解鎖）</h3>
-    <p>付費解鎖功能透過 Apple 內建的 StoreKit 進行，本 App 僅取得「是否已購買」的布林結果，不取得您的 Apple ID、付款方式或交易明細。完整付款資料由 Apple 處理，依 Apple 隱私政策辦理：<a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">apple.com/legal/privacy/</a></p>
+    <h3>6-2 ChatGPT 網頁</h3>
+    <p>按「一鍵問 ChatGPT」或「詢問 ChatGPT」時，本 App 會開啟 ChatGPT 網頁，並把這次的問題、抽到的牌和牌位帶過去；從解讀或對話中途過去時，會帶上整段對話（你的追問和 AI 的回答）。ChatGPT 由 OpenAI 經營，之後在那邊的使用依 OpenAI 的隱私政策處理；本 App 不會另外保存。</p>
 
-    <h2>5. 兒童隱私</h2>
-    <p>本 App 不針對未滿 13 歲（或您所在司法管轄區之相應年齡）兒童設計，亦不蓄意收集兒童個人資料。本 App 提供之塔羅內容屬靈性 / 心理探索性質，建議成年人使用。</p>
+    <p>不想讓任何內容離開手機的話，只用本機 AI、不設 OpenAI 金鑰、不按 ChatGPT 的按鈕就可以；抽牌、紀錄、回顧、提醒、小工具都不受影響。</p>
 
-    <h2>6. 您的權利</h2>
+    <h2>7. Siri、捷徑、「日誌」與提醒</h2>
     <ul>
-      <li><strong>刪除單筆抽牌紀錄</strong>：於紀錄頁點各紀錄旁的刪除按鈕</li>
-      <li><strong>清除 OpenAI 金鑰</strong>：於設定頁點「清除金鑰」按鈕</li>
-      <li><strong>關閉每日提醒</strong>：於設定頁切換提醒開關</li>
-      <li><strong>刪除全部資料</strong>：從 iOS 主畫面長按 App 圖示 → 刪除 App，所有本機資料隨之清除</li>
+      <li><strong>用 Siri 抽牌</strong>：在你的手機上執行，抽到的牌存進本機紀錄。</li>
+      <li><strong>送到「日誌」</strong>：本 App 把那筆紀錄和牌陣圖暫時放進剪貼簿，交給你自己安裝的捷徑存進 Apple 的「日誌」App，之後清掉剪貼簿。資料留在你的手機和 Apple 的服務裡，依 Apple 隱私政策處理。</li>
+      <li><strong>每日提醒</strong>：由手機本機排定的通知，不經過任何推播伺服器。</li>
     </ul>
 
-    <h2>7. 資料安全</h2>
-    <p>OpenAI API 金鑰透過 <code>@aparajita/capacitor-secure-storage</code> 寫入 iOS Keychain，由 iOS 系統以裝置硬體加密保護。其他資料透過 <code>Capacitor Preferences</code> 寫入 iOS 沙盒，僅本 App 可讀取。</p>
-    <p>所有與 OpenAI API 的通訊皆透過 HTTPS / TLS 1.2+ 加密。</p>
+    <h2>8. 兒童隱私</h2>
+    <p>本 App 不是為未滿 13 歲（或你所在地區規定的相應年齡）的兒童設計，也不會蓄意收集兒童的個人資料。塔羅內容屬於靈性與自我探索，建議成年人使用。</p>
 
-    <h2>8. 內容免責聲明</h2>
-    <p>塔羅解讀屬靈性 / 心理探索工具，僅供自我覺察與反思參考，<strong>不構成醫療、心理治療、法律、財務、投資或任何專業建議</strong>。若您正面臨情緒困擾或心理危機，請尋求專業協助（台灣 24 小時生命線：1995；張老師專線：1980；衛福部安心專線：1925）。</p>
+    <h2>9. 你可以怎麼管理自己的資料</h2>
+    <ul>
+      <li><strong>刪除單筆紀錄</strong>：在「紀錄」頁按那一筆的「刪除」</li>
+      <li><strong>清除 OpenAI 金鑰</strong>：在設定頁 OpenAI API Key 那一區按「清除」</li>
+      <li><strong>撤回第三方 AI 同意</strong>：在「設定 › 第三方 AI 分享」逐一撤回</li>
+      <li><strong>關閉每日提醒</strong>：在設定頁關掉提醒開關</li>
+      <li><strong>刪除 iCloud 備份</strong>：照第 4 節的步驟</li>
+      <li><strong>刪除手機上的全部資料</strong>：在主畫面長按 App 圖示 → 刪除 App。注意：iCloud 備份不會跟著刪，要照第 4 節另外刪。</li>
+    </ul>
 
-    <h2>9. 政策變更</h2>
-    <p>本政策若有重大變更，將更新本頁面之「最後更新」日期；變更內容自更新日起生效。建議您定期回顧本頁面。</p>
+    <h2>10. 資料安全</h2>
+    <p>OpenAI API 金鑰透過 <code>@aparajita/capacitor-secure-storage</code> 存進 iOS Keychain，由 iOS 以裝置硬體加密保護。其他資料存在 iOS 分給本 App 的沙盒裡，只有本 App 讀得到。跟 OpenAI API 的連線全程走 HTTPS 加密。</p>
 
-    <h2>10. 聯絡方式</h2>
-    <p>若您對本政策有任何疑問，請來信：<a href="mailto:alex.yeh@angelz13.com">alex.yeh@angelz13.com</a></p>
+    <h2>11. 網站「塔羅密語」</h2>
+    <ul>
+      <li><strong>不收集、不存檔</strong>：網站沒有帳號、不設 Cookie，也沒有加任何分析或追蹤程式。抽牌在你的瀏覽器裡完成，你的問題和抽到的牌不會存下來、也不會傳給我們；重新整理或關掉頁面就沒有了。</li>
+      <li><strong>複製 Prompt</strong>：內容只放進你裝置的剪貼簿。</li>
+      <li><strong>詢問 ChatGPT／詢問 Claude</strong>：按下按鈕會開新分頁，把這次的問題、抽到的牌和牌位放在網址裡，帶到 ChatGPT（OpenAI 經營）或 Claude（Anthropic 經營）網頁；這兩個按鈕不會另外跳出確認視窗。之後在那邊的使用，依 <a href="https://openai.com/policies/privacy-policy/" target="_blank" rel="noopener">OpenAI</a> 或 <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">Anthropic</a> 的隱私政策處理。</li>
+      <li><strong>字型與主機</strong>：網站字型從 Google Fonts 載入、網站由 Cloudflare 託管，你的瀏覽器連線時會送出一般的連線資訊（例如 IP 位址），依 <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google</a> 與 <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare</a> 的隱私政策處理。</li>
+    </ul>
+
+    <h2>12. 內容免責聲明</h2>
+    <p>塔羅解讀是自我覺察與反思的工具，<strong>不構成醫療、心理治療、法律、財務、投資或任何專業建議</strong>。如果你正面臨情緒困擾或心理危機，請尋求專業協助（台灣 24 小時生命線：1995；張老師專線：1980；衛福部安心專線：1925）。</p>
+
+    <h2>13. 政策變更</h2>
+    <p>本政策如果有重大變更，會更新本頁的「最後更新」日期，變更內容從更新日起生效。</p>
+
+    <h2>14. 聯絡方式</h2>
+    <p>對本政策有任何疑問，請來信：<a href="mailto:alex.yeh@angelz13.com">alex.yeh@angelz13.com</a></p>
 
     <div class="lang-divider">ENGLISH VERSION</div>
 
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: May 23, 2026　・　Effective date: May 23, 2026</p>
+    <p class="updated">Last updated: October 14, 2026　・　Effective date: October 14, 2026</p>
 
     <div class="callout">
-      <strong>TL;DR:</strong> This app collects <strong>no personal data</strong>. All draw history, notes, API keys, and reminder settings are stored locally on your device only. Nothing is uploaded to any server.
+      <strong>TL;DR:</strong> We have no server of our own and collect <strong>no personal data</strong>. In the iPhone app 塔羅手帳 (Tarot Notebook), your draws and notes are stored on your iPhone and backed up automatically to your own iCloud; content goes to OpenAI or ChatGPT only after you tap a button and agree. The website 塔羅密語 keeps no records at all.
     </div>
 
     <h2>1. Who We Are</h2>
-    <p>TAROT is a 78-card tarot drawing and AI-reading utility. All functionality runs locally on your device. There is no backend server.</p>
+    <p>This policy covers two products:</p>
+    <ul>
+      <li><strong>塔羅手帳 (Tarot Notebook)</strong>: an iPhone app (shown as TAROT on devices set to English; "the app"). It is a tarot journal: draw a card, write down what is on your mind, and look back at how your mood has changed over time. The app has no backend server and no user accounts. Sections 2 to 10 are about the app.</li>
+      <li><strong>塔羅密語</strong>: the website <a href="https://tarot.angelz13.com/">tarot.angelz13.com</a>, where you draw cards in your browser and get a prompt you can take to an AI. See section 11.</li>
+    </ul>
 
     <h2>2. Data We Do NOT Collect</h2>
-    <p>The app does <strong>not collect, store, or upload</strong> any of the following to our servers (we have no servers):</p>
+    <p>We have no server, so we never receive or keep any of your data, including:</p>
     <ul>
-      <li>Name, email, phone number, Apple ID, IDFA / IDFV, or any personal identifiers</li>
-      <li>Location data or location permissions</li>
-      <li>Contacts, photos, microphone, camera, or health data</li>
-      <li>Usage analytics (no Google Analytics, Firebase, Sentry, or Crashlytics)</li>
-      <li>Advertising identifiers (no ad SDKs whatsoever)</li>
+      <li>Name, email, phone number, Apple ID, IDFA / IDFV, or any other identifier</li>
+      <li>Location, contacts, photos, microphone, camera, or health data (the app does not request these permissions)</li>
+      <li>Usage analytics (no Google Analytics, Firebase, Sentry, Crashlytics, or similar analytics or crash-reporting SDKs)</li>
+      <li>Advertising identifiers (no ad SDKs of any kind)</li>
     </ul>
 
-    <h2>3. Data Stored Locally on Your Device</h2>
-    <p>The following data is stored on your device only (via <code>Capacitor Preferences</code> and iOS Keychain) and is fully deleted when you uninstall the app:</p>
+    <h2>3. Data Stored on Your iPhone</h2>
+    <p>The following data is stored on your device through iOS <code>Capacitor Preferences</code> and the Keychain, and only the app can read it:</p>
     <ul>
-      <li><strong>Draw history</strong>: timestamp, cards, orientation, mode, your typed questions and notes</li>
-      <li><strong>OpenAI API key</strong> (if you choose to enter one): encrypted in iOS Keychain</li>
-      <li><strong>Daily reminder settings</strong>: on/off state and reminder time</li>
-      <li><strong>Premium unlock status</strong>: verified via Apple StoreKit, stored locally</li>
+      <li><strong>Draw history</strong>: time, cards, upright or reversed, positions, mode, and the question, notes, mood and tags you enter; if you asked for an AI reading, the reading is saved too.</li>
+      <li><strong>Your custom tags</strong></li>
+      <li><strong>OpenAI API key</strong> (only if you paste one in Settings): stored in the iOS Keychain and never included in the app's iCloud backup.</li>
+      <li><strong>Settings</strong>: daily reminder, reading engine and model, and your consent choices for third-party AI.</li>
+      <li><strong>Home Screen widget</strong>: today's card is shared with the widget through an iOS App Group, on this iPhone only.</li>
     </ul>
 
-    <h2>4. User-Triggered Third-Party Transmissions</h2>
+    <h2>4. Your Own iCloud Backup</h2>
+    <p>When your draw history or custom tags change, the app automatically saves a copy to your own iCloud (in a folder that belongs to this app, at most one copy every 10 minutes, plus one extra copy before you clear your history). The backup lives in your Apple Account and is kept by Apple under the <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple Privacy Policy</a>. We cannot see or access it.</p>
+    <p>To restore, tap "從 iCloud 還原" (Restore from iCloud) on the History page and pick a point in time. To delete all backups at once, go to iPhone Settings &gt; Apple Account &gt; iCloud &gt; Manage Storage, find the app and delete its data.</p>
 
-    <h3>4-1 OpenAI (AI Reading Feature, Optional)</h3>
-    <p>When you actively tap the "✨ AI Reading" button on a draw result, the app sends the following <strong>directly from your device</strong> to the OpenAI API (no intermediary server):</p>
+    <h2>5. On-Device AI</h2>
+    <p>By default, AI readings are generated on your iPhone with Apple's Foundation Models framework, so your question, cards and history do not leave the device. This requires an iPhone that supports Apple Intelligence, with Apple Intelligence turned on.</p>
+
+    <h2>6. Data Sent Only With Your Consent</h2>
+    <p>For both destinations below, the first time you use them the app explains what will be sent and asks for your consent. Nothing is sent until you agree, and you can revoke each consent at any time in Settings › 第三方 AI 分享 (Third-party AI sharing). Revoking affects future use only; content already sent is handled under that provider's privacy policy, and deletion requests should go to them.</p>
+
+    <h3>6-1 OpenAI (when AI readings use OpenAI)</h3>
+    <p>If you choose OpenAI in Settings, or on-device AI is unavailable and you have set a key, the app connects to the OpenAI API <strong>directly from your iPhone</strong> with your own API key (no intermediary server) and sends:</p>
     <ul>
-      <li>The drawn cards (name, orientation, position)</li>
-      <li>Your typed question, if any</li>
-      <li>Your OpenAI API key (via HTTPS Authorization header)</li>
+      <li>The question, the drawn cards and their positions (for the choice spread, including the option names you entered)</li>
+      <li>Follow-up questions, and the whole conversation when you switch over from on-device AI</li>
+      <li>When you use Review on the History page, the entries and notes from that period</li>
     </ul>
-    <p>Subsequent handling of this data is governed by OpenAI's privacy policy, beyond our control: <a href="https://openai.com/policies/privacy-policy/" target="_blank" rel="noopener">openai.com/policies/privacy-policy/</a></p>
-    <p>If you prefer no data ever leaves your device, simply do not enter an OpenAI API key. All other features (drawing, history, reminders, Widget) work without it.</p>
+    <p>OpenAI handles this content under its privacy policy: <a href="https://openai.com/policies/privacy-policy/" target="_blank" rel="noopener">openai.com/policies/privacy-policy/</a></p>
 
-    <h3>4-2 Apple StoreKit (Premium Unlock)</h3>
-    <p>Premium unlock is handled by Apple's built-in StoreKit. The app receives only a boolean "purchased" result and never accesses your Apple ID, payment method, or transaction details. Payment data is handled by Apple per Apple's privacy policy: <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">apple.com/legal/privacy/</a></p>
+    <h3>6-2 ChatGPT on the web</h3>
+    <p>When you tap "一鍵問 ChatGPT" or "詢問 ChatGPT" (Ask ChatGPT), the app opens ChatGPT on the web with the question, cards and positions; if you go there in the middle of a reading or conversation, the whole conversation (your follow-ups and the AI's answers) goes along. ChatGPT is run by OpenAI, and what you do there is handled under OpenAI's privacy policy. The app keeps no separate copy.</p>
 
-    <h2>5. Children's Privacy</h2>
-    <p>The app is not directed to children under 13 (or the applicable age in your jurisdiction) and does not knowingly collect data from children. Tarot content is spiritual / introspective in nature and intended for adult use.</p>
+    <p>If you want nothing to leave your iPhone, use on-device AI only, do not set an OpenAI key, and do not tap the ChatGPT buttons. Drawing, history, Review, reminders and the widget all keep working.</p>
 
-    <h2>6. Your Rights</h2>
+    <h2>7. Siri, Shortcuts, Journal and Reminders</h2>
     <ul>
-      <li><strong>Delete a single draw record</strong>: tap the delete button next to any record on the history page</li>
-      <li><strong>Clear OpenAI key</strong>: tap "Clear Key" on the settings page</li>
-      <li><strong>Disable daily reminder</strong>: toggle the reminder switch on the settings page</li>
-      <li><strong>Delete all data</strong>: long-press the app icon on iOS home screen → Delete App, removing all local data</li>
+      <li><strong>Drawing with Siri</strong>: runs on your iPhone, and the card is saved to your local history.</li>
+      <li><strong>Sending to Journal</strong>: the app places the entry and the spread image on the clipboard for a moment, hands them to a Shortcut you installed yourself to save into Apple's Journal app, and then clears the clipboard. The data stays on your iPhone and in Apple's services, under the Apple Privacy Policy.</li>
+      <li><strong>Daily reminders</strong>: local notifications scheduled on your iPhone, with no push server involved.</li>
     </ul>
 
-    <h2>7. Data Security</h2>
-    <p>OpenAI API keys are stored via <code>@aparajita/capacitor-secure-storage</code> in iOS Keychain, protected by iOS hardware-backed encryption. Other data is stored via <code>Capacitor Preferences</code> in the iOS app sandbox, readable only by this app.</p>
-    <p>All communication with the OpenAI API uses HTTPS / TLS 1.2+.</p>
+    <h2>8. Children's Privacy</h2>
+    <p>The app is not designed for children under 13 (or the equivalent age where you live) and does not knowingly collect personal data from children. Tarot content is spiritual and introspective, and the app is intended for adults.</p>
 
-    <h2>8. Content Disclaimer</h2>
-    <p>Tarot readings are spiritual / introspective tools for self-reflection and <strong>do not constitute medical, psychological, legal, financial, investment, or any other professional advice</strong>. If you are experiencing emotional distress or a mental health crisis, please seek professional support.</p>
+    <h2>9. Managing Your Data</h2>
+    <ul>
+      <li><strong>Delete one entry</strong>: tap "刪除" (Delete) on that entry in the History page</li>
+      <li><strong>Clear your OpenAI key</strong>: tap "清除" (Clear) in the OpenAI API Key section of Settings</li>
+      <li><strong>Revoke third-party AI consent</strong>: in Settings › 第三方 AI 分享 (Third-party AI sharing)</li>
+      <li><strong>Turn off daily reminders</strong>: use the reminder switch in Settings</li>
+      <li><strong>Delete your iCloud backups</strong>: follow the steps in section 4</li>
+      <li><strong>Delete all data on your iPhone</strong>: long-press the app icon on the Home Screen → Delete App. Note: this does not delete your iCloud backups; remove them separately as described in section 4.</li>
+    </ul>
 
-    <h2>9. Policy Changes</h2>
-    <p>If this policy materially changes, the "Last updated" date above will be revised; changes take effect from the updated date. We encourage you to review this page periodically.</p>
+    <h2>10. Data Security</h2>
+    <p>Your OpenAI API key is stored in the iOS Keychain through <code>@aparajita/capacitor-secure-storage</code>, protected by iOS hardware-backed encryption. Other data lives in the iOS sandbox assigned to the app, readable only by the app. All communication with the OpenAI API is encrypted with HTTPS.</p>
 
-    <h2>10. Contact</h2>
+    <h2>11. The Website 塔羅密語</h2>
+    <ul>
+      <li><strong>Nothing collected or stored</strong>: the website has no accounts, sets no cookies, and runs no analytics or tracking code. Cards are drawn in your browser; your question and cards are not saved and are not sent to us. Reloading or closing the page clears them.</li>
+      <li><strong>複製 Prompt (Copy Prompt)</strong>: the text is placed only on your device's clipboard.</li>
+      <li><strong>詢問 ChatGPT / 詢問 Claude (Ask ChatGPT / Ask Claude)</strong>: tapping opens a new tab and carries the question, cards and positions in the web address to ChatGPT (run by OpenAI) or Claude (run by Anthropic). These two buttons do not show a separate confirmation. What you do there is handled under the <a href="https://openai.com/policies/privacy-policy/" target="_blank" rel="noopener">OpenAI</a> or <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">Anthropic</a> privacy policy.</li>
+      <li><strong>Fonts and hosting</strong>: the website loads its font from Google Fonts and is hosted by Cloudflare, so your browser sends ordinary connection information (such as your IP address) to them, handled under the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google</a> and <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare</a> privacy policies.</li>
+    </ul>
+
+    <h2>12. Content Disclaimer</h2>
+    <p>Tarot readings are a tool for self-reflection and <strong>do not constitute medical, psychological, legal, financial, investment, or any other professional advice</strong>. If you are experiencing emotional distress or a mental health crisis, please seek professional support.</p>
+
+    <h2>13. Policy Changes</h2>
+    <p>If this policy changes materially, the "Last updated" date above will be revised, and the changes take effect from that date.</p>
+
+    <h2>14. Contact</h2>
     <p>Questions about this policy: <a href="mailto:alex.yeh@angelz13.com">alex.yeh@angelz13.com</a></p>
 
   </main>
 
   <footer>
-    © 2026 TAROT　・　<a href="index.html">回首頁</a>　・　<a href="spreads.html">專家模式</a>
+    <span class="footer-mark"><img src="brand/tarot-mark.png" alt="仆洛宅"></span><br>
+    © 2026 Alex Yeh　・　<a href="index.html">回首頁</a>　・　<a href="spreads.html">專家模式</a>
   </footer>
 
 </body>

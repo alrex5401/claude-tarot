@@ -8,8 +8,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
   <link rel="apple-touch-icon" href="images/favicon-180.png">
 
-  <title>支援與常見問題 — TAROT</title>
-  <meta name="description" content="TAROT App 支援頁面：API key、AI 解讀、付費還原、抽牌紀錄等常見問題與聯絡方式。">
+  <title>支援與常見問題 — 塔羅手帳</title>
+  <meta name="description" content="塔羅手帳 App 支援頁面：本機 AI 與 OpenAI 解讀、iCloud 備份還原、Siri 抽牌、撤回同意等常見問題與聯絡方式。">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -153,6 +153,9 @@
       font-size: 0.88rem;
       text-align: center;
     }
+    /* 頁尾 LOGO：原圖是深藍墨色、透明底，深紫底上看不見 ⇒ 墊塔羅牌套框同一個米色紙底（與 App 同一份寫法） */
+    .footer-mark { display: inline-block; background: #F3ECDF; border-radius: 10px; padding: 4px 10px; margin-bottom: 8px; }
+    .footer-mark img { display: block; height: 30px; width: auto; }
   </style>
 </head>
 <body>
@@ -174,142 +177,166 @@
 
   <main>
 
+
     <h1>支援與常見問題</h1>
-    <p class="updated">最後更新：2026 年 5 月 24 日</p>
+    <p class="updated">最後更新：2026 年 10 月 14 日</p>
+
+    <p>這一頁是 iPhone App「塔羅手帳」的支援頁。同一個網址上的網站「塔羅密語」是另一個產品：在瀏覽器裡抽牌、產生可以帶去問 AI 的提示文字，不存任何紀錄；網站有問題也歡迎來信。</p>
 
     <div class="callout">
       找不到答案？來信：<a href="mailto:alex.yeh@angelz13.com">alex.yeh@angelz13.com</a>（通常 1-2 個工作天內回覆）
     </div>
 
-    <h2>1. 如何取得 OpenAI API key？</h2>
-    <p>App 內的 AI 解讀功能需要您自帶 OpenAI API key。首次設定約 5 分鐘、需綁信用卡：</p>
-    <ol>
-      <li>到 <a href="https://platform.openai.com/signup" target="_blank" rel="noopener">platform.openai.com/signup</a> 註冊 OpenAI 開發者帳號（與一般 ChatGPT 帳號為不同入口）</li>
-      <li>登入後左側點 <code>Billing</code> → 加信用卡 → 首次儲值 ≥ 美金 5 元</li>
-      <li>左側點 <code>API keys</code> → <code>Create new secret key</code> → 命名「Tarot iOS」→ 複製整串（以 <code>sk-</code> 開頭）</li>
-      <li>回到 App 進「⚙️ 設定」貼上、按儲存、按「測試連線」確認綠燈</li>
-    </ol>
-    <p>單次 AI 解讀成本約美金 0.01-0.05（依模型選擇與牌陣大小）。</p>
-
-    <h2>2. AI 解讀沒回應或報錯怎麼辦？</h2>
+    <h2>1. AI 解讀有哪幾種？</h2>
     <ul>
-      <li><strong>連線錯誤 / Timeout</strong>：確認網路通暢、再試一次。AI 解讀預設 60 秒 timeout。</li>
-      <li><strong>401 Unauthorized</strong>：API key 錯誤或失效。回設定頁重貼一次、按「測試連線」確認。</li>
-      <li><strong>429 Too Many Requests</strong>：超過 OpenAI 速率限制、稍候 1 分鐘再試。</li>
-      <li><strong>402 / Insufficient quota</strong>：OpenAI 帳號餘額用罄、回 <code>platform.openai.com</code> 加值。</li>
-      <li><strong>5xx Server Error</strong>：OpenAI 端服務暫時異常、稍候再試。</li>
+      <li><strong>iPhone 本機 AI</strong>（預設）：直接在手機上產生，不用金鑰、不用付費、沒網路也能用，問題和牌不會離開手機。需要支援 Apple 智慧的 iPhone（iPhone 15 Pro 以上），並開啟 Apple 智慧。牌陣太長超過本機上限時，有設 OpenAI 金鑰會自動改用 OpenAI。</li>
+      <li><strong>OpenAI</strong>：解讀比較細，要用你自己的 OpenAI API 金鑰（見第 2 題），每次會用到一點你自己的額度。在「⚙️ 設定 → 解讀引擎」切換。</li>
+      <li><strong>一鍵問 ChatGPT</strong>：抽完牌按這個，會開啟 ChatGPT 網頁並把問題和牌帶過去，不用金鑰。</li>
+    </ul>
+    <p>用 OpenAI 或 ChatGPT 之前，App 會先說明會送出什麼、問你同不同意（見第 7 題）。</p>
+
+    <h2>2. 如何取得 OpenAI API key？</h2>
+    <p>只有想用 OpenAI 解讀才需要；用本機 AI 完全不用。首次設定約 5 分鐘、要綁信用卡：</p>
+    <ol>
+      <li>到 <a href="https://platform.openai.com/signup" target="_blank" rel="noopener">platform.openai.com/signup</a> 註冊 OpenAI 開發者帳號（跟一般 ChatGPT 帳號是不同入口）</li>
+      <li>登入後左側點 <code>Billing</code> → 加信用卡 → 首次儲值至少美金 5 元</li>
+      <li>左側點 <code>API keys</code> → <code>Create new secret key</code> → 命名「Tarot iOS」→ 複製整串（<code>sk-</code> 開頭；金鑰只會顯示一次）</li>
+      <li>回到 App 進「⚙️ 設定」貼上、按「儲存」，再按「測試連線」確認</li>
+    </ol>
+    <p>金鑰存在 iPhone 的 Keychain，App 無法替你向 OpenAI 收費；用量在 <a href="https://platform.openai.com/usage" target="_blank" rel="noopener">platform.openai.com/usage</a> 查得到。估計每次解讀：mini 約 NT$1-2、旗艦約 NT$3-5（依問題與牌數）。</p>
+
+    <h2>3. AI 解讀沒回應或報錯怎麼辦？</h2>
+    <ul>
+      <li><strong>設定裡沒有本機 AI 可選</strong>：這支 iPhone 不支援 Apple 智慧，或還沒開啟 Apple 智慧。可以改用 OpenAI，或抽完按「一鍵問 ChatGPT」。</li>
+      <li><strong>連線錯誤／逾時</strong>：確認網路通暢，再試一次。</li>
+      <li><strong>401 Unauthorized</strong>：API key 錯誤或失效。回設定頁重貼一次，按「測試連線」確認。</li>
+      <li><strong>429 Too Many Requests</strong>：超過 OpenAI 的速率限制，等 1 分鐘再試。</li>
+      <li><strong>402／Insufficient quota</strong>：OpenAI 帳號餘額用完了，到 <code>platform.openai.com</code> 加值。</li>
+      <li><strong>5xx Server Error</strong>：OpenAI 那邊暫時異常，稍後再試。</li>
     </ul>
 
-    <h2>3. 抽牌紀錄不見了？</h2>
-    <p>抽牌紀錄存於 iOS 系統的 <code>Capacitor Preferences</code> 沙盒。以下情況會清空：</p>
-    <ul>
-      <li>解除安裝 App（再裝回不會還原）</li>
-      <li>於 iOS 系統「設定 → 一般 → iPhone 儲存空間 → TAROT → 卸載 App」（保留資料）vs「刪除 App」（清空資料）</li>
-      <li>於紀錄頁手動逐筆刪除</li>
-    </ul>
-    <p>本 App 不提供雲端備份（為符合「資料只在本機」的隱私承諾）。如需保留珍貴紀錄，建議定期截圖。</p>
-
-    <h2>4. 怎麼還原 NT$30 解鎖？</h2>
-    <p>換新手機、重灌 App、或更換 Apple ID 後想還原已購買的「專家模式」：</p>
+    <h2>4. 換手機或紀錄不見了，怎麼救回？</h2>
+    <p>抽牌紀錄有變動時，App 會自動備份一份到你自己的 iCloud（最多 10 分鐘一份，清空紀錄前也會另外存一份）。要救回時：</p>
     <ol>
-      <li>確認目前登入的 Apple ID 與當初購買時相同</li>
-      <li>進「⚙️ 設定」→ 點「還原購買 (Restore Purchases)」</li>
-      <li>等系統驗證、解鎖狀態回復</li>
+      <li>確認新手機登入的是同一個 Apple 帳號、iCloud 有開</li>
+      <li>打開 App，到「📓 紀錄」頁按「從 iCloud 還原」</li>
+      <li>挑一個時間點還原</li>
     </ol>
-    <p>Apple 規定 non-consumable 購買終身可還原、無額外費用。</p>
+    <p>App 顯示「已備份」代表這支手機已經寫好，什麼時候上傳到 iCloud 由系統安排，沒網路時會晚一點。紀錄也可以匯出成 Markdown 自己保存。iCloud 備份不含 OpenAI 金鑰，換手機後要重新貼一次。</p>
 
-    <h2>5. 我可以離線使用嗎？</h2>
-    <p>抽牌、查看 78 張牌的關鍵字、紀錄、每日提醒都可在無網路下使用。</p>
-    <p>但 <strong>AI 解讀必須連線</strong>（App 連線到 <code>api.openai.com</code>），無網路時請改用「複製 Prompt」按鈕、上線後再貼到其他 LLM。</p>
+    <h2>5. 怎麼用 Siri 抽牌？</h2>
+    <p>不用先打開 App，直接對 Siri 說「用塔羅手帳抽一張牌」。Siri 會隨機抽一張、唸出牌名和正逆位，並打開 App 顯示這張牌，同時存進紀錄。「捷徑」App 裡也會自動列出這個動作。</p>
 
-    <h2>6. 隱私問題</h2>
-    <p>本 App 完整隱私說明：<a href="privacy.html">隱私政策</a></p>
-    <p>一句話總結：本 App 不收集任何個人資料、所有資料僅存在您的裝置本機、沒有第三方追蹤、沒有伺服器。</p>
+    <h2>6. 怎麼把紀錄送到 iPhone 的「日誌」App？</h2>
+    <p>這要先裝一個捷徑。第一次用時，App 會顯示捷徑的安裝連結，照著加入就好。之後在紀錄上按送到日誌，那筆紀錄和牌陣圖會存進 Apple 的「日誌」App。</p>
 
-    <h2>7. 回報 Bug / 建議功能</h2>
+    <h2>7. 怎麼撤回送到 OpenAI 或 ChatGPT 的同意？</h2>
+    <p>到「⚙️ 設定 → 第三方 AI 分享」，逐一撤回。撤回之後，下次用到時 App 會再問你一次。</p>
+
+    <h2>8. 我可以離線使用嗎？</h2>
+    <p>抽牌、看牌義、紀錄、回顧、本機 AI 解讀、每日提醒、小工具都可以在沒網路時使用。</p>
+    <p>OpenAI 解讀和「一鍵問 ChatGPT」需要連線；iCloud 備份會在有網路時才上傳。</p>
+
+    <h2>9. 隱私問題</h2>
+    <p>完整說明：<a href="privacy.html">隱私政策</a></p>
+    <p>一句話總結：我們沒有伺服器、不收集你的個人資料；紀錄存在你的 iPhone 和你自己的 iCloud，送到 OpenAI 或 ChatGPT 之前會先問你。</p>
+
+    <h2>10. 回報 Bug／建議功能</h2>
     <p>歡迎來信 <a href="mailto:alex.yeh@angelz13.com">alex.yeh@angelz13.com</a>。回報 Bug 時請附上：</p>
     <ul>
-      <li>iOS 版本（設定 → 一般 → 關於本機 → 軟體版本）</li>
+      <li>iOS 版本（設定 → 一般 → 關於本機 → iOS 版本）</li>
       <li>iPhone 機型</li>
-      <li>復現步驟（哪個頁面、按了什麼、預期 vs 實際）</li>
-      <li>截圖（若可）</li>
+      <li>重現步驟（哪個頁面、按了什麼、預期和實際結果）</li>
+      <li>截圖（如果方便）</li>
     </ul>
 
-    <h2>8. 聯絡方式</h2>
+    <h2>11. 聯絡方式</h2>
     <p>Email：<a href="mailto:alex.yeh@angelz13.com">alex.yeh@angelz13.com</a></p>
-    <p>網站：<a href="https://tarot.angelz13.com">tarot.angelz13.com</a></p>
+    <p>網站「塔羅密語」：<a href="https://tarot.angelz13.com">tarot.angelz13.com</a></p>
 
     <div class="lang-divider">ENGLISH VERSION</div>
 
     <h1>Support & FAQ</h1>
-    <p class="updated">Last updated: May 24, 2026</p>
+    <p class="updated">Last updated: October 14, 2026</p>
+
+    <p>This page supports the iPhone app 塔羅手帳 (Tarot Notebook). The website 塔羅密語 at the same address is a separate product: it draws cards in your browser and gives you a prompt to take to an AI, and keeps no records. Questions about the website are welcome by email too.</p>
 
     <div class="callout">
-      Can't find what you need? Email <a href="mailto:alex.yeh@angelz13.com">alex.yeh@angelz13.com</a> (response within 1-2 business days).
+      Can't find what you need? Email <a href="mailto:alex.yeh@angelz13.com">alex.yeh@angelz13.com</a> (we usually reply within 1-2 business days).
     </div>
 
-    <h2>1. How do I get an OpenAI API key?</h2>
-    <p>AI reading requires you to bring your own OpenAI API key. First-time setup takes ~5 minutes and requires a credit card:</p>
+    <h2>1. What kinds of AI reading are there?</h2>
+    <ul>
+      <li><strong>On-device AI</strong> (default): generated on your iPhone, with no key, no cost and no internet needed, and your question and cards never leave the device. Requires an iPhone that supports Apple Intelligence (iPhone 15 Pro or later) with Apple Intelligence turned on. If a spread is too long for the on-device limit and you have set an OpenAI key, the app switches to OpenAI.</li>
+      <li><strong>OpenAI</strong>: more detailed readings using your own OpenAI API key (see question 2), which uses a little of your own credit each time. Switch engines in "⚙️ Settings → 解讀引擎 (Reading engine)".</li>
+      <li><strong>一鍵問 ChatGPT (Ask ChatGPT)</strong>: tap it after drawing to open ChatGPT on the web with your question and cards. No key needed.</li>
+    </ul>
+    <p>Before anything goes to OpenAI or ChatGPT, the app explains what will be sent and asks for your consent (see question 7).</p>
+
+    <h2>2. How do I get an OpenAI API key?</h2>
+    <p>You only need one for OpenAI readings; on-device AI needs no key. First-time setup takes about 5 minutes and requires a credit card:</p>
     <ol>
-      <li>Sign up at <a href="https://platform.openai.com/signup" target="_blank" rel="noopener">platform.openai.com/signup</a> (this is the developer portal, separate from ChatGPT)</li>
+      <li>Sign up at <a href="https://platform.openai.com/signup" target="_blank" rel="noopener">platform.openai.com/signup</a> (the developer portal, separate from ChatGPT)</li>
       <li>In the left sidebar, click <code>Billing</code> → add a credit card → top up at least USD $5</li>
-      <li>Click <code>API keys</code> → <code>Create new secret key</code> → name it "Tarot iOS" → copy the full string (starts with <code>sk-</code>)</li>
-      <li>Back in TAROT, go to "⚙️ Settings", paste the key, tap save, then tap "Test connection" to verify</li>
+      <li>Click <code>API keys</code> → <code>Create new secret key</code> → name it "Tarot iOS" → copy the full string (starts with <code>sk-</code>; it is shown only once)</li>
+      <li>Back in the app, open "⚙️ Settings", paste the key, tap "儲存" (Save), then "測試連線" (Test connection)</li>
     </ol>
-    <p>Each AI reading costs roughly USD $0.01-0.05 depending on model and spread size.</p>
+    <p>The key is stored in your iPhone's Keychain, and the app cannot charge you through OpenAI; you can check usage at <a href="https://platform.openai.com/usage" target="_blank" rel="noopener">platform.openai.com/usage</a>. Each reading costs roughly NT$1-2 with a mini model and NT$3-5 with a flagship model, depending on the question and number of cards.</p>
 
-    <h2>2. AI reading not responding or showing errors?</h2>
+    <h2>3. AI reading not responding or showing errors?</h2>
     <ul>
-      <li><strong>Connection error / timeout</strong>: check your network and retry. AI reading has a 60s timeout.</li>
-      <li><strong>401 Unauthorized</strong>: invalid or expired API key. Re-paste in Settings and tap "Test connection".</li>
-      <li><strong>429 Too Many Requests</strong>: OpenAI rate limit exceeded. Wait 1 minute and retry.</li>
-      <li><strong>402 / Insufficient quota</strong>: OpenAI account balance depleted. Top up at <code>platform.openai.com</code>.</li>
-      <li><strong>5xx Server Error</strong>: OpenAI service issue. Wait and retry.</li>
+      <li><strong>No on-device AI option in Settings</strong>: this iPhone does not support Apple Intelligence, or Apple Intelligence is turned off. Use OpenAI instead, or tap "一鍵問 ChatGPT" after drawing.</li>
+      <li><strong>Connection error / timeout</strong>: check your network and try again.</li>
+      <li><strong>401 Unauthorized</strong>: invalid or expired API key. Paste it again in Settings and tap "Test connection".</li>
+      <li><strong>429 Too Many Requests</strong>: OpenAI rate limit exceeded. Wait a minute and try again.</li>
+      <li><strong>402 / Insufficient quota</strong>: your OpenAI balance has run out. Top up at <code>platform.openai.com</code>.</li>
+      <li><strong>5xx Server Error</strong>: a temporary problem on OpenAI's side. Try again later.</li>
     </ul>
 
-    <h2>3. My draw history is gone?</h2>
-    <p>Draw history is stored in iOS <code>Capacitor Preferences</code> sandbox. It is cleared when:</p>
-    <ul>
-      <li>You uninstall the app (reinstalling does NOT restore data)</li>
-      <li>You "Delete App" (vs "Offload App" which preserves data) in iOS Settings → General → iPhone Storage</li>
-      <li>You delete entries individually in the history page</li>
-    </ul>
-    <p>This app provides no cloud backup (to honor the "data stays on device" privacy promise). For valuable entries, please screenshot.</p>
-
-    <h2>4. How do I restore my NT$30 unlock?</h2>
-    <p>After a new phone, reinstall, or Apple ID change, restore your "Expert Mode" purchase:</p>
+    <h2>4. New phone, or lost my history?</h2>
+    <p>When your history changes, the app automatically backs it up to your own iCloud (at most one copy every 10 minutes, plus an extra copy before you clear your history). To get it back:</p>
     <ol>
-      <li>Verify you are signed in with the same Apple ID used for purchase</li>
-      <li>Go to "⚙️ Settings" → tap "Restore Purchases"</li>
-      <li>Wait for system verification — unlock state will be restored</li>
+      <li>Make sure the new iPhone is signed in to the same Apple Account with iCloud turned on</li>
+      <li>Open the app, go to the "📓 History" page and tap "從 iCloud 還原" (Restore from iCloud)</li>
+      <li>Pick a point in time to restore</li>
     </ol>
-    <p>Apple non-consumable purchases are restorable for life at no additional cost.</p>
+    <p>"已備份" (Backed up) means the copy has been written on this iPhone; iOS decides when it uploads to iCloud, so it may take longer without a connection. You can also export your history as Markdown. iCloud backups do not include your OpenAI key, so paste it again on a new phone.</p>
 
-    <h2>5. Can I use the app offline?</h2>
-    <p>Drawing cards, viewing 78-card keywords, history, and daily reminders all work offline.</p>
-    <p>However, <strong>AI reading requires internet</strong> (the app connects to <code>api.openai.com</code>). When offline, use the "Copy Prompt" button instead and paste into another LLM later.</p>
+    <h2>5. How do I draw with Siri?</h2>
+    <p>Without opening the app, say "用塔羅手帳抽一張牌" to Siri (Siri phrases are in Chinese). Siri draws a random card, reads its name and whether it is upright or reversed, opens the app to show it, and saves it to your history. The same action is listed in the Shortcuts app.</p>
 
-    <h2>6. Privacy questions</h2>
-    <p>Full privacy details: <a href="privacy.html">Privacy Policy</a></p>
-    <p>TL;DR: this app collects no personal data, all data stays on your device, no third-party tracking, no server.</p>
+    <h2>6. How do I send an entry to Apple's Journal app?</h2>
+    <p>This needs a Shortcut. The first time, the app shows the install link; add the Shortcut from there. After that, send an entry from your history and it is saved, with its spread image, into Apple's Journal app.</p>
 
-    <h2>7. Report a bug / Suggest a feature</h2>
-    <p>Email <a href="mailto:alex.yeh@angelz13.com">alex.yeh@angelz13.com</a>. When reporting a bug please include:</p>
+    <h2>7. How do I revoke consent for OpenAI or ChatGPT?</h2>
+    <p>Go to "⚙️ Settings → 第三方 AI 分享 (Third-party AI sharing)" and revoke each one. After you revoke, the app will ask again the next time.</p>
+
+    <h2>8. Can I use the app offline?</h2>
+    <p>Drawing, card meanings, history, Review, on-device AI readings, daily reminders and the widget all work offline.</p>
+    <p>OpenAI readings and "一鍵問 ChatGPT" need a connection, and iCloud backups upload once you are online.</p>
+
+    <h2>9. Privacy questions</h2>
+    <p>Full details: <a href="privacy.html">Privacy Policy</a></p>
+    <p>TL;DR: we have no server and collect no personal data. Your history stays on your iPhone and in your own iCloud, and the app asks before sending anything to OpenAI or ChatGPT.</p>
+
+    <h2>10. Report a bug / Suggest a feature</h2>
+    <p>Email <a href="mailto:alex.yeh@angelz13.com">alex.yeh@angelz13.com</a>. When reporting a bug, please include:</p>
     <ul>
-      <li>iOS version (Settings → General → About → Software Version)</li>
+      <li>iOS version (Settings → General → About → iOS Version)</li>
       <li>iPhone model</li>
-      <li>Steps to reproduce (which page, what you tapped, expected vs actual)</li>
-      <li>Screenshot if available</li>
+      <li>Steps to reproduce (which page, what you tapped, what you expected and what happened)</li>
+      <li>A screenshot, if you can</li>
     </ul>
 
-    <h2>8. Contact</h2>
+    <h2>11. Contact</h2>
     <p>Email: <a href="mailto:alex.yeh@angelz13.com">alex.yeh@angelz13.com</a></p>
-    <p>Website: <a href="https://tarot.angelz13.com">tarot.angelz13.com</a></p>
+    <p>Website 塔羅密語: <a href="https://tarot.angelz13.com">tarot.angelz13.com</a></p>
 
   </main>
 
   <footer>
-    © 2026 TAROT　・　<a href="index.html">首頁 / Home</a>　・　<a href="privacy.html">隱私政策 / Privacy</a>
+    <span class="footer-mark"><img src="brand/tarot-mark.png" alt="仆洛宅"></span><br>
+    © 2026 Alex Yeh　・　<a href="index.html">首頁 / Home</a>　・　<a href="privacy.html">隱私政策 / Privacy</a>
   </footer>
 
 </body>
