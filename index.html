@@ -517,6 +517,10 @@
       line-height: 1.8;
     }
 
+    /* 頁尾 LOGO：原圖是深藍墨色、透明底，深紫底上看不見 ⇒ 墊塔羅牌套框同一個米色紙底（與 App 同一份寫法） */
+    .footer-mark { display: inline-block; background: #F3ECDF; border-radius: 10px; padding: 4px 10px; margin-top: 16px; }
+    .footer-mark img { display: block; height: 30px; width: auto; }
+
     @media (prefers-reduced-motion: reduce) {
       * { transition: none !important; animation: none !important; }
       body::before { opacity: 0.3; }
@@ -705,7 +709,8 @@
     <div class="container-tight">
       <p><strong>⚠️ 免責聲明</strong>：本服務僅供娛樂與自我覺察、不構成醫療、心理治療、法律、財務或投資建議。</p>
       <p style="margin-top:8px;">若您正面臨情緒困擾或心理危機、請尋求專業協助（台灣 24h 生命線 <strong>1995</strong>｜安心專線 <strong>1925</strong>｜張老師專線 <strong>1980</strong>）。</p>
-      <p style="margin-top:12px; opacity:0.7;">© 2026 Alex Yeh · 牌義與圖像取自<a href="SOURCES.md" style="color:inherit;">公共領域來源</a> · <a href="privacy.html" style="color:inherit;">隱私政策</a></p>
+      <span class="footer-mark"><img src="brand/tarot-mark.png" alt="仆洛宅"></span>
+      <p style="margin-top:8px; opacity:0.7;">© 2026 Alex Yeh · 牌義與圖像取自<a href="SOURCES.md" style="color:inherit;">公共領域來源</a> · <a href="privacy.html" style="color:inherit;">隱私政策</a></p>
     </div>
   </footer>
 
