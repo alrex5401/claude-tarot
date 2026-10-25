@@ -10,5 +10,8 @@ tarot-lite.md
 給朋友的 2 分鐘教學.md
 dist
 skill
+mcp
+.wrangler
+node_modules
 .DS_Store
 **/.DS_Store

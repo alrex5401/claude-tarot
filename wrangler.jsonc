@@ -1,12 +1,28 @@
 {
-  // Cloudflare Workers 靜態託管設定（tarot.angelz13.com、由 GitHub Pages 遷入）
+  // Cloudflare Workers 設定（tarot.angelz13.com、由 GitHub Pages 遷入）
   // Worker 名稱必須與 Cloudflare dashboard 建立的 Worker 一致（官方硬性要求）
   "name": "claude-tarot",
   "compatibility_date": "2026-07-22",
+  // MCP 連接器（/mcp）；其他網址照舊是靜態網頁，程式原樣交給 ASSETS
+  "main": "mcp/worker.js",
   "assets": {
     // 網站檔在 repo 根目錄（index.html 在根）；非網站檔由 .assetsignore 排除
     "directory": ".",
+    "binding": "ASSETS",
     // 純靜態站：找不到的路徑回最近的 404 頁（無則預設 404）；不是 SPA
-    "not_found_handling": "404-page"
+    "not_found_handling": "404-page",
+    // /mcp 一律先進程式；瀏覽器直接開 /mcp 也由程式回 405
+    "run_worker_first": ["/mcp"]
+  },
+  // 限流：每個機房各算各的近似值（期間只能 10 或 60 秒）
+  // 只限 ChatGPT 帶匿名使用者 ID 的請求；額度防護靠 Cloudflare 防火牆的限流規則（在程式執行前擋）
+  "ratelimits": [
+    // ChatGPT 帶匿名使用者 ID 時，每人每 60 秒 20 次
+    { "name": "RATE_LIMIT_USER", "namespace_id": "1001", "simple": { "limit": 20, "period": 60 } }
+  ],
+  // 只留程式自己寫的出錯紀錄（動作名稱與錯誤碼）；自動的逐筆請求紀錄關掉
+  "observability": {
+    "enabled": true,
+    "logs": { "invocation_logs": false }
   }
 }
