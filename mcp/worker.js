@@ -104,7 +104,7 @@ const TOOLS = [
     name: "get_card_meaning",
     title: "Look up a tarot card",
     description:
-      "Returns the meaning of one named card from the 78-card Rider–Waite–Smith tarot deck: names in Chinese and English, arcana, element, upright and reversed keywords, symbolism notes, and image URL. Use it when the user has drawn a card themselves, for example from a physical deck, and names it. The card parameter takes the card's official English name, so map other names or languages to it (for example, 愚人 or 愚者 is The Fool).",
+      "Returns the meaning of one named card from the 78-card Rider–Waite–Smith tarot deck: names in Chinese and English, arcana, element, upright and reversed keywords, symbolism notes, and image URL. Use it when the user has drawn a card themselves, for example from a physical deck, and names it. Call it instead of answering from memory, so the reply uses this deck's meaning text and can show the card image. The card parameter takes the card's official English name, so map other names or languages to it (for example, 愚人 or 愚者 is The Fool).",
     inputSchema: {
       type: "object",
       properties: {
