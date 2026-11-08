@@ -58,7 +58,7 @@ test("舊版 initialize 回 2025-11-25、伺服器名稱與 tools 能力（舊 l
       serverName: body.result?.serverInfo?.name,
       hasTools: typeof body.result?.capabilities?.tools === "object",
     },
-    { status: 200, id: 1, protocolVersion: "2025-11-25", serverName: "puluozhai-tarot", hasTools: true },
+    { status: 200, id: 1, protocolVersion: "2025-11-25", serverName: "angelz13-tarot", hasTools: true },
   );
 });
 
@@ -504,7 +504,7 @@ test("新版 tools/list 帶 resultType、ttlMs、cacheScope 與 serverInfo（cha
       server: result._meta?.["io.modelcontextprotocol/serverInfo"]?.name,
       tools: result.tools.map((t) => t.name),
     },
-    { resultType: "complete", ttlMs: 3600000, cacheScope: "public", server: "puluozhai-tarot", tools: ["draw_cards", "get_card_meaning"] },
+    { resultType: "complete", ttlMs: 3600000, cacheScope: "public", server: "angelz13-tarot", tools: ["draw_cards", "get_card_meaning"] },
   );
 });
 
@@ -641,7 +641,7 @@ test("新版 tools/call 成功：resultType、isError、structuredContent、文�
       textIsJson: result.content?.[0]?.text === JSON.stringify(result.structuredContent),
       server: result._meta?.["io.modelcontextprotocol/serverInfo"]?.name,
     },
-    { status: 200, resultType: "complete", isError: false, card: [TAROT_NAMES[0]], textIsJson: true, server: "puluozhai-tarot" },
+    { status: 200, resultType: "complete", isError: false, card: [TAROT_NAMES[0]], textIsJson: true, server: "angelz13-tarot" },
   );
 });
 

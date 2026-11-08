@@ -1,10 +1,10 @@
-// 仆洛宅塔羅 MCP 連接器（tarot.angelz13.com/mcp）
+// 塔羅密語連接器 Tarot Whisper（tarot.angelz13.com/mcp；目錄代稱 angelz13-tarot）
 // 計劃書：000_Agent/plans/2026-10-24-塔羅MCP連接器.md（工具規格、協定行為對照表都在那裡）
 // 只有 /mcp 會進到這支程式（wrangler.jsonc 的 run_worker_first）；其他路徑原樣交給網站靜態檔
 
 import deck from "../skill/tarot/cards.json" with { type: "json" };
 
-const SERVER_INFO = { name: "puluozhai-tarot", version: "1.0.0" };
+const SERVER_INFO = { name: "angelz13-tarot", version: "1.0.0" };
 const LEGACY_VERSION = "2025-11-25";
 const MODERN_VERSION = "2026-07-28";
 const PROTOCOL_VERSION_KEY = "io.modelcontextprotocol/protocolVersion";
