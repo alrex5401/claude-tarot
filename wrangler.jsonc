@@ -5,6 +5,11 @@
   "compatibility_date": "2026-07-22",
   // MCP 連接器（/mcp）；其他網址照舊是靜態網頁，程式原樣交給 ASSETS
   "main": "mcp/worker.js",
+  // 關掉 claude-tarot.<帳號>.workers.dev 與版本／預覽網址：網域上的 WAF 規則管不到它們，開著＝/mcp 可以繞過。
+  // 一定要寫在設定檔：只在後台手動關的話，下次部署 Wrangler 會把 workers_dev 重新打開；
+  // preview_urls 不寫的話 Wrangler 不動後台現有的設定。代價：非正式分支照樣建置成功，但不再有預覽網址
+  "workers_dev": false,
+  "preview_urls": false,
   "assets": {
     // 網站檔在 repo 根目錄（index.html 在根）；非網站檔由 .assetsignore 排除
     "directory": ".",
@@ -15,7 +20,7 @@
     "run_worker_first": ["/mcp"]
   },
   // 限流：每個機房各算各的近似值（期間只能 10 或 60 秒）
-  // 只限 ChatGPT 帶匿名使用者 ID 的請求；額度防護靠 Cloudflare 防火牆的限流規則（在程式執行前擋）
+  // 只限 ChatGPT 帶匿名使用者 ID 的請求；網域的擋路徑規則與每 IP 限流在程式執行前擋，但都不限每日總量（見 mcp/worker.js 限流那段）
   "ratelimits": [
     // ChatGPT 帶匿名使用者 ID 時，每人每 60 秒 20 次
     { "name": "RATE_LIMIT_USER", "namespace_id": "1001", "simple": { "limit": 20, "period": 60 } }

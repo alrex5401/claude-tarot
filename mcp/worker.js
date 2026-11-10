@@ -228,7 +228,10 @@ const RATE_LIMITED = "Too many requests. Please try again in a minute.";
 
 // 限流（Cloudflare ratelimits binding、每個機房各算各的）：只對 ChatGPT 帶匿名使用者 ID 的請求各算各的。
 // 沒帶的（含 Claude）不在程式裡限：共用一個桶會讓人每秒打幾次就擋掉同機房所有 Claude 使用者，
-// 而程式裡的限流本來就護不住每日額度（請求進來就算一次）⇒ 額度靠 Cloudflare 防火牆的限流規則（計劃書 Step 5）。
+// 而程式裡的限流本來就護不住每日額度（請求進來就算一次）。網域上另有兩條 Cloudflare 規則在叫起這支程式之前擋：
+// 擋常見掃描路徑（掃描器打不存在的網址本來會叫起程式回 404）、每個 IP 10 秒的限流（只壓單一 IP 的速度）。
+// 兩條都不限每日總量；每日額度用完時 /mcp 回 429（官方 static-assets billing），網頁照常；找不到的網址會怎樣官方沒寫。
+// 額度每天 UTC 0 點（台灣 08:00）重置（計劃書 2026-11-09-Cloudflare整網域防護補強）。
 // binding 沒設或出錯就放行：限流不是必要防線
 async function withinRateLimit(params, env) {
   const subject = params?._meta?.["openai/subject"];
